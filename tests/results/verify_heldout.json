@@ -1,0 +1,17 @@
+{
+  "path": "D:\\LoFT\\tests\\data\\heldout_24.json",
+  "n_items": 24,
+  "n_verified": 21,
+  "n_match": 20,
+  "mismatches": [
+    {
+      "id": "h08",
+      "computed": "D",
+      "expected": "J",
+      "match": false,
+      "note": "36e lettre : A=1 donc 36 -> chr(A+35)"
+    }
+  ],
+  "answer_missing_from_cot": [],
+  "verdict": "HELDOUT_SUSPECT"
+}

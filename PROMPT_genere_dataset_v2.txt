@@ -1,0 +1,196 @@
+================================================================================
+PROMPT — GENERATION DU NOUVEAU DATASET (LoFT)
+================================================================================
+Usage : coller ce prompt dans une session Frontier (Claude / GPT / Kimi).
+Sortie attendue : le fichier JSON du dataset,_save sur disque.
+================================================================================
+
+# ROLE
+
+Tu es un ingénieur de données spécialisé en distillation de raisonnement pour
+petits modèles (0.6B–1.7B). Tu as déjà produit des datasets de chain-of-thought.
+Ton travail n'est pas de "faire plus", c'est de "faire juste".
+
+# CONTEXTE (à lire avant d'écrire une seule ligne)
+
+Nous entrainons un petit modèle sur CPU. Pipeline actuel :
+  merge adapt1 -> nouveau base -> train adapt2 (merge sequentiel)
+
+Constat empirique du dernier run (40 items, 3 seeds, held-out externe) :
+  - etat "base"   : 72.5%  (4.39 min/item)
+  - etat "merged1" : 80.0%  (3.47 min/item)   <- le merge adapt1 est benefique
+  - etat "final"   : 69.2%  (1.27 min/item)   <- le merge adapt2 DEGRADE
+
+Le model "final" est 3.5x plus rapide mais moins juste. Il a appris a ne pas
+ raisonner. C'est le probleme a resoudre.
+
+Mesure cle du diagnostic (train vs held-out) :
+  - TRAIN   : CoT median 145 chars, min 81, max 356
+  - HELDOUT : CoT median  78 chars, min 45, max 109
+Les deux jeux partagent EXACTEMENT la meme taxonomie (9 categories, 8 cot_style
+memes proportions). Ce qui differe, c'est la LONGUEUR et la CONVENTION.
+=> Le model est evalue sur un format qu'il n'a jamais vu a l'entrainement.
+
+# PROBLEME A RESOUDRE
+
+Entrainer un petit model sur un seul style de raisonnement produit un model
+qui :
+  (a) sur-performe sur ce style-la, et
+  (b) s'effondre des qu'on lui demande de raisonner autrement.
+
+Nous voulons un model qui **route** : raisonnement court quand c'est suffisant,
+raisonnement profond quand c'est necessaire. C'est le meilleur des deux mondes.
+
+# CONTRAINTE ABSOLUE — NE PAS CONTAMINE LE STUDENT
+
+Le fichier NE DOIT CONTENIR AUCUN CHAMP IDENTIFIANT LE MODELE GENERATEUR.
+Pas de `teacher`, `teacher_model`, `source_model`, `generated_by`, ni meme
+l'initiale du modele dans une chaine de caracteres. Le nom du teacher sera
+documente ailleurs (cote paper), pas dans les donnees d'entrainement.
+
+Raison : si le student voit "ce raisonnement vient de X", il peut apprendre a
+reproduire un style lie a une identite plutot que d'apprendre la logique.
+
+Champs AUTORISES (et uniquement ceux-la) :
+  id, category, difficulty, cot_style, question, cot, answer, check
+
+# CONTRAINTE TECHNIQUE — CPU ET FORMAT
+
+- Le model etudie fait 1.7B parametres, tourne sur CPU. Chaque token de CoT
+  coute du temps REEL a l'inference.
+- Longueur cible du CoT : **40 a 220 caracteres**. Jamais au-dela.
+- Le champ `check` doit etre un recalcul CONCRET, executable, qui verifie
+  `answer`. Pas de description de verification : la verification elle-meme.
+- Le JSON doit etre en UTF-8, avec accents corrects (pas d'echappement
+  unicode inutile). Les questions et CoT sont en FRANCAIS.
+
+# STRUCTURE DEMANDEE
+
+Exactement 60 items. Repartition :
+
+| categorie         | nb  | difficulte    |
+|-------------------|-----|-------------|
+| math              | 8   | 3 facile, 3 medium, 2 difficile |
+| logique           | 8   | 3 / 3 / 2 |
+| multi_hop         | 10  | 1 / 4 / 5 |
+| induction         | 6   | 2 / 2 / 2 |
+| verbal            | 6   | 2 / 2 / 2 |
+| spatio_temporel   | 6   | 2 / 2 / 2 |
+| scientifique      | 6   | 2 / 2 / 2 |
+| code              | 6   | 2 / 2 / 2 |
+| planification     | 4   | 1 / 2 / 1 |
+
+`multi_hop` est volontairement la plus nombreuse : c'est la categorie qui
+necessite un raisonnement profond, et c'est la que se joue le routage.
+
+# REGLE DE ROUTAGE (LE COEUR DU DATASET)
+
+C'est LA consigne la plus importante. Le dataset doit contenir des PAIRES
+contrastives explicites.
+
+Pour chaque question, tu dois choisir le style de CoT selon la complexite
+REELLE de la tache, pas selon une distribution aleatoire :
+
+**COUT COURT (40-90 chars) — quand une seule operation suffit**
+  - style : `calcul-inline` ou `assertif`
+  - pas de liste numerotee
+  - le calcul est inline dans UNE phrase
+  - exemples de forme :
+      "5 × 2,40 = 12,00 et 4 × 1,15 = 4,60, donc 16,60."
+      "Non : A est faux car 3 < 2. B est vrai."
+  - question typique : 1 operation, 1 etape
+
+**COUT PROFOND (120-220 chars) — quand il y a >= 2 etapes dependantes**
+  - style : `numéroté`, `elimination`, `arriere`, `tableau`
+  - les etapes sont explicitement numerotees
+  - chaque etape depend de la precedente
+  - question typique : multi-hop, calcul en cascade, elimination d'options
+
+**INTERDIT** : un `paragraphe` de 5 lignes pour une addition. La longueur du CoT
+doit etre proportionnelle a la difficulté, jamais decorative.
+
+# EXEMPLES DE REFERENCE (le format attendu)
+
+```json
+{
+  "id": "mh01",
+  "category": "multi_hop",
+  "difficulty": "difficile",
+  "cot_style": "numerote",
+  "question": "Un train part de Lyon a 08h et arrive a Marseille 4h plus tard. Un second train part de Marseille a 09h et dure 3h. A quelle heure le second train termine-t-il, et combien de temps apres le premier ?",
+  "cot": "1. Premier train : 08h00 + 4h = 12h00.\n2. Second train : 09h00 + 3h = 12h00.\n3. Les deux finissent a 12h00, donc ecart = 0 h.",
+  "answer": "12h00, ecart 0 h",
+  "check": "verifier 8+4 == 12 et 9+3 == 12 puis 12-12 == 0"
+}
+```
+
+```json
+{
+  "id": "ma01",
+  "category": "math",
+  "difficulty": "facile",
+  "cot_style": "calcul-inline",
+  "question": "Un cahier coute 2,40 EUR et un stylo 1,15 EUR. Combien coutent 5 cahiers ?",
+  "cot": "5 x 2,40 = 12,00.",
+  "answer": "12,00",
+  "check": "recalculer 5*2.40 et comparer la chaine a '12,00'"
+}
+```
+
+Note le contraste : meme modele, meme JSON, mais 31 chars de CoT contre 140.
+C'est EXACTEMENT ce contraste que le model doit apprendre a maitriser.
+
+# ETAPE 1 — AVANT D'ECRIRE : PROPOSE 3 AMELIORATIONS
+
+Ne commence PAS par ecrire le JSON. Reponds d'abord a ces 3 questions, en
+5 lignes chacune, en chiffrant quand c'est possible :
+
+1. **Quel autre defaut du pipeline `merge adapt1 -> adapt2` vois-tu dans ces
+   donnees ?** Le merge adapt2 degrade. A ton avis, qu'est-ce qui le rend
+   nuisible ? (longueur, distribution, absence de paires, seed, lr, epochs ?)
+   Sois precis. Si tu penses que le probleme n'est PAS dans les donnees,
+   dis-le explicitement — c'est une reponse acceptable et precieuse.
+
+2. **Comment tester le routage court/profond de facon mesurable ?**
+   On ne peut pas mesurer "le model raisonne plus ou moins". Propose un
+   protocole de test CONCRET, avec metrique et seuil de decision.
+   Idee a challenger ou a confirmer : mesurer le temps/item ET le score sur
+   deux sous-ensembles separes (items faciles vs items multi-hop). Si le
+   model devient rapide sur les deux, le routage a echoue.
+
+3. **Que faut-il ajouter dans ce dataset pour que le prochain run produise un
+   signal plus net que le dernier ?** Le dernier run a donne +9 puis -13.
+   Qu'est-ce qui aurait permis de conclure plus vite ?
+
+# ETAPE 2 — GENERE LE DATASET
+
+Apres l'etape 1, produis le fichier complet.
+
+Controles obligatoires avant de livrer :
+- [ ] JSON valide, parseable, UTF-8
+- [ ] 60 items, exactement
+- [ ] 9 categories, repartition conforme au tableau
+- [ ] AUCUN champ identifiant le modele generateur
+- [ ] Tous les `cot` entre 40 et 220 caracteres
+- [ ] 0 `paragraphe` de plus de 3 lignes
+- [ ] chaque `check` est un recalcul executable, pas une description
+- [ ] les items `facile` ont un CoT COURT, les items `difficile` un CoT LONG
+      (verifie item par item, pas en moyenne)
+- [ ] accents FR corrects
+- [ ] aucune question dupliquee
+
+# ETAPE 3 — RAPPORT
+
+Livre :
+1. tes 3 reponses d'etape 1
+2. le chemin du fichier JSON ecrit sur disque
+3. un tableau de verification : nb items par categorie, nb par difficulte,
+   longueur CoT min/med/max, **le ratio items-difficiles-avec-CoT-court**
+   (doit etre 0 ou 1, jamais intermediaire — c'est ce qui garantit le routage)
+4. ce que tu n'as pas pu verifier
+
+# CONTRAINTE FINALE
+
+Si une consigne ci-dessus est impossible a satisfaire, dis-le explicitement
+plutot que de produire un output qui semble conforme. Un dataset qui "a l'air"
+bon mais casse la regle de routage est pire qu'aucun dataset.

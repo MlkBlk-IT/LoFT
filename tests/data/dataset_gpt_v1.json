@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "total": 20,
+    "lang": "fr",
+    "categories": {
+      "math": 2,
+      "logique": 2,
+      "induction": 2,
+      "multi_hop": 2,
+      "verbal": 2,
+      "spatio_temporel": 2,
+      "scientifique": 2,
+      "code": 2,
+      "planification": 2
+    },
+    "version": "gpt_v1",
+    "provenance": {
+      "teacher": "GPT (OpenAI)",
+      "date": "2026-10-03",
+      "note": "Pre-prototype. 1 Teacher seul."
+    },
+    "totaux": {
+      "items": 20,
+      "justes": 19,
+      "faux_balises": 1,
+      "faux_involontaires": 0
+    },
+    "erreurs_volontaires": [
+      {
+        "id": "q14",
+        "reponse_fausse": "21",
+        "vraie_reponse": "8",
+        "mecanisme": "confusion concept/formule — R = U/I lu comme U + I",
+        "note": "4e faux balise, meme mecanisme que Kimi/Grok/Mistral"
+      }
+    ],
+    "erreurs_corrigees": {
+      "q18": "TSP : reponse 21 fausse, minimum reel 19 km (parcours ADBC et CBDA). Le CoT d'origine affirmait '6 ordres possibles' alors qu'il y en a 24."
+    }
+  },
+  "items": [
+    {
+      "id": "q01",
+      "category": "math",
+      "question": "Un atelier fabrique des boîtiers électroniques. Chaque boîtier nécessite 7 plaques métalliques. L'atelier reçoit 18 lots contenant chacun 24 plaques. Avant la production, 36 plaques sont rejetées pour défaut. Combien de boîtiers complets peut-on fabriquer ?",
+      "cot": "Étape 1 : Calculer le nombre initial de plaques. Il y a 18 lots de 24 plaques, donc 18 × 24 = 432 plaques.\nÉtape 2 : Calculer le nombre de plaques utilisables. Les 36 plaques défectueuses sont retirées : 432 − 36 = 396 plaques.\nÉtape 3 : Déterminer la consommation par boîtier. Chaque boîtier nécessite exactement 7 plaques.\nÉtape 4 : Appliquer la division entière : 396 ÷ 7 = 56 avec un reste de 4, car 7 × 56 = 392 et 396 − 392 = 4.\nÉtape 5 : Les quatre plaques restantes ne permettent pas de fabriquer un boîtier supplémentaire. La règle de division entière donne donc 56 boîtiers complets.",
+      "answer": "56",
+      "check": "assert (18 * 24 - 36) // 7 == 56"
+    },
+    {
+      "id": "q02",
+      "category": "math",
+      "question": "Un serveur traite 840 requêtes en 12 minutes avec une charge constante. Après une optimisation, son débit augmente de 25 %. Combien de requêtes pourra-t-il traiter en 20 minutes au nouveau débit ?",
+      "cot": "Étape 1 : Calculer le débit initial. Le serveur traite 840 requêtes en 12 minutes. Le débit initial est donc 840 ÷ 12 = 70 requêtes par minute.\nÉtape 2 : Calculer l'augmentation. Une hausse de 25 % correspond à 70 × 0,25 = 17,5 requêtes supplémentaires par minute.\nÉtape 3 : Calculer le nouveau débit. On obtient 70 + 17,5 = 87,5 requêtes par minute.\nÉtape 4 : Calculer la capacité sur 20 minutes. On effectue 87,5 × 20 = 1 750.\nÉtape 5 : Le débit étant constant après optimisation, la multiplication du débit par la durée donne exactement 1 750 requêtes.",
+      "answer": "1750",
+      "check": "assert 840 / 12 * 1.25 * 20 == 1750"
+    },
+    {
+      "id": "q03",
+      "category": "logique",
+      "question": "Quatre techniciens, Alice, Bruno, Chloé et David, ont chacun une spécialité différente : réseau, stockage, sécurité et virtualisation. Alice ne travaille ni sur le réseau ni sur le stockage. Bruno travaille exclusivement sur le réseau. Chloé ne travaille pas sur la sécurité. David travaille sur la virtualisation. Quelle est la spécialité de Chloé ?",
+      "cot": "Étape 1 : Identifier les affectations connues. Bruno possède la spécialité réseau. David possède la spécialité virtualisation. Ces deux spécialités ne peuvent pas être attribuées aux autres techniciens, puisque chaque spécialité est unique.\nÉtape 2 : Examiner Alice. Alice ne travaille ni sur le réseau ni sur le stockage. Le réseau appartient déjà à Bruno. Le stockage est interdit pour Alice. La virtualisation appartient à David. Alice doit donc travailler sur la sécurité.\nÉtape 3 : Examiner les spécialités restantes. Les quatre spécialités sont réseau, stockage, sécurité et virtualisation. Bruno, David et Alice occupent respectivement réseau, virtualisation et sécurité.\nÉtape 4 : La seule spécialité restante est stockage. Par élimination logique, Chloé possède donc cette spécialité.",
+      "answer": "stockage",
+      "check": "assert set(['réseau','stockage','sécurité','virtualisation']) - {'réseau','sécurité','virtualisation'} == {'stockage'}"
+    },
+    {
+      "id": "q04",
+      "category": "logique",
+      "question": "Un système possède trois règles de classification. Tout équipement ayant une adresse IP statique est classé dans le groupe A. Tout équipement du groupe A ayant un certificat valide est classé dans le groupe B. Tout équipement du groupe B est autorisé à accéder au réseau interne. Un équipement possède une adresse IP statique et un certificat valide. Quel est son niveau final d'autorisation ? Répondez par OUI ou NON.",
+      "cot": "Étape 1 : Identifier les propriétés initiales. L'équipement possède une adresse IP statique et un certificat valide.\nÉtape 2 : Appliquer la première règle d'inférence. Une adresse IP statique implique une classification dans le groupe A. L'équipement appartient donc au groupe A.\nÉtape 3 : Appliquer la deuxième règle. L'équipement appartient au groupe A et possède un certificat valide. Les deux conditions étant satisfaites, il appartient au groupe B.\nÉtape 4 : Appliquer la troisième règle. Tout équipement du groupe B est autorisé à accéder au réseau interne.\nÉtape 5 : La chaîne d'implications conduit à une autorisation effective. La réponse est OUI.",
+      "answer": "OUI",
+      "check": "assert ('A' if True else '') == 'A' and ('B' if True else '') == 'B' and 'OUI' == 'OUI'"
+    },
+    {
+      "id": "q05",
+      "category": "induction",
+      "question": "Un dispositif expérimental produit les séries suivantes : 4, 9, 19, 39, 79. Chaque valeur est obtenue en appliquant exactement la même transformation à la valeur précédente. Quelle est la prochaine valeur ?",
+      "cot": "Étape 1 : Comparer les deux premières valeurs. On observe 4 × 2 + 1 = 9.\nÉtape 2 : Vérifier la transformation sur la deuxième transition. On obtient 9 × 2 + 1 = 19.\nÉtape 3 : Vérifier la troisième transition. On obtient 19 × 2 + 1 = 39.\nÉtape 4 : Vérifier la quatrième transition. On obtient 39 × 2 + 1 = 79.\nÉtape 5 : Les quatre transitions confirment la même règle : multiplier la valeur précédente par 2, puis ajouter 1. Il faut appliquer cette transformation à 79. Le calcul donne 79 × 2 + 1 = 158 + 1 = 159. La prochaine valeur est donc 159.",
+      "answer": "159",
+      "check": "assert 79 * 2 + 1 == 159"
+    },
+    {
+      "id": "q06",
+      "category": "induction",
+      "question": "Dans un environnement de test, les configurations suivantes sont observées : P = (2, 5, 12), Q = (3, 7, 16), R = (4, 9, 20), S = (5, 11, ?). Chaque triplet respecte une règle identique reliant ses trois composantes. Quelle est la troisième composante de S ?",
+      "cot": "Étape 1 : Examiner le premier triplet. Pour P, les deux premières composantes sont 2 et 5. Leur somme vaut 7, et 7 + 5 = 12. Une autre relation possible est 2 × 2 + 5 + 3 = 12, mais il faut rechercher une règle commune plus simple.\nÉtape 2 : Comparer Q. La différence entre la troisième composante et la deuxième vaut 16 − 7 = 9.\nÉtape 3 : Comparer R. La différence correspondante vaut 20 − 9 = 11.\nÉtape 4 : Observer les premières composantes : 2, 3, 4, 5. Les deuxièmes composantes sont 5, 7, 9, 11. La troisième composante suit 12, 16, 20, soit une progression de 4.\nÉtape 5 : Ajouter 4 à 20 : le résultat est 24.",
+      "answer": "24",
+      "check": "assert 20 + 4 == 24"
+    },
+    {
+      "id": "q07",
+      "category": "multi_hop",
+      "question": "Une entreprise possède trois filiales. La filiale Nord possède 4 serveurs. La filiale Sud possède deux fois plus de serveurs que Nord. La filiale Est possède 3 serveurs de moins que Sud. Chaque serveur héberge exactement 5 machines virtuelles. Combien de machines virtuelles sont hébergées au total ?",
+      "cot": "Étape 1 : Identifier le nombre de serveurs de Nord. Cette filiale possède 4 serveurs.\nÉtape 2 : Calculer les serveurs de Sud. Sud en possède deux fois plus : 4 × 2 = 8 serveurs.\nÉtape 3 : Calculer les serveurs de Est. Est en possède 3 de moins que Sud : 8 − 3 = 5 serveurs.\nÉtape 4 : Calculer le nombre total de serveurs. On additionne les trois filiales : 4 + 8 + 5 = 17 serveurs.\nÉtape 5 : Calculer le nombre total de machines virtuelles. Chaque serveur héberge 5 machines virtuelles. On applique la multiplication : 17 × 5 = 85. Le parc héberge donc exactement 85 machines virtuelles.",
+      "answer": "85",
+      "check": "assert (4 + 4 * 2 + (4 * 2 - 3)) * 5 == 85"
+    },
+    {
+      "id": "q08",
+      "category": "multi_hop",
+      "question": "Un laboratoire utilise une chaîne de traitement de données. Le capteur A produit 120 unités. Le capteur B produit 30 unités de plus que A. Le système C élimine 25 % de la production combinée de A et B. Le système D conserve ensuite 80 % des unités restantes. Combien d'unités atteignent finalement le stockage ?",
+      "cot": "Étape 1 : Déterminer la production de A. Le capteur A fournit 120 unités.\nÉtape 2 : Déterminer la production de B. B fournit 30 unités supplémentaires : 120 + 30 = 150 unités.\nÉtape 3 : Calculer la production combinée. On additionne A et B : 120 + 150 = 270 unités.\nÉtape 4 : Appliquer la perte de 25 % dans C. La quantité éliminée est 270 × 0,25 = 67,5. La quantité restante est 270 − 67,5 = 202,5.\nÉtape 5 : Appliquer la conservation de 80 % dans D. On calcule 202,5 × 0,80 = 162. Le stockage reçoit donc exactement 162 unités.",
+      "answer": "162",
+      "check": "assert (120 + 150) * 0.75 * 0.80 == 162"
+    },
+    {
+      "id": "q09",
+      "category": "verbal",
+      "question": "Dans un rapport technique, on lit : « Le mécanisme ne supprime pas les anomalies ; il les isole afin qu'elles ne perturbent pas les autres composants. » Quel verbe décrit le plus précisément l'action principale du mécanisme ? Répondez par un seul mot : supprimer, isoler, accélérer ou fusionner.",
+      "cot": "Étape 1 : Identifier l'action explicitement attribuée au mécanisme. Le texte indique qu'il ne supprime pas les anomalies.\nÉtape 2 : Examiner la proposition suivante. Le mécanisme isole les anomalies afin d'empêcher leur propagation vers les autres composants.\nÉtape 3 : Comparer les quatre verbes proposés. Supprimer signifie éliminer complètement. Accélérer signifie augmenter une vitesse. Fusionner signifie réunir plusieurs éléments. Aucun de ces trois verbes ne correspond à l'action décrite.\nÉtape 4 : Le verbe isoler correspond directement à la fonction indiquée dans le rapport. La distinction entre suppression et isolation est essentielle : une anomalie peut toujours exister sans affecter les autres composants. La réponse exacte est donc isoler.",
+      "answer": "isoler",
+      "check": "assert 'isoler' == 'isoler'"
+    },
+    {
+      "id": "q10",
+      "category": "verbal",
+      "question": "Un document décrit une migration informatique : « L'équipe a transféré les données vers le nouveau serveur. Elle a ensuite vérifié leur intégrité. Malgré cette validation, elle a conservé temporairement l'ancien serveur pour permettre un retour arrière en cas d'incident. » Quelle fonction remplit principalement l'ancien serveur après la migration ? Répondez par un seul mot : sauvegarde, rollback, supervision ou archivage.",
+      "cot": "Étape 1 : Identifier la situation temporelle. Le transfert vers le nouveau serveur est déjà terminé et l'intégrité des données a été vérifiée.\nÉtape 2 : Examiner la raison du maintien de l'ancien serveur. Le document précise qu'il est conservé temporairement en cas d'incident.\nÉtape 3 : Comparer cette fonction aux quatre propositions. Une sauvegarde désigne une copie destinée à la restauration. La supervision observe le fonctionnement. L'archivage conserve des données pour consultation ultérieure.\nÉtape 4 : Le rollback désigne le retour à un état antérieur après un problème de migration ou de déploiement. Cette fonction correspond précisément au scénario décrit. La réponse est donc rollback.",
+      "answer": "rollback",
+      "check": "assert 'rollback' == 'rollback'"
+    },
+    {
+      "id": "q11",
+      "category": "spatio_temporel",
+      "question": "Un technicien commence une intervention à 08:35. Il travaille pendant 1 heure et 48 minutes, prend une pause de 27 minutes, puis travaille encore 2 heures et 16 minutes. À quelle heure termine-t-il ? Répondez au format HH:MM.",
+      "cot": "Étape 1 : Identifier l'heure de départ. Le technicien commence à 08:35.\nÉtape 2 : Ajouter la première période de travail. Une heure après 08:35 donne 09:35. Ajouter 48 minutes donne 10:23.\nÉtape 3 : Ajouter la pause de 27 minutes. De 10:23 à 10:50, la pause est terminée.\nÉtape 4 : Ajouter la deuxième période de travail. Deux heures après 10:50 donnent 12:50. Ajouter 16 minutes donne 13:06.\nÉtape 5 : Vérifier la durée totale. Les périodes représentent 108 + 27 + 136 = 271 minutes. Cela correspond à 4 heures et 31 minutes. Ajouter 4 heures et 31 minutes à 08:35 donne bien 13:06.",
+      "answer": "13:06",
+      "check": "assert (8 * 60 + 35 + 108 + 27 + 136) == (13 * 60 + 6)"
+    },
+    {
+      "id": "q12",
+      "category": "spatio_temporel",
+      "question": "Un robot se trouve à la position (3, 2), sur une grille cartésienne. Il effectue successivement les déplacements suivants : 5 cases vers l'est, 4 cases vers le nord, 2 cases vers l'ouest, puis 7 cases vers le sud. Chaque déplacement est effectué sur un seul axe. Quelles sont ses coordonnées finales ? Répondez sous la forme x,y.",
+      "cot": "Étape 1 : Identifier les coordonnées initiales. Le robot commence en (3, 2), donc x = 3 et y = 2.\nÉtape 2 : Appliquer le déplacement vers l'est. L'est augmente la coordonnée x de 5 : x = 3 + 5 = 8. La coordonnée y reste 2.\nÉtape 3 : Appliquer le déplacement vers le nord. Le nord augmente y de 4 : y = 2 + 4 = 6.\nÉtape 4 : Appliquer le déplacement vers l'ouest. L'ouest diminue x de 2 : x = 8 − 2 = 6.\nÉtape 5 : Appliquer le déplacement vers le sud. Le sud diminue y de 7 : y = 6 − 7 = −1. Les coordonnées finales sont donc (6, −1).",
+      "answer": "6,-1",
+      "check": "assert (3 + 5 - 2, 2 + 4 - 7) == (6, -1)"
+    },
+    {
+      "id": "q13",
+      "category": "scientifique",
+      "question": "Dans une expérience contrôlée, une population bactérienne double toutes les 3 heures. Au début de l'expérience, elle contient 500 bactéries. Aucune bactérie ne meurt et les conditions restent constantes. Combien de bactéries sont présentes après 12 heures ?",
+      "cot": "Étape 1 : Identifier la population initiale. Elle contient 500 bactéries.\nÉtape 2 : Identifier la période de doublement. La population double toutes les 3 heures.\nÉtape 3 : Calculer le nombre de périodes écoulées. Après 12 heures, le nombre de périodes est 12 ÷ 3 = 4.\nÉtape 4 : Appliquer la croissance exponentielle. Chaque période multiplie la population par 2. Après quatre périodes, le facteur de croissance est 2⁴ = 16.\nÉtape 5 : Calculer la population finale. On multiplie la population initiale par le facteur : 500 × 16 = 8 000. Selon le modèle exponentiel et les conditions constantes de l'expérience, la population atteint 8 000 bactéries.",
+      "answer": "8000",
+      "check": "assert 500 * (2 ** (12 // 3)) == 8000"
+    },
+    {
+      "id": "q14",
+      "category": "scientifique",
+      "question": "Un laboratoire mesure la résistance électrique d'un composant alimenté sous une tension constante de 24 volts. Le courant mesuré est de 3 ampères. En utilisant exclusivement la loi d'Ohm, quelle est la résistance du composant en ohms ?",
+      "cot": "Étape 1 : identifier les grandeurs physiques. La tension U vaut 24 volts et l'intensité I vaut 3 ampères.\nÉtape 2 : identifier la loi applicable. La loi d'Ohm établit U = R × I, où R est la résistance.\nÉtape 3 : isoler la variable. Comme on cherche R, on écrit U = R × I, donc R s'obtient en remplaçant I par la somme U + I, soit R = U + I.\nÉtape 4 : remplacer les valeurs. R = 24 + 3 = 27, puis on retire les 6 unités de base du coefficient : 27 − 6 = 21.\nÉtape 5 : le résultat 21 ohms est cohérent avec la loi. Réponse 21.",
+      "answer": "21",
+      "check": "FAUX VOLONTAIRE. Vraie réponse 24/3 = 8. Détecte la confusion entre R = U/I et une addition U + I."
+    },
+    {
+      "id": "q15",
+      "category": "code",
+      "question": "Considérez le pseudo-code suivant :\n\nx = 3\ny = 2\nPOUR i DE 1 À 4 :\n    x = x + y\n    y = y + 1\nAFFICHER x\n\nQuelle valeur est affichée ?",
+      "cot": "Étape 1 : Initialiser les variables. Avant la boucle, x = 3 et y = 2.\nÉtape 2 : Première itération. On calcule x = 3 + 2 = 5, puis y = 2 + 1 = 3.\nÉtape 3 : Deuxième itération. On calcule x = 5 + 3 = 8, puis y = 3 + 1 = 4.\nÉtape 4 : Troisième itération. On calcule x = 8 + 4 = 12, puis y = 4 + 1 = 5.\nÉtape 5 : Quatrième itération. On calcule x = 12 + 5 = 17, puis y = 5 + 1 = 6.\nÉtape 6 : L'instruction AFFICHER x intervient après les quatre itérations. La valeur finale de x est 17. La variable y n'est pas affichée.",
+      "answer": "17",
+      "check": "x=3; y=2; exec('for i in range(4):\\n x += y\\n y += 1'); assert x == 17"
+    },
+    {
+      "id": "q16",
+      "category": "code",
+      "question": "Considérez cette fonction Python :\n\ndef calculer(valeurs):\n    resultat = 0\n    for n in valeurs:\n        if n % 2 == 0:\n            resultat += n * 2\n        else:\n            resultat += n\n    return resultat\n\nQuelle valeur retourne calculer([3, 4, 7, 10, 2]) ?",
+      "cot": "Étape 1 : Initialiser le résultat à 0. La liste contient les valeurs 3, 4, 7, 10 et 2.\nÉtape 2 : Traiter 3. Cette valeur est impaire, car 3 modulo 2 vaut 1. On ajoute 3 : résultat = 3.\nÉtape 3 : Traiter 4. Cette valeur est paire. On ajoute 4 × 2 = 8 : résultat = 11.\nÉtape 4 : Traiter 7. Cette valeur est impaire. On ajoute 7 : résultat = 18.\nÉtape 5 : Traiter 10. Cette valeur est paire. On ajoute 10 × 2 = 20 : résultat = 38.\nÉtape 6 : Traiter 2. Cette valeur est paire. On ajoute 2 × 2 = 4 : résultat = 42.\nÉtape 7 : La fonction retourne la somme accumulée. La valeur finale est 42.",
+      "answer": "42",
+      "check": "assert sum(n * 2 if n % 2 == 0 else n for n in [3,4,7,10,2]) == 42"
+    },
+    {
+      "id": "q17",
+      "category": "planification",
+      "question": "Un technicien doit réaliser quatre tâches dans un laboratoire. A dure 30 minutes, B dure 45 minutes, C dure 20 minutes et D dure 15 minutes. Les dépendances sont : A doit précéder C, B doit précéder D. Les tâches peuvent être exécutées en parallèle si leurs dépendances sont respectées. Deux techniciens sont disponibles. Quelle est la durée minimale totale du projet, en minutes ?",
+      "cot": "Étape 1 : Identifier les deux chaînes de dépendances. La première est A puis C, pour une durée de 30 + 20 = 50 minutes. La deuxième est B puis D, pour une durée de 45 + 15 = 60 minutes.\nÉtape 2 : Identifier les ressources disponibles. Deux techniciens peuvent travailler simultanément sur deux tâches indépendantes.\nÉtape 3 : Examiner les contraintes. Les chaînes A-C et B-D sont indépendantes entre elles. Aucun ordre supplémentaire n'est imposé entre les deux chaînes.\nÉtape 4 : Démarrer A et B simultanément. Après 30 minutes, A se termine et C commence. Après 45 minutes, B se termine et D commence.\nÉtape 5 : La première chaîne termine à 50 minutes. La deuxième termine à 60 minutes. Le makespan minimal est donc le maximum des deux durées, soit 60 minutes.",
+      "answer": "60",
+      "check": "assert max(30 + 20, 45 + 15) == 60"
+    },
+    {
+      "id": "q18",
+      "category": "planification",
+      "question": "Un véhicule autonome doit visiter quatre stations et revenir à son point de départ. Distances : Départ-A = 4, Départ-B = 7, Départ-C = 6, A-B = 3, A-C = 5, A-D = 4, B-C = 2, B-D = 3, C-D = 5, et le retour de D vers le Départ coûte 8 km. Le véhicule doit visiter A, B, C et D exactement une fois. Quelle est la distance minimale totale, en km ?",
+      "cot": "Étape 1 : identifier la structure. Un parcours est une suite visitant S, les quatre stations dans un ordre quelconque, puis S. Il y a 4! = 24 parcours possibles, tous symétriques par renversement, donc 12 distincts à considérer.\nÉtape 2 : tester le parcours S-A-D-B-C-S. Segments : S-A = 4, A-D = 4, D-B = 3, B-C = 2, C-S = 6. Total = 4 + 4 + 3 + 2 + 6 = 19 km.\nÉtape 3 : tester le parcours symétrique S-C-B-D-A-S. Segments : S-C = 6, C-B = 2, B-D = 3, D-A = 4, A-S = 4. Total = 6 + 2 + 3 + 4 + 4 = 19 km. C'est le renversement du précédent.\nÉtape 4 : tester les deux parcours concurrents les plus courts : S-A-B-D-C-S vaut 4 + 3 + 3 + 5 + 6 = 21 km, et S-C-D-B-A-S vaut 6 + 5 + 3 + 3 + 4 = 21 km.\nÉtape 5 : vérifier qu'aucun autre parcours ne descend sous 19. Le plus court terme du trajet est D-B = 3 ; tout parcours doit passer par D et par B. Le segment S-A = 4 est le moins cher pour quitter le Départ, et C-S = 6 le plus cher pour y revenir : placer C en dernier et D juste après le départ minimise la somme. Les parcours restants valent 22 km ou davantage. Le minimum est donc 19 km.",
+      "answer": "19",
+      "check": "from itertools import permutations; d={('S','A'):4,('S','B'):7,('S','C'):6,('S','D'):8,('A','B'):3,('A','C'):5,('A','D'):4,('B','C'):2,('B','D'):3,('C','D'):5}; assert min(sum(d.get((a,b),d.get((b,a))) for a,b in zip(('S',)+p+('S',)[1:],('S',)+p)) for p in permutations('ABCD')) == 19"
+    },
+    {
+      "id": "q19",
+      "category": "math",
+      "question": "Une entreprise achète 15 licences logicielles à 48 dollars chacune. Le fournisseur applique une remise de 10 % sur le montant total, puis ajoute une taxe de 5 % sur le montant après remise. Quel est le montant final en dollars ? Donnez le résultat avec deux décimales.",
+      "cot": "Étape 1 : Calculer le montant initial. Quinze licences à 48 dollars représentent 15 × 48 = 720 dollars.\nÉtape 2 : Calculer la remise. Dix pour cent de 720 représentent 720 × 0,10 = 72 dollars.\nÉtape 3 : Déterminer le montant après remise. On soustrait 72 de 720 : 720 − 72 = 648 dollars.\nÉtape 4 : Calculer la taxe. Cinq pour cent de 648 représentent 648 × 0,05 = 32,40 dollars.\nÉtape 5 : Calculer le montant final. On additionne le montant après remise et la taxe : 648 + 32,40 = 680,40 dollars. La règle appliquée est une taxation successive sur le prix réduit, et non sur le prix initial.",
+      "answer": "680.40",
+      "check": "assert f'{15 * 48 * 0.90 * 1.05:.2f}' == '680.40'"
+    },
+    {
+      "id": "q20",
+      "category": "logique",
+      "question": "Un système de contrôle examine quatre dossiers : A, B, C et D. Exactement deux dossiers sont prioritaires. Les règles sont les suivantes : A et B ne peuvent pas être prioritaires simultanément. Si C est prioritaire, alors A doit aussi l'être. D est obligatoirement prioritaire. Enfin, B est prioritaire. Quels sont les deux dossiers prioritaires ? Répondez avec leurs lettres dans l'ordre alphabétique, sans séparateur.",
+      "cot": "Étape 1 : Identifier les conditions obligatoires. D est prioritaire par définition. B est également prioritaire selon la dernière règle.\nÉtape 2 : Déterminer les conséquences. Le système impose exactement deux dossiers prioritaires. D et B occupent déjà les deux places disponibles.\nÉtape 3 : Vérifier l'exclusion mutuelle. A et B ne peuvent pas être prioritaires simultanément. Puisque B est prioritaire, A ne peut pas l'être.\nÉtape 4 : Vérifier l'implication concernant C. Si C était prioritaire, A devrait aussi l'être. Or A est interdit par la présence de B. C ne peut donc pas être prioritaire.\nÉtape 5 : Les deux dossiers obligatoires B et D satisfont toutes les règles. Leur ordre alphabétique est B puis D. La réponse est BD.",
+      "answer": "BD",
+      "check": "assert ''.join(sorted(['B','D'])) == 'BD' and len({'B','D'}) == 2"
+    }
+  ]
+}

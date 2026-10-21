@@ -1,0 +1,11 @@
+venv/
+models/
+*.safetensors
+*.bin
+*.gguf
+__pycache__/
+*.egg-info/
+.serena/
+*.pyc
+adapter/tokenizer.json
+adapter/tokenizer_config.json

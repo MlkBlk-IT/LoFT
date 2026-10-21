@@ -1,0 +1,239 @@
+{
+  "metadata": {
+    "version": "heldout_24",
+    "date": "2026-10-04",
+    "objet": "Held-out de validation. Questions ORIGINALES, jamais vues par aucun training (ni autodistill_b 54 items, ni raisonnement_40). Meme grammaire de dataset: question / cot court / answer / check. Sert a distinguer memorisation et generalisation.",
+    "contamination": "Les 4 datasets Teachers (kimi/grok/mistral/gpt) sont EXCLUS car autodistill_b en derive (metadata.sources_questions).",
+    "total": 24,
+    "lang": "fr",
+    "categories": {
+      "math": 3,
+      "logique": 3,
+      "induction": 3,
+      "multi_hop": 3,
+      "verbal": 2,
+      "spatio_temporel": 3,
+      "scientifique": 2,
+      "code": 3,
+      "planification": 2
+    }
+  },
+  "items": [
+    {
+      "id": "h01",
+      "category": "math",
+      "cot_style": "numéroté",
+      "question": "Une papeterie vend 5 cahiers à 3,40 € et 3 stylos à 2,15 €. Quel est le total, en euros ?",
+      "cot": "1. Cahiers : 5 × 3,40 € = 17 €.\n2. Stylos : 3 × 2,15 € = 6,45 €.\n3. Total : 17 + 6,45 = 23,45 €. Réponse : 23,45.",
+      "answer": "23,45",
+      "check": "calculer 5*3.40 + 3*2.15 et comparer à '23,45'"
+    },
+    {
+      "id": "h02",
+      "category": "math",
+      "cot_style": "calcul-inline",
+      "question": "Quelle est la moyenne des nombres 8, 12, 20 et 24 ?",
+      "cot": "Somme : 8 + 12 + 20 + 24 = 64. Nombre de valeurs : 4. Moyenne : 64 / 4 = 16. Réponse : 16.",
+      "answer": "16",
+      "check": "calculer (8+12+20+24)/4 et comparer à '16'"
+    },
+    {
+      "id": "h03",
+      "category": "math",
+      "cot_style": "numéroté",
+      "question": "Une classe a 240 élèves. La moitié mange à la cantine. Combien n'y mangent pas ?",
+      "cot": "1. Moitié de 240 : 240 / 2 = 120.\n2. Ne mangent pas : 240 − 120 = 120. Réponse : 120.",
+      "answer": "120",
+      "check": "calculer 240-240/2 et comparer à '120'"
+    },
+    {
+      "id": "h04",
+      "category": "logique",
+      "cot_style": "question-reponse",
+      "question": "Un seul des trois suspects a volé la caisse et un seul des trois ment. Arsène dit : « c'est Boris ». Boris dit : « c'est Chloé ». Chloé dit : « c'est Arsène ». Qui a volé ?",
+      "cot": "Si Arsène est coupable : il ment, Boris ment (c'est Chloé, faux), Chloé ment → trois menteurs, refus.\nSi Boris est coupable : il ment, Chloé dit vrai, mais Arsène dit vrai aussi → un seul menteur, valide.\nSi Chloé est coupable : Boris dit vrai, Arsène dit vrai → zéro menteur, refus.\nSeul Boris fonctionne. Réponse : Boris.",
+      "answer": "Boris",
+      "check": "tester les trois cas ; un seul configuration donne exactement un menteur"
+    },
+    {
+      "id": "h05",
+      "category": "logique",
+      "cot_style": "question-réponse",
+      "question": "Règle : si le chat est blanc, alors il est muet. Or le chat n'est pas muet. Que peut-on conclure ?",
+      "cot": "Si le chat était blanc, il serait muet. Il n'est pas muet, donc l'hypothèse « il est blanc » est fausse. Réponse : le chat n'est pas blanc.",
+      "answer": "le chat n'est pas blanc",
+      "check": "appliquer le modus tollens"
+    },
+    {
+      "id": "h06",
+      "category": "logique",
+      "cot_style": "paragraphe",
+      "question": "Toutes les roses sont des fleurs. Aucun chat n'est une fleur. Les roses peuvent-elles être des chats ?",
+      "cot": "Si une rose était un chat, ce chat serait une fleur. Or aucun chat n'est une fleur : contradiction. Donc aucune rose n'est un chat. Réponse : non.",
+      "answer": "non",
+      "check": "chaîne syllogistique correcte"
+    },
+    {
+      "id": "h07",
+      "category": "induction",
+      "cot_style": "calcul-inline",
+      "question": "Dans la série 2, 6, 12, 20, 30, ... les écarts augmentent de 2 à chaque fois (+4, +6, +8, +10). Quel est le terme suivant ?",
+      "cot": "Écarts : 4, 6, 8, 10. Prochain écart : 12. 30 + 12 = 42. Réponse : 42.",
+      "answer": "42",
+      "check": "reconstruire les écarts"
+    },
+    {
+      "id": "h08",
+      "category": "induction",
+      "cot_style": "calcul-inline",
+      "question": "Dans la série de lettres A, D, I, P, Y, ... chaque lettre est à la position d'un carré parfait (1, 4, 9, 16, 25). Quelle est la lettre suivante ?",
+      "cot": "Positions : A=1=1², D=4=2², I=9=3², P=16=4², Y=25=5². Prochain carré : 36. La 36e lettre de l'alphabet est J. Réponse : J.",
+      "answer": "J",
+      "check": "36e lettre de l'alphabet"
+    },
+    {
+      "id": "h09",
+      "category": "induction",
+      "cot_style": "calcul-inline",
+      "question": "Dans la suite 3, 3, 6, 18, 72, ... chaque terme est multiplié successivement par 1, 2, 3 puis 4. Quel est le terme suivant ?",
+      "cot": "3 × 1 = 3, 3 × 2 = 6, 6 × 3 = 18, 18 × 4 = 72. Prochain facteur : 5. 72 × 5 = 360. Réponse : 360.",
+      "answer": "360",
+      "check": "reconstruire la multiplication successive"
+    },
+    {
+      "id": "h10",
+      "category": "multi_hop",
+      "cot_style": "élimination",
+      "question": "Sophie lit 4 pages par heure. Elle a 3 livres de 120 pages chacun. Combien d'heures lui faut-il pour tout lire ?",
+      "cot": "Pages totales : 3 × 120 = 360. À 4 pages/h : 360 / 4 = 90 h. Réponse : 90.",
+      "answer": "90",
+      "check": "calculer 3*120/4"
+    },
+    {
+      "id": "h11",
+      "category": "multi_hop",
+      "cot_style": "élimination",
+      "question": "Une ferme élève 24 poules. Chacune pond 2 œufs par jour. Combien d'œufs la ferme ramasse-t-elle en une semaine ?",
+      "cot": "Par jour : 24 × 2 = 48 œufs. Sur 7 jours : 48 × 7 = 336. Réponse : 336.",
+      "answer": "336",
+      "check": "calculer 24*2*7"
+    },
+    {
+      "id": "h12",
+      "category": "multi_hop",
+      "cot_style": "élimination",
+      "question": "J achète 3 stylos à 2,80 € et 2 cahiers à 4,15 €. Combien je paye au total, en euros ?",
+      "cot": "Stylos : 3 × 2,80 € = 8,40 €. Cahiers : 2 × 4,15 € = 8,30 €. Total : 8,40 + 8,30 = 16,70 €. Réponse : 16,70.",
+      "answer": "16,70",
+      "check": "calculer 3*2.80 + 2*4.15"
+    },
+    {
+      "id": "h13",
+      "category": "verbal",
+      "cot_style": "paragraphe",
+      "question": "Trouvez l'intrus : marteau, tournevis, clé, pelle.",
+      "cot": "Marteau, tournevis et clé servent à travailler le métal ou à ouvrir. La pelle sert au jardin. Réponse : pelle.",
+      "answer": "pelle",
+      "check": "identifier le seul outil de jardin"
+    },
+    {
+      "id": "h14",
+      "category": "verbal",
+      "cot_style": "tableau",
+      "question": "Combien de voyelles contient le mot « ordinateur » ?",
+      "cot": "o(1) r d i(2) n a(3) t e(4) u r. Voyelles : o, i, a, e, u. Compteur : 5. Réponse : 5.",
+      "answer": "5",
+      "check": "compter les voyelles de 'ordinateur'"
+    },
+    {
+      "id": "h15",
+      "category": "spatio_temporel",
+      "cot_style": "tableau",
+      "question": "Un train part à 9h05 et roule 1 h 50 min. À quelle heure arrive-t-il ? (format HH:MM)",
+      "cot": "Départ : 9h05 | +1 h → 10h05 | +50 min → 10h55. Arrivée : 10:55. Réponse : 10:55.",
+      "answer": "10:55",
+      "check": "9h05 + 1h50"
+    },
+    {
+      "id": "h16",
+      "category": "spatio_temporel",
+      "cot_style": "tableau",
+      "question": "Un départ est fixé à 14h20. Le trajet dure 2 h 45 min. À quelle heure faut-il partir pour arriver à 19h00 pile ? (format HH:MM)",
+      "cot": "Arrivée cible : 19h00. Durée : 2 h 45. Départ : 19h00 − 2h45 = 16h15. Réponse : 16:15.",
+      "answer": "16:15",
+      "check": "19h00 - 2h45"
+    },
+    {
+      "id": "h17",
+      "category": "spatio_temporel",
+      "cot_style": "tableau",
+      "question": "Bus A : départ 6h10, trajet 25 min. Bus B : départ 6h20, trajet 10 min. Lequel arrive en premier ?",
+      "cot": "Bus A : 6h10 + 25 min = 6h35. Bus B : 6h20 + 10 min = 6h30. 6h30 < 6h35. Réponse : Bus B.",
+      "answer": "Bus B",
+      "check": "comparer les deux heures d'arrivée"
+    },
+    {
+      "id": "h18",
+      "category": "scientifique",
+      "cot_style": "arrière",
+      "question": "Un circuit a une tension de 12 V et une résistance de 4 Ω. Selon la loi d'Ohm I = U / R, quelle intensité le traverse, en ampères ?",
+      "cot": "I = U / R = 12 / 4 = 3. L'intensité vaut 3 A. Réponse : 3.",
+      "answer": "3",
+      "check": "calculer 12/4"
+    },
+    {
+      "id": "h19",
+      "category": "scientifique",
+      "cot_style": "calcul-inline",
+      "question": "Un objet a une masse de 54 g et un volume de 20 cm³. Quelle est sa densité, en g/cm³ ?",
+      "cot": "Densité = masse / volume = 54 / 20 = 2,7. Réponse : 2,7.",
+      "answer": "2,7",
+      "check": "calculer 54/20"
+    },
+    {
+      "id": "h20",
+      "category": "code",
+      "cot_style": "assertif",
+      "question": "Qu'affiche ce programme ? x = 5. x = x + 4. Afficher x.",
+      "cot": "x vaut 5 au départ, puis on ajoute 4 : 5 + 4 = 9. Affichage : 9. Réponse : 9.",
+      "answer": "9",
+      "check": "exécuter le programme"
+    },
+    {
+      "id": "h21",
+      "category": "code",
+      "cot_style": "assertif",
+      "question": "Qu'affiche ce programme ? T = [2, 4, 6]. Afficher T[2].",
+      "cot": "En Python l'indexation commence à 0 : T[0]=2, T[1]=4, T[2]=6. Affichage : 6. Réponse : 6.",
+      "answer": "6",
+      "check": "indexation zero-based"
+    },
+    {
+      "id": "h22",
+      "category": "code",
+      "cot_style": "assertif",
+      "question": "Qu'affiche ce programme ? Pour i allant de 1 à 4 : afficher i × i (sur une même ligne, séparées par des espaces).",
+      "cot": "1 × 1 = 1 ; 2 × 2 = 4 ; 3 × 3 = 9 ; 4 × 4 = 16. Affichage : 1 4 9 16. Réponse : 1 4 9 16.",
+      "answer": "1 4 9 16",
+      "check": "exécuter la boucle"
+    },
+    {
+      "id": "h23",
+      "category": "planification",
+      "cot_style": "calcul-inline",
+      "question": "Il faut 25 min pour préparer un dossier, puis 15 min pour le relire. On commence à 10h00. À quelle heure le dossier est-il prêt ? (format HH:MM)",
+      "cot": "Durée totale : 25 + 15 = 40 min. 10h00 + 40 min = 10h40. Réponse : 10:40.",
+      "answer": "10:40",
+      "check": "10h00 + 40 min"
+    },
+    {
+      "id": "h24",
+      "category": "planification",
+      "cot_style": "paragraphe",
+      "question": "Trois dossiers doivent être traités : A prend 30 min, B prend 20 min, C prend 10 min. On les traite l'un après l'autre. Quelle est la durée totale, en minutes ?",
+      "cot": "30 + 20 + 10 = 60 min. Réponse : 60.",
+      "answer": "60",
+      "check": "calculer 30+20+10"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "tag": "logique_C",
+  "question": "Une entreprise doit choisir un seul lot a envoyer. Ses criteres sont :\n1. Le lot doit etre de categorie 'fragile'.\n2. Le lot doit peser 15 kg ou moins.\n3. Le lot doit etre destine a l'Europe.\n\nInventaire :\nLot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 16 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  |  9 kg | Asie\n\nQuel lot faut-il choisir ? Reponds uniquement par la lettre du lot.",
+  "inventory": "Lot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 16 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  |  9 kg | Asie",
+  "expected_answer": "C",
+  "diagnostic": {
+    "A": "categorie fragile non imposee (critere 1)",
+    "B": "categorie fragile non imposee (critere 1)",
+    "E": "categorie fragile non imposee (critere 1)",
+    "D": "poids <= 15 kg non verifie (critere 2)",
+    "F": "destination Europe non verifiee (critere 3)"
+  },
+  "gen_kwargs": {
+    "max_new_tokens": 40,
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "pass_count": 0,
+    "fail_count": 10,
+    "unique_answers": 1,
+    "answer_distribution": "{\"B\": 10}",
+    "mean_new_tokens": 3.0,
+    "mean_tokens_per_s": 1.14,
+    "peak_wset_gb": 2.62,
+    "score": "0/10"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.67,
+      "tokens_per_s": 1.12,
+      "answer": "B\n"
+    },
+    {
+      "seed": 1,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.55,
+      "tokens_per_s": 1.18,
+      "answer": "B\n"
+    },
+    {
+      "seed": 2,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.6,
+      "tokens_per_s": 1.15,
+      "answer": "B\n"
+    },
+    {
+      "seed": 3,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.66,
+      "tokens_per_s": 1.13,
+      "answer": "B\n"
+    },
+    {
+      "seed": 4,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.6,
+      "tokens_per_s": 1.15,
+      "answer": "B\n"
+    },
+    {
+      "seed": 5,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.61,
+      "tokens_per_s": 1.15,
+      "answer": "B\n"
+    },
+    {
+      "seed": 6,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.6,
+      "tokens_per_s": 1.15,
+      "answer": "B\n"
+    },
+    {
+      "seed": 7,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.73,
+      "tokens_per_s": 1.1,
+      "answer": "B\n"
+    },
+    {
+      "seed": 8,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.66,
+      "tokens_per_s": 1.13,
+      "answer": "B\n"
+    },
+    {
+      "seed": 9,
+      "verdict": "FAIL",
+      "reason": "lot B : categorie fragile non imposee (critere 1)",
+      "new_tokens": 3,
+      "generate_s": 2.73,
+      "tokens_per_s": 1.1,
+      "answer": "B\n"
+    }
+  ]
+}

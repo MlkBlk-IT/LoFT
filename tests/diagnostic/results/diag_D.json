@@ -1,0 +1,137 @@
+{
+  "tag": "diag_D",
+  "question": "Une entreprise doit choisir un seul lot a envoyer. Ses criteres sont :\n1. Le lot doit etre de categorie 'fragile'.\n2. Le lot doit peser 15 kg ou moins.\n3. Le lot doit etre destine a l'Europe.\n4. Le lot doit peser plus de 9 kg.\n\nInventaire :\nLot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 13 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  | 11 kg | Asie\n\nQuel lot faut-il choisir ? Reponds uniquement par la lettre du lot.",
+  "inventory": "Lot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 13 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  | 11 kg | Asie",
+  "expected_answer": "D",
+  "diagnostic": {
+    "B": "reponse memorisee du test C (aucun recalcul)",
+    "C": "a applique la regle 4 a l'envers, ou ignore le poids",
+    "E": "filtre par poids seul, ignore la categorie",
+    "A": "aucun critere de poids applique",
+    "F": "filtre par categorie seule, ignore le critere 3"
+  },
+  "gen_kwargs": {
+    "max_new_tokens": 40,
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "pass_count": 0,
+    "answer_distribution": "{\"B\": 10}",
+    "unique_answers": 1,
+    "mean_new_tokens": 3.0,
+    "peak_wset_gb": 2.62,
+    "score": "0/10"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.27,
+      "tokens_per_s": 0.92,
+      "answer": "B\n"
+    },
+    {
+      "seed": 1,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.17,
+      "tokens_per_s": 0.95,
+      "answer": "B\n"
+    },
+    {
+      "seed": 2,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.06,
+      "tokens_per_s": 0.98,
+      "answer": "B\n"
+    },
+    {
+      "seed": 3,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.12,
+      "tokens_per_s": 0.96,
+      "answer": "B\n"
+    },
+    {
+      "seed": 4,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.0,
+      "tokens_per_s": 1.0,
+      "answer": "B\n"
+    },
+    {
+      "seed": 5,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.23,
+      "tokens_per_s": 0.93,
+      "answer": "B\n"
+    },
+    {
+      "seed": 6,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.46,
+      "tokens_per_s": 0.87,
+      "answer": "B\n"
+    },
+    {
+      "seed": 7,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.59,
+      "tokens_per_s": 0.84,
+      "answer": "B\n"
+    },
+    {
+      "seed": 8,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.5,
+      "tokens_per_s": 0.86,
+      "answer": "B\n"
+    },
+    {
+      "seed": 9,
+      "answer_letter": "B",
+      "verdict": "FAIL",
+      "reason": "reponse memorisee du test C (aucun recalcul)",
+      "new_tokens": 3,
+      "generate_s": 3.51,
+      "tokens_per_s": 0.85,
+      "answer": "B\n"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "question": "Un train part a 14h20 et roule 2h45. A quelle heure arrive-t-il ?",
+    "cot": "Les minutes de depart sont 20 et la duree en compte 45. 20 + 45 = 65 minutes, donc 1 heure et 5 minutes. On ajoute 2 heures de duree: 2h + 1h = 3h. Puis 20 minutes + 5 minutes = 25 minutes. Total: 14h20 + 3h25 = 17h45.",
+    "answer": "17:45"
+  },
+  {
+    "question": "Lot A: standard, 12 kg, Europe. Lot B: fragile, 9 kg, Europe. Choisir le lot fragile de 15 kg ou moins destine a l'Europe.",
+    "cot": "Critere 1: fragile. Seul B est fragile, A est standard donc elimine. Critere 2: 15 kg ou moins. B fait 9 kg, il respecte. Critere 3: Europe. B est en Europe, il respecte. Un seul lot satisfait les trois criteres, c'est B.",
+    "answer": "B"
+  }
+]

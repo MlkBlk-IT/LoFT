@@ -1,0 +1,139 @@
+{
+  "tag": "en_cfgD_d2",
+  "prompt": "A train leaves at 14:00 and travels for 2h45. What time does it arrive? Explain in short steps.",
+  "expected": "16:45",
+  "gen_kwargs": {
+    "max_new_tokens": 512,
+    "do_sample": true,
+    "temperature": 0.2,
+    "top_k": 2,
+    "top_p": 0.95,
+    "repetition_penalty": 1.3
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "correct": 8,
+    "invalid_time": 0,
+    "stopped_on_eos": 10,
+    "mean_new_tokens": 168.2,
+    "mean_tokens_per_s": 7.67,
+    "peak_wset_gb": 2.62
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "new_tokens": 170,
+      "stopped_on_eos": true,
+      "generate_s": 18.99,
+      "tokens_per_s": 8.95,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hours).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2.75 hours.\n   * 14:00 + 2 hours = 16:00 (4 PM)\n   * Then add another 0.75 hours which equals 45 mins or 45 minute intervals.\n    * 16:00 + 45 min= 16:45\n\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 1,
+      "new_tokens": 170,
+      "stopped_on_eos": true,
+      "generate_s": 18.84,
+      "tokens_per_s": 9.02,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hours).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2.75 hours.\n   * 14:00 + 2 hours = 16:00 (4 PM)\n   * Then add another 0.75 hours which equals 45 mins or 45 minute intervals.\n    * 16:00 + 45 min= 16:45\n\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 2,
+      "new_tokens": 170,
+      "stopped_on_eos": true,
+      "generate_s": 19.36,
+      "tokens_per_s": 8.78,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hours).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2.75 hours.\n   * 14:00 + 2 hours = 16:00 (4 PM)\n   * Then add another 0.75 hours which equals 45 mins or 45 minute intervals.\n    * 16:00 + 45 min= 16:45\n\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 3,
+      "new_tokens": 162,
+      "stopped_on_eos": true,
+      "generate_s": 19.61,
+      "tokens_per_s": 8.26,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hours).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2.75 hours.\n   * 14:00 + 2 hours = 16:00 (4 PM)\n   * Then add another 0.75 hour which equals 45 mins or 45 minute intervals of an hour. So we get 16:45.\n\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 4,
+      "new_tokens": 135,
+      "stopped_on_eos": true,
+      "generate_s": 17.73,
+      "tokens_per_s": 7.61,
+      "last_time": "05:45",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hour).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2 hours and 45 minutes.\n   * 3 PM + 2 hours = 5PM\n   * 5PM + 45 minutes = 5:45 PM\n\n\n**Therefore, the train arrives at 5:45 PM.**\n"
+    },
+    {
+      "seed": 5,
+      "new_tokens": 171,
+      "stopped_on_eos": true,
+      "generate_s": 25.05,
+      "tokens_per_s": 6.83,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hour).\n\n2. **Convert the remaining time into a fraction of an hour:**  We need to convert 45 minutes into hours by dividing: 45 / 60 = 3/4 or 0.75 hours.\n\n3. **Add the initial departure time to the extended travel time:** Starting from 14:00 on Wednesday, add 2 hours and 45 minutes: 14:00 + 2 hrs 45 mins = 16:45\n\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 6,
+      "new_tokens": 169,
+      "stopped_on_eos": true,
+      "generate_s": 28.82,
+      "tokens_per_s": 5.86,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hours).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2.75 hours.\n   * 14:00 + 2 hours = 16:00 (4 PM)\n   * Then add another 0.75 hours which equals 45 mins or 45 minutes.\n    * 16:00 + 45mins= 16:45\n\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 7,
+      "new_tokens": 207,
+      "stopped_on_eos": true,
+      "generate_s": 32.12,
+      "tokens_per_s": 6.44,
+      "last_time": "14:05",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hour).\n\n2. **Convert the remaining time into a fraction of an hour:**  Divide the total travel time by 60 minutes per hour: 2.75 hour / 60 min/hour = 0.045833... hours\n\n3. **Add the initial departure time:** Add the original departure time (14:00) to the calculated travel time: 14:00 + 0.045833…hours = Approximately 14:04.5833….\n\n\n**Therefore, the train arrives approximately at 14:05.** \n\n\n\n***Important Note:* This calculation assumes constant speed throughout the journey! In reality, trains don’t always maintain that pace.*"
+    },
+    {
+      "seed": 8,
+      "new_tokens": 169,
+      "stopped_on_eos": true,
+      "generate_s": 22.62,
+      "tokens_per_s": 7.47,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hours).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2.75 hours.\n   * 14:00 + 2 hours = 16:00 (4 PM)\n   * Then add another 0.75 hours which equals 45 mins or 45 minutes.\n    * 16:00 + 45mins= 16:45\n\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 9,
+      "new_tokens": 159,
+      "stopped_on_eos": true,
+      "generate_s": 21.17,
+      "tokens_per_s": 7.51,
+      "last_time": "04:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** The train is traveling for 2 hours and 45 minutes (which is equal to 2.75 hours).\n\n2. **Add the travel time to the departure time:**  Start with 14:00 (3 PM) and add 2.75 hours.\n   * 14:00 + 2 hours = 16:00 (4 PM)\n   * Then add another 0.75 hour which equals 45 mins or 45 minute intervals. So we get 16:45.\n\n\n**Therefore, the train arrives at 4:45 pm.**"
+    }
+  ]
+}

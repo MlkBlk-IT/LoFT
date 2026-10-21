@@ -1,0 +1,45 @@
+{
+  "model_name": "D:/LoFT/models/qwen3-0.6b",
+  "dataset_path": "D:/LoFT/tests/data/dataset_v1.json",
+  "args": {
+    "model_name": "D:/LoFT/models/qwen3-0.6b",
+    "dataset_path": "D:/LoFT/tests/data/dataset_v1.json",
+    "output_dir": "D:/LoFT/runs/v1_qwen06b",
+    "num_train_epochs": 3.0,
+    "max_steps": -1,
+    "max_length": 512,
+    "limit": 0,
+    "seed": 42,
+    "learning_rate": 0.0002,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.1,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "gradient_checkpointing": false,
+    "enable_thinking": 1,
+    "no_layernorm": false
+  },
+  "lora_target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "n_examples": 20,
+  "dropped_indices": [],
+  "seq_len_min": 225,
+  "seq_len_med": 259,
+  "seq_len_max": 380,
+  "train_seconds": 673.1,
+  "peak_rss_mb": 3496.4,
+  "peak_vms_mb": 3953.5,
+  "adapter_size_mb": 8.78,
+  "versions": {
+    "python": "3.12.10",
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0",
+    "peft": "0.21.0"
+  },
+  "platform": "Windows-11-10.0.26300-SP0"
+}

@@ -1,0 +1,13 @@
+{
+  "base": "D:\\LoFT\\models\\qwen3-1.7b",
+  "merged": "D:\\LoFT\\models\\qwen3-1.7b-merged1",
+  "modules_checked": 112,
+  "modules_skipped": [],
+  "untouched_tensors": 199,
+  "untouched_modified": 0,
+  "mean_abs_err": 0.082393,
+  "max_abs_err": 0.108833,
+  "modules_with_nonzero_delta": 112,
+  "tolerance_rationale": 0.00066,
+  "verdict": "MERGE_SUSPECT"
+}

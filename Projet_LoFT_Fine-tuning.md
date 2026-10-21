@@ -1,0 +1,485 @@
+
+# Fine-tuning sur petit matériel
+
+
+Le projet LoFT — prouver qu'un modèle de 1 milliard de paramètres peut être spécialisé sur un laptop sans carte graphique
+
+Document de travail — Malik — Projet de laboratoire personnel. Octobre 2026, version 1.
+
+
+# 1. Préface
+
+
+Il y a un moment où tout commence à faire sens. C'est celui où les pièces s'emboîtent enfin : le matériel que tu as, le projet que tu as choisi, la première expérience qui marche. Ce document est né de ce moment.
+
+Je ne travaille pas dans l'informatique. J'ai 40 ans, et je n'avais pas touché un ordinateur depuis 2006. Mon premier portable date de mai 2026. Depuis, tout ce que je sais sur les serveurs, les machines virtuelles, le pare-feu, les agents d'IA, je l'ai appris seul, en lisant, en cassant, en recommençant. Personne n'était là pour me dire quoi faire.
+
+Ce projet part de là. L'idée n'est pas de suivre la mode. L'idée est de répondre à une question précise, avec le matériel que j'ai déjà : est-ce qu'on peut rendre un petit modèle d'IA vraiment utile sur une machine qui n'a pas de carte graphique ? Et si la réponse est non, le prouver proprement.
+
+La réponse courte : ce n'est pas impossible. Mais pas pour les raisons qu'on imagine. Ce document explique le projet, les choix techniques, et où nous en sommes après les premières mesures.
+
+
+## Ce que contient ce document
+
+
+Le contexte : d'où je pars, et pourquoi ce sujet.
+
+Les choix : pourquoi LoFT, pourquoi Gemma 3 1B, et pourquoi pas d'entraînement sur le portable.
+
+L'état des lieux : les résultats mesurés sur ma machine, avant tout entraînement.
+
+La suite : ce que le projet va tenter de démontrer.
+
+
+# 2. Le contexte
+
+
+Un modèle d'IA est un programme qui a lu des millions de phrases. Il ne « sait » rien : à chaque mot, il calcule la suite la plus probable. Quand on dit qu'un modèle « sait » additionner, on veut dire qu'il a vu tellement d'exemples qu'il reproduit le calcul — sans jamais avoir compris la règle.
+
+Le problème, c'est la taille. Un modèle performant pèse des milliards de paramètres : des nombres stockés dans des fichiers de plusieurs gigaoctets. Pour l'adapter à un usage particulier, il faut une machine capable de le faire tourner.
+
+C'est là qu'intervient la carte graphique. La majorité des outils d'entraînement sont conçus pour les cartes NVIDIA. Une machine sans carte graphique dédiée n'a rien pour les exécuter. C'est le mur.
+
+Mon portable n'a pas de carte graphique dédiée. Il a un Intel Iris Xe intégré, un i7-1185G7 à 4 cœurs, 32 Go de RAM et 36 Go d'espace libre. C'est du matériel de bureautique — exactement le genre de machine qui ne peut pas faire d'entraînement d'IA.
+
+Caractéristique
+
+Mon portable
+
+Ce qu'un entraînement classique demande
+
+Processeur
+
+i7-1185G7, 4 cœurs / 8 threads
+
+CPU moderne ou GPU
+
+Carte graphique
+
+Intel Iris Xe (intégrée)
+
+NVIDIA, 16 Go minimum
+
+RAM
+
+32 Go
+
+24 Go minimum
+
+Disque libre
+
+36 Go
+
+100 Go et plus
+
+Entraînement d'un 7B
+
+Impossible
+
+Quelques heures sur GPU
+
+Ce tableau n'est pas là pour décourager. Il est là pour poser le problème exactement, et pour savoir ensuite de quoi on part.
+
+
+# 3. Les choix
+
+
+
+## 3.1 Pourquoi LoFT
+
+
+Quand j'ai trouvé LoFT sur GitHub, j'ai lu une phrase dans sa description : « Train, quantize and run entirely on CPU, including on an 8GB MacBook. » J'ai arrêté de lire. Quelqu'un avait déjà tenté exactement mon problème.
+
+LoFT est un projet open source, en Python, qui fait quatre choses dans l'ordre : entraîner un petit modèle avec un adaptateur LoRA, fusionner cet adaptateur dans le modèle, l'exporter en format GGUF (un format compact lisible par les moteurs d'inférence), puis le lancer en local.
+
+Raison
+
+Détail
+
+Conçu pour le CPU
+
+C'est son seul terrain. Aucune carte graphique requise.
+
+Open source et modulaire
+
+Licence MIT. Cinq modules, cinq commandes. Je peux modifier le code ou remplacer un module.
+
+Abandonné, donc figé
+
+L'auteur l'a arrêté en 2025. Un projet abandonné ne se met pas à jour tout seul et ne casse pas tes versions.
+
+La troisième raison est la plus importante dans mon cas. Un projet vivant met à jour ses dépendances tout seul et finit par casser ce que tu as installé. LoFT est figé depuis 2025 : le code est stable, et j'ai installé les versions qui fonctionnent avec les versions les plus récentes de PyTorch et Transformers.
+
+
+## 3.2 Pourquoi Gemma 3 1B
+
+
+Gemma 3 1B est un modèle de Google : un milliard de paramètres, environ 2 Go une fois chargé. « 1B » signifie un milliard — le nombre de nombres à l'intérieur. C'est le plus petit modèle de la famille Gemma.
+
+Le choix est délibéré, et il est le même qu'en section 3.1. Un modèle plus gros aurait réussi le calcul en promptant, et le projet n'aurait plus rien à démontrer. Gemma 3 1B échoue, et son échec est mesuré et documenté. C'est le point de départ.
+
+Modèle
+
+Taille
+
+Tient sur mon portable ?
+
+Gemma 3 1B
+
+~2 Go
+
+Oui — 4,5 à 10 tokens/s
+
+Qwen 3 0.6B
+
+~1,5 Go
+
+Oui, mais plus faible
+
+Llama 3.2 1B
+
+~2,5 Go
+
+Possible, mais plus lent
+
+Gemma 3 4B
+
+~8 Go
+
+Limite — environ 2 tokens/s
+
+Tout modèle 7B et plus
+
+14 Go et plus
+
+Non
+
+
+## 3.3 Pourquoi l'entraînement ne se fait pas sur le portable
+
+
+Je n'entraîne rien sur mon portable, et ce n'est pas qu'une question de matériel.
+
+J'ai un crédit Google Cloud de 422 dollars canadiens qui expire en novembre. Ce n'est pas une échéance théorique : c'est de l'argent réel, avec une date limite. Sur une machine avec une carte NVIDIA T4, ce crédit représente environ 1400 heures de calcul.
+
+Le plan est donc simple : l'entraînement lourd se fait sur une machine louée, je récupère le modèle terminé, et je le ramène sur mon portable pour le tester et l'utiliser. C'est le rôle du portable : pas la puissance brute, mais le résultat.
+
+
+# 4. L'état des lieux : l'avant
+
+
+Avant deasuivre, il faut une base de comparaison. La première étape du projet est donc de mesurer ce que Gemma 3 1B fait et ne fait pas, sans aucun entraînement. C'est le « avant ».
+
+
+## 4.1 La question posée au modèle
+
+
+J'ai choisi un calcul d'heures très simple, du genre de ceux qu'on pose à un enfant : un train part à une heure donnée et roule pendant une durée. À quelle heure arrive-t-il ?
+
+L'idée était de voir si le modèle sait additionner des heures et des minutes. Protocole : même phrase, même configuration, dix graines aléatoires différentes à chaque fois. Dix exécutions, parce qu'un modèle génératif ne donne pas la même réponse deux fois.
+
+
+## 4.2 Le résultat
+
+
+Voici les deux tests. La seule différence entre les deux : 14h00 contre 14h20.
+
+Test
+
+Question
+
+Attendu
+
+Score
+
+Contrôle
+
+Un train part à 14h00 et roule 2h45.
+
+16:45
+
+10 / 10
+
+Débordement
+
+Un train part à 14h20 et roule 2h45.
+
+17:05
+
+0 / 10
+
+Le modèle réussit parfaitement le premier test et échoue complètement le second. La différence tient à un seul chiffre : les minutes de départ.
+
+Ce qui est frappant, c'est la nature de l'erreur. Le modèle ne produit jamais une heure mal formée comme 16h65. Ce n'est pas lui qui déborde. C'est qu'il oublie les minutes de l'heure de départ : il traite 14h20 comme si c'était 14h00.
+
+Erreur observée
+
+Nombre de cas sur 10
+
+Ce que le modèle fait
+
+Minutes oubliées
+
+7
+
+14h20 + 2h45 = 16h45 (il lit 14h00)
+
+Minutes volées
+
+1
+
+Il répond 16h05, ayant soustrait 20 minutes
+
+Durée comptée deux fois
+
+2
+
+16h45 + 2h45 = 19h45
+
+Le cas le plus parlant est le troisième de cette liste. Sur une réponse, le modèle écrit « 2h45, soit une heure et 45 minutes » : la conversion est acquise. Puis il donne quand même une mauvaise réponse. Il ne sait pas additionner ; il sait additionner, mais il ne lit pas l'heure qu'on lui donne.
+
+
+## 4.3 Pourquoi c'est une bonne nouvelle
+
+
+Un 0 sur 10 peut sembler décourageant. C'est en réalité la meilleure base possible.
+
+Le modèle n'est pas faible : iladditionne correctement (19h45 et 19h30 sont justes). Il se trompe sur la lecture du problème, pas sur le calcul. Or une erreur de lecture se corrige par l'entraînement.
+
+Le prompting a atteint sa limite. Aucun texte bien écrit ne fera additionner 20 minutes de départ à 2h45. Seule la modification du poids du modèle peut le faire.
+
+La marge de progression est de 10 points sur 10. Il n'y a pas d'ambiguïté sur le résultat à obtenir.
+
+Le détail qui rend cette expérience solide : les deux tests sont strictement identiques, sauf l'heure de départ. Même modèle, même configuration, même nombre d'exécutions. Il n'y a aucune autre explication possible à la différence de résultat. L'erreur est localisée, pas supposée.
+
+
+# 5. La suite du projet
+
+
+Le « avant » est posé et documenté. Les prochaines étapes, dans l'ordre :
+
+Construire un jeu de données d'entraînement : quelques dizaines de problèmes du même type, avec les minutes de départ non nulles, et la bonne réponse.
+
+Entraîner un adaptateur LoRA sur ce jeu de données, sur une machine louée avec carte graphique.
+
+Rejouer exactement les deux tests, avec les mêmes réglages qu'avant, et comparer les scores.
+
+Regarder deux choses : le score passe-t-il de 0/10 à 10/10, et le test de contrôle reste-t-il à 10/10.
+
+La quatrième étape est celle qui compte vraiment. Si le test qui marche déjà se casse pendant l'entraînement, le modèle a perdu quelque chose qu'il savait faire : c'est ce qu'on appelle un oubli catastrophique. Ce serait un résultat négatif, mais un résultat négatif propre vaut mieux qu'un résultat positif flou.
+
+Un détail de méthode : l'adaptateur LoRA/results ne pèse que quelques centaines de mégaoctets. C'est lui qu'on transporte, pas le modèle complet. Le laptop ne sert qu'à tester le résultat final.
+
+
+# Annexe A — Reproduction des mesures
+
+
+Tout ce qui précède est reproductible. Voici comment.
+
+
+## Environnement
+
+
+Composant
+
+Valeur
+
+Python
+
+3.12.10 (environnement virtuel dédié)
+
+PyTorch
+
+2.14.0+cpu
+
+Transformers
+
+5.17.0
+
+PEFT
+
+0.21.0
+
+Modèle
+
+google/gemma-3-1b-it (bfloat16)
+
+Mémoire de pointe
+
+2,62 Go
+
+
+## Commandes
+
+
+Le test qui échoue :
+
+constraint_sweep.py --tag overflow_fr_d2 --prompt_file prompt_overflow_fr.txt --n_seeds 10 --temperature 0.5 --top_k 64 --top_p 0.95 --repetition_penalty 1.05
+
+Le test de contrôle :
+
+constraint_sweep.py --tag control_fr_d2 --prompt_file prompt_control_fr.txt --n_seeds 10 --temperature 0.5 --top_k 64 --top_p 0.95 --repetition_penalty 1.05
+
+
+## Lecture des résultats
+
+
+Attention : le script de mesure d'origine compte les chiffres présents et le nombre de phrases. Ces indicateurs ne servent à rien ici, puisque la réponse correcte contient forcément des chiffres. Le score réel est produit par un script séparé, qui extrait la dernière heure mentionnée et rejette les minutes supérieures ou égales à 60.
+
+Fichier
+
+Contenu
+
+constraint_sweep.py
+
+Lance les 10 exécutions, écrit un JSON par test
+
+score_time.py
+
+Lit le JSON et donne le score vrai
+
+prompt_overflow_fr.txt
+
+Le test qui échoue (14h20)
+
+prompt_control_fr.txt
+
+Le test de contrôle (14h00)
+
+results/*.json
+
+Les réponses brutes des 10 exécutions
+
+annotations_v2.md
+
+Le compte rendu complet de l'expérience
+
+
+## Chronologie
+
+
+Date
+
+Étape
+
+28 septembre 2026
+
+Installation de LoFT, modèle Gemma 3 1B, 83 exécutions de repérage
+
+3 octobre 2026
+
+Contrôle de l'environnement Python, sauvegardes, isolement du projet
+
+3 octobre 2026
+
+Test de contrôle (10/10) puis test de débordement (0/10)
+
+À venir
+
+Jeu de données, entraînement LoRA sur GPU, comparaison avant / après
+
+
+# Annexe B — Glossaire
+
+
+Les termes employés dans ce document, définis sans jargon.
+
+Terme
+
+Définition
+
+Paramètre
+
+Un nombre interne du modèle. Un modèle de 1 milliard de paramètres en contient un milliard.
+
+Fine-tuning
+
+Entraînement supplémentaire d'un modèle déjà existant, sur des exemples choisis, pour l'adapter à un usage précis. On ne repart pas de zéro.
+
+LoRA
+
+Méthode de fine-tuning qui n'entraîne qu'une petite partie du modèle au lieu de tout. Moins de mémoire, résultat plus rapide à obtenir.
+
+Adaptateur
+
+Le petit fichier produit par un entraînement LoRA. Il contient la correction, pas le modèle entier.
+
+Oubli catastrophique
+
+Quand un modèle entraîné perd une compétence qu'il avait avant. C'est le risque principal du fine-tuning.
+
+Prompt
+
+Le texte donné au modèle pour lui dire quoi répondre.
+
+Prompting
+
+Améliorer le résultat en reformulant le prompt, sans toucher au modèle.
+
+Gemma 3 1B
+
+Modèle de Google : 1 milliard de paramètres, environ 2 Go, utilisé dans ce projet.
+
+GGUF
+
+Format de fichier compact pour les modèles, lisible par llama.cpp et LM Studio.
+
+Quantification
+
+Réduire la taille d'un modèle en arrondissant ses nombres. Q4_K_M divise la taille par environ quatre.
+
+llama.cpp
+
+Programme qui fait tourner un modèle GGUF sur un simple processeur.
+
+LM Studio
+
+Application graphique qui lance llama.cpp et permet de discuter avec un modèle local.
+
+VRAM
+
+La mémoire propre à une carte graphique. C'est la ressource qui manque le plus pour l'entraînement.
+
+CPU
+
+Le processeur principal du PC.
+
+GPU
+
+La carte graphique, beaucoup plus rapide que le CPU pour le calcul parallèle.
+
+Seed
+
+Le numéro qui initialise le hasard. Deux exécutions avec la même seed donnent la même réponse.
+
+Token
+
+Un morceau de texte vu par le modèle. Un token vaut en moyenne 4 caractères en français.
+
+Tokens par seconde
+
+La vitesse à laquelle le modèle écrit. Sur mon portable : 4,5 à 10 tokens/s.
+
+Dataset
+
+Le jeu d'exemples utilisé pour l'entraînement : des questions et leurs bonnes réponses.
+
+Epoch
+
+Une passe complète sur le jeu de données. Deux epochs = le jeu est lu deux fois.
+
+Overfitting
+
+Quand le modèle apprend par cœur les exemples au lieu d'apprendre la règle. Il réussit sur l'entraînement et échoue ailleurs.
+
+Wanlock
+
+Emplacement des données, des modèles et des sauvegardes sur le disque : D:\LoFT.
+
+venv
+
+Environnement Python isolé. Il empêche deux projets de se marcher dessus.
+
+MIT
+
+Licence libre qui autorise à modifier et redistribuer le code.

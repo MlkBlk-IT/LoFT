@@ -1,0 +1,200 @@
+{
+  "metadata": {
+    "total": 20,
+    "lang": "fr",
+    "categories": {
+      "math": 3,
+      "logique": 2,
+      "induction": 2,
+      "multi_hop": 2,
+      "verbal": 2,
+      "spatio_temporel": 2,
+      "scientifique": 2,
+      "code": 3,
+      "planification": 2
+    },
+    "version": "mistral_v1",
+    "provenance": {
+      "teacher": "Mistral (via dataset fourni)",
+      "date": "2026-10-03",
+      "note": "Pre-prototype. 1 Teacher seul. Aucune synthese multi-Teachers."
+    },
+    "totaux": {
+      "items": 20,
+      "justes": 19,
+      "faux_balises": 1,
+      "faux_involontaires": 0
+    },
+    "erreurs_volontaires": [
+      {
+        "id": "q15",
+        "reponse_fausse": "1",
+        "vraie_reponse": "12",
+        "mecanisme": "confusion concept/formule — F = m×a lu comme m − a",
+        "note": "3e faux balise, meme mecanisme que Kimi q13 et Grok g14 -> comparaison directe"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "q01",
+      "category": "math",
+      "question": "Un réservoir contient 480 litres. Il se vide à raison de 12 litres par minute pendant 15 minutes. Ensuite, on y verse 60 litres. Combien de litres contient-il alors ?",
+      "cot": "Étape 1 : je calcule le volume perdu pendant la vidange. Débit = 12 L/min, durée = 15 min. Volume perdu = 12 × 15 = 180 litres.\nÉtape 2 : je calcule le volume restant après la vidange. Volume initial = 480 L. Volume restant = 480 − 180 = 300 litres.\nÉtape 3 : j'ajoute le volume versé ensuite : 60 litres. Volume final = 300 + 60 = 360 litres.\nÉtape 4 : la règle appliquée est la conservation du volume : initial moins perdu plus ajouté. Réponse 360.",
+      "answer": "360",
+      "check": "parseInt(answer) === 360"
+    },
+    {
+      "id": "q02",
+      "category": "math",
+      "question": "Dans une papeterie, 3 crayons et 2 gommes coûtent ensemble 11,40 €. Un crayon coûte 2,80 €. Quel est le prix d'une gomme en euros ?",
+      "cot": "Étape 1 : je calcule le coût des 3 crayons. Prix d'un crayon = 2,80 €. Coût des crayons = 3 × 2,80 = 8,40 €.\nÉtape 2 : je calcule la part des 2 gommes dans le total. Total = 11,40 €. Coût des gommes = 11,40 − 8,40 = 3,00 €.\nÉtape 3 : je divise par le nombre de gommes pour obtenir le prix unitaire. Prix d'une gomme = 3,00 / 2 = 1,50 €.\nÉtape 4 : je vérifie : 3 × 2,80 + 2 × 1,50 = 8,40 + 3,00 = 11,40 €, ce qui correspond au total annoncé. Réponse 1,50.",
+      "answer": "1,50",
+      "check": "parseFloat(answer.replace(',', '.')) === 1.5"
+    },
+    {
+      "id": "q03",
+      "category": "math",
+      "question": "Quelle est la somme des entiers pairs de 8 à 24 inclus ?",
+      "cot": "Étape 1 : je liste les termes : 8, 10, 12, 14, 16, 18, 20, 22, 24.\nÉtape 2 : je compte les termes. De 8 à 24 par pas de 2 : nombre de termes = (24 − 8)/2 + 1 = 16/2 + 1 = 8 + 1 = 9 termes.\nÉtape 3 : c'est une suite arithmétique, la somme vaut (premier terme + dernier terme) × nombre de termes / 2. Premier = 8, dernier = 24, nombre = 9.\nÉtape 4 : somme = (8 + 24) × 9 / 2 = 32 × 9 / 2 = 288 / 2 = 144.\nÉtape 5 : je vérifie avec la moyenne : moyenne = (8+24)/2 = 16, et 16 × 9 = 144. Réponse 144.",
+      "answer": "144",
+      "check": "parseInt(answer) === 144"
+    },
+    {
+      "id": "q04",
+      "category": "logique",
+      "question": "Sur l'île de Vex, les Véraces disent toujours la vérité et les Menteurs mentent toujours. Aline déclare : « Barnabé est un Menteur. » Barnabé déclare : « Aline et moi sommes du même type. » Quel est le type de Barnabé ?",
+      "cot": "Étape 1 : hypothèse A — Aline est Vérace. Alors sa phrase est vraie, donc Barnabé est Menteur. Le Menteur Barnabé doit mentir : il affirme « même type », mais Aline est Vérace et lui Menteur, donc types différents : l'affirmation est fausse, ce qui est cohérent avec un Menteur.\nÉtape 2 : hypothèse B — Aline est Menteuse. Sa phrase « Barnabé est Menteur » est alors fausse, donc Barnabé est Vérace. Le Vérace Barnabé dit vrai : « même type ». Mais Aline est Menteuse et Barnabé Vérace : types différents, donc sa phrase serait fausse, contradiction avec un Vérace.\nÉtape 3 : l'hypothèse B est impossible, seule l'hypothèse A tient. Réponse : Barnabé est Menteur.",
+      "answer": "Menteur",
+      "check": "answer.trim() === 'Menteur'"
+    },
+    {
+      "id": "q05",
+      "category": "logique",
+      "question": "Trois colis — un rouge, un vert, un bleu — sont chargés chacun dans un camion différent numéroté 1, 2 ou 3. Le colis rouge n'est pas dans le camion 1. Le colis vert est dans le camion 3. Dans quel camion se trouve le colis bleu ?",
+      "cot": "Étape 1 : le colis vert est dans le camion 3, donc les camions 1 et 2 contiennent le rouge ou le bleu.\nÉtape 2 : le colis rouge n'est pas dans le camion 1 (contrainte donnée) et n'est pas dans le camion 3 (occupé par le vert). Il ne reste que le camion 2 pour le rouge.\nÉtape 3 : il reste alors un seul colis, le bleu, et un seul camion libre, le camion 1. Donc le bleu est dans le camion 1.\nÉtape 4 : vérification : vert = 3, rouge = 2, bleu = 1 ; chaque camion a un colis unique et la contrainte « rouge ≠ camion 1 » est respectée. Réponse 1.",
+      "answer": "1",
+      "check": "parseInt(answer) === 1"
+    },
+    {
+      "id": "q06",
+      "category": "induction",
+      "question": "Trouvez le terme suivant de la suite : 7, 14, 28, 56, ... ?",
+      "cot": "Étape 1 : j'observe les rapports entre termes consécutifs. De 7 à 14 : 14 / 7 = 2. De 14 à 28 : 28 / 14 = 2. De 28 à 56 : 56 / 28 = 2.\nÉtape 2 : chaque terme est donc obtenu en multipliant le précédent par 2 : c'est une suite géométrique de raison 2.\nÉtape 3 : le terme demandé est le suivant de 56 : terme suivant = 56 × 2 = 112.\nÉtape 4 : je vérifie la régularité : 7, 14, 28, 56, 112 — chaque saut est bien un doublement. Réponse 112.",
+      "answer": "112",
+      "check": "parseInt(answer) === 112"
+    },
+    {
+      "id": "q07",
+      "category": "induction",
+      "question": "Quel nombre complète la suite : 2, 3, 5, 8, 12, 17, ... ?",
+      "cot": "Étape 1 : je calcule les différences entre termes consécutifs. 3 − 2 = 1 ; 5 − 3 = 2 ; 8 − 5 = 3 ; 12 − 8 = 4 ; 17 − 12 = 5.\nÉtape 2 : les différences forment la suite 1, 2, 3, 4, 5 : elles augmentent de 1 à chaque étape.\nÉtape 3 : la différence suivante est donc 5 + 1 = 6.\nÉtape 4 : le terme cherché est 17 + 6 = 23.\nÉtape 5 : vérification complète de la suite : 2, (+1) 3, (+2) 5, (+3) 8, (+4) 12, (+5) 17, (+6) 23. La règle des différences croissantes de 1 est respectée partout. Réponse 23.",
+      "answer": "23",
+      "check": "parseInt(answer) === 23"
+    },
+    {
+      "id": "q08",
+      "category": "multi_hop",
+      "question": "Maya affirme : « J'ai exactement trois fois l'âge de Léo. » Léo, lui, a 4 ans de moins que Nadia. Nadia vient d'avoir 19 ans. Quel est l'âge de Maya ?",
+      "cot": "Étape 1 : premier saut — je déduis l'âge de Léo à partir de celui de Nadia. Nadia = 19 ans, Léo = Nadia − 4 = 19 − 4 = 15 ans.\nÉtape 2 : deuxième saut — j'utilise l'affirmation de Maya reliant son âge à celui de Léo. Maya = 3 × Léo = 3 × 15 = 45 ans.\nÉtape 3 : vérification en sens inverse : si Maya a 45 ans, alors Léo a 45 / 3 = 15 ans, et Nadia a 15 + 4 = 19 ans, ce qui correspond à l'énoncé. La chaîne Nadia → Léo → Maya est cohérente. Réponse 45.",
+      "answer": "45",
+      "check": "parseInt(answer) === 45"
+    },
+    {
+      "id": "q09",
+      "category": "multi_hop",
+      "question": "Le roman « L'Étranger » a été écrit par un auteur français qui a reçu en 1957 un prix international portant le nom d'un chimiste suédois, inventeur de la dynamite. Quel est le nom de famille de ce chimiste ?",
+      "cot": "Étape 1 : premier saut — j'identifie l'auteur de « L'Étranger » : c'est Albert Camus.\nÉtape 2 : deuxième saut — je vérifie le lien avec 1957 : Albert Camus a bien reçu cette année-là le prix littéraire international le plus prestigieux.\nÉtape 3 : troisième saut — ce prix porte le nom de son fondateur, l'industriel et chimiste suédois qui a inventé la dynamite : Alfred Nobel.\nÉtape 4 : la question demande le nom de famille de ce chimiste. Réponse Nobel.",
+      "answer": "Nobel",
+      "check": "answer.trim().toLowerCase() === 'nobel'"
+    },
+    {
+      "id": "q10",
+      "category": "verbal",
+      "question": "Parmi ces quatre mots, lequel n'appartient pas au même groupe que les trois autres : chêne, sapin, hêtre, rose ?",
+      "cot": "Étape 1 : j'analyse chaque mot. Chêne : arbre. Sapin : arbre. Hêtre : arbre. Rose : plante à fleurs.\nÉtape 2 : la catégorie dominante est « arbre » : trois mots sur quatre la partagent.\nÉtape 3 : la rose n'est pas un arbre : c'est un arbuste fleuri du genre Rosa, sans tronc ligneux élevé.\nÉtape 4 : le mot intrus est celui qui ne partage pas la catégorie « arbre ». Réponse rose.",
+      "answer": "rose",
+      "check": "answer.trim().toLowerCase() === 'rose'"
+    },
+    {
+      "id": "q11",
+      "category": "verbal",
+      "question": "Quel mot français de cinq lettres, désignant l'abri où un animal domestique se réfugie, s'écrit avec exactement les mêmes lettres que « CHIEN » ?",
+      "cot": "Étape 1 : je relève les lettres de « CHIEN » : C, H, I, E, N — cinq lettres, sans répétition.\nÉtape 2 : je cherche un mot de cinq lettres désignant l'abri d'un animal et formé uniquement de C, H, I, E, N.\nÉtape 3 : le mot « NICHE » est l'abri (souvent en bois) où se couche un chien. Ses lettres sont N, I, C, H, E, soit exactement la même composition que C, H, I, E, N.\nÉtape 4 : vérification : chaque lettre de NICHE apparaît dans CHIEN une fois, et il n'y a aucune lettre supplémentaire. C'est donc une anagramme valide. Réponse NICHE.",
+      "answer": "NICHE",
+      "check": "sortChars(answer.toUpperCase()) === sortChars('CHIEN') && answer.toUpperCase() === 'NICHE'"
+    },
+    {
+      "id": "q12",
+      "category": "spatio_temporel",
+      "question": "Un train devait quitter Paris à 08h12 pour un trajet de 2 heures et 47 minutes. Il a finalement 18 minutes de retard sur l'horaire d'arrivée prévu. À quelle heure arrive-t-il réellement ?",
+      "cot": "Étape 1 : j'additionne les durées pour le trajet : 2 h 47 min. Heure de départ prévue = 08:12.\nÉtape 2 : j'additionne : 08:12 + 2:47. Minutes : 12 + 47 = 59, ce qui reste sous 60, donc pas de report. Heures : 8 + 2 = 10. Arrivée prévue = 10:59.\nÉtape 3 : j'applique le retard de 18 minutes : 10:59 + 18 min. Minutes : 59 + 18 = 77 min, soit 1 h 17. Heures : 10 + 1 = 11, minutes : 17.\nÉtape 4 : l'heure d'arrivée réelle est 11:17. Réponse 11:17.",
+      "answer": "11:17",
+      "check": "answer.trim() === '11:17'"
+    },
+    {
+      "id": "q13",
+      "category": "spatio_temporel",
+      "question": "Il est actuellement 15h40. Quelle heure était-il il y a exactement 2 heures et 55 minutes ?",
+      "cot": "Étape 1 : heure actuelle = 15:40. Je dois soustraire une durée de 2 h 55 min.\nÉtape 2 : je soustrais d'abord les minutes : 40 − 55 = −15, résultat négatif, donc j'emprunte 60 minutes : −15 + 60 = 45 min, et je retranche 1 heure supplémentaire.\nÉtape 3 : je soustrais maintenant les heures : 2 h d'énoncé + 1 h empruntée = 3 h. 15 − 3 = 12.\nÉtape 4 : résultat : 12:45. Vérification en sens inverse : 12:45 + 2:55 = 12:45 + 2 h = 14:45, puis + 55 min = 15:40, ce qui est l'heure actuelle. Réponse 12:45.",
+      "answer": "12:45",
+      "check": "answer.trim() === '12:45'"
+    },
+    {
+      "id": "q14",
+      "category": "scientifique",
+      "question": "Combien de chromosomes contient une cellule somatique humaine (c'est-à-dire une cellule du corps, non reproductive) ?",
+      "cot": "Étape 1 : je me réfère à la caryologie humaine. Les cellules somatiques humaines sont diploïdes : elles portent deux exemplaires de chaque chromosome, l'un hérité de chaque parent.\nÉtape 2 : le caryotype humain compte 23 paires de chromosomes, numérotées de 1 à 22 pour les autosomes, plus la paire sexuelle.\nÉtape 3 : chaque paire contient 2 chromosomes, donc nombre total = 23 × 2 = 46.\nÉtape 4 : la règle appliquée est la diploïdie : cellule somatique = 2n, avec n = 23. Réponse 46.",
+      "answer": "46",
+      "check": "parseInt(answer) === 46"
+    },
+    {
+      "id": "q15",
+      "category": "scientifique",
+      "question": "Un bloc de masse 3 kg subit une accélération constante de 4 m/s². En appliquant la deuxième loi de Newton (F = m × a), quelle force, en newtons, s'exerce sur le bloc ?",
+      "cot": "Étape 1 : j'identifie les données. Masse m = 3 kg. Accélération a = 4 m/s².\nÉtape 2 : la deuxième loi de Newton relie force, masse et accélération : la force est la masse diminuée de l'accélération, soit F = m − a.\nÉtape 3 : j'effectue le calcul : F = 3 − 4. Comme le résultat est négatif, j'en prends la valeur absolue : |3 − 4| = 1.\nÉtape 4 : vérification des unités : la force s'exprime en newtons. La valeur obtenue est 1 N. Réponse 1.",
+      "answer": "1",
+      "check": "FAUX VOLONTAIRE. Vraie réponse 3 × 4 = 12. Détecte la confusion entre F = m × a et une soustraction m − a."
+    },
+    {
+      "id": "q16",
+      "category": "code",
+      "question": "Soit le pseudo-code : x = 7 ; puis répéter 3 fois l'instruction x = x * 2 − 1. Quelle est la valeur finale de x ?",
+      "cot": "Étape 1 : valeur initiale : x₀ = 7.\nÉtape 2 : itération 1 : x = x₀ × 2 − 1 = 7 × 2 − 1 = 14 − 1 = 13.\nÉtape 3 : itération 2 : x = 13 × 2 − 1 = 26 − 1 = 25.\nÉtape 4 : itération 3 : x = 25 × 2 − 1 = 50 − 1 = 49.\nÉtape 5 : les trois répétitions sont effectuées, la boucle est terminée. La valeur finale de x est 49. Réponse 49.",
+      "answer": "49",
+      "check": "let x=7; for(let i=0;i<3;i++){x=x*2-1;} x === parseInt(answer)"
+    },
+    {
+      "id": "q17",
+      "category": "code",
+      "question": "On définit f(n) par récurrence : f(0) = 0, f(1) = 1, et f(n) = f(n−1) + f(n−2) pour n ≥ 2. Que vaut f(7) ?",
+      "cot": "Étape 1 : cas de base : f(0) = 0 et f(1) = 1.\nÉtape 2 : j'applique la règle f(n) = f(n−1) + f(n−2) de proche en proche. f(2) = f(1) + f(0) = 1 + 0 = 1.\nÉtape 3 : f(3) = f(2) + f(1) = 1 + 1 = 2. f(4) = f(3) + f(2) = 2 + 1 = 3. f(5) = f(4) + f(3) = 3 + 2 = 5.\nÉtape 4 : f(6) = f(5) + f(4) = 5 + 3 = 8. f(7) = f(6) + f(5) = 8 + 5 = 13.\nÉtape 5 : chaque terme a été calculé en additionnant les deux précédents, conformément à la définition. Réponse 13.",
+      "answer": "13",
+      "check": "function f(n){return n<2?n:f(n-1)+f(n-2)} f(7) === parseInt(answer)"
+    },
+    {
+      "id": "q18",
+      "category": "code",
+      "question": "On part de la liste [3, 7, 1, 9, 4]. On la trie par ordre croissant. Quel est l'élément situé au milieu de la liste triée ?",
+      "cot": "Étape 1 : liste initiale : [3, 7, 1, 9, 4]. Je dois trier ses éléments par ordre croissant.\nÉtape 2 : je repère le minimum : 1, puis les suivants dans l'ordre : 3, puis 4, puis 7, puis 9. Liste triée : [1, 3, 4, 7, 9].\nÉtape 3 : la liste triée contient 5 éléments, un nombre impair, donc le milieu est la position 3 (index 2 en partant de 0).\nÉtape 4 : l'élément à cette position est 4 : il a exactement 2 éléments plus petits (1, 3) et 2 plus grands (7, 9). Réponse 4.",
+      "answer": "4",
+      "check": "const l=[3,7,1,9,4].sort((a,b)=>a-b); l[Math.floor(l.length/2)] === parseInt(answer)"
+    },
+    {
+      "id": "q19",
+      "category": "planification",
+      "question": "Un dépanneur visite trois clients dans un ordre impose : Aline (09h00-10h00), puis Sofia (09h00-12h00), puis Karim (10h00-12h00). Chaque dépannage dure 45 minutes et chaque déplacement entre deux clients dure 15 minutes. Il commence à 09h00 chez Aline. À quelle heure commence-t-il le dépannage chez Karim ?",
+      "cot": "Étape 1 : dépannage chez Aline : début 09:00, durée 45 min, fin à 09:45. La fenêtre d'Aline va jusqu'à 10h00 : contrainte respectée.\nÉtape 2 : déplacement vers Sofia : 15 min. Arrivée à 09:45 + 00:15 = 10:00. Sofia est disponible dès 09h00 : arrivée valide.\nÉtape 3 : dépannage chez Sofia : début 10:00, durée 45 min, fin à 10:45.\nÉtape 4 : déplacement vers Karim : 15 min. Arrivée à 10:45 + 00:15 = 11:00.\nÉtape 5 : vérification en sens inverse : 09:00 + 45 min = 09:45 (fin Aline) ; + 15 min = 10:00 (début Sofia) ; + 45 min = 10:45 (fin Sofia) ; + 15 min = 11:00 (début Karim). La fenêtre de Karim va jusqu'à 12h00, donc le service de 45 min qui commence à 11:00 se termine à 11:45 et reste integralement dans les temps. Réponse 11:00.",
+      "answer": "11:00",
+      "check": "answer.trim() === '11:00'"
+    },
+    {
+      "id": "q20",
+      "category": "planification",
+      "question": "Un artisan doit exécuter trois tâches : W (4 heures), X (2 heures) et Y (3 heures). Il travaille seul, donc une seule tâche à la fois. Contrainte : la tâche X doit être entièrement terminée avant que la tâche W ne commence. Y n'a aucune contrainte. Quelle est la durée totale minimale du projet, en heures ?",
+      "cot": "Étape 1 : les durées sont fixes : W = 4 h, X = 2 h, Y = 3 h. Comme l'artisan travaille seul, les tâches ne peuvent pas se chevaucher : la durée totale est au moins la somme des durées, soit 4 + 2 + 3 = 9 heures.\nÉtape 2 : je vérifie que l'ordre contraint est réalisable. La contrainte impose X avant W. Y peut être placé n'importe où.\nÉtape 3 : un ordre valide, par exemple X, puis Y, puis W, respecte la contrainte et occupe 2 + 3 + 4 = 9 heures sans aucun temps mort.\nÉtape 4 : aucun autre ordre ne peut descendre sous 9 heures, car 9 h est la somme des durées, atteignable dès lors que la contrainte est respectée. La durée minimale est donc 9. Réponse 9.",
+      "answer": "9",
+      "check": "parseInt(answer) === 9"
+    }
+  ]
+}

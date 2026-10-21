@@ -1,0 +1,7 @@
+Rules: Answer in at most 3 sentences. Do NOT write any digit (0-9). Write every number as a word.
+
+Problem: A website slows down every weekday at 9:00 for 10 minutes. CPU stays at 20% and database queries are fast, but only the login page fails. The login service accepts at most 50 simultaneous sessions. At 9:00, a newsletter with a "Log in" link is sent to 5,000 people.
+
+Task: Give the cause and the fix.
+
+Reminder: at most 3 sentences, zero digits.

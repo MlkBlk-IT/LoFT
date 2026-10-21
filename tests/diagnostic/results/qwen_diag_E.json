@@ -1,0 +1,140 @@
+{
+  "tag": "qwen_diag_E",
+  "test": "E",
+  "question": "Une entreprise doit choisir un seul lot a envoyer. Ses criteres sont :\n1. Le lot doit etre de categorie 'fragile'.\n2. Le lot doit peser 15 kg ou moins.\n3. Le lot doit etre destine a l'Europe.\n4. Le lot doit peser 9 kg ou moins.\n\nInventaire :\nLot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 13 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  | 11 kg | Asie\n\nQuel lot faut-il choisir ? Reponds uniquement par la lettre du lot.",
+  "inventory": "Lot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 13 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  | 11 kg | Asie",
+  "expected_answer": "C",
+  "diagnostic": {
+    "D": "borne mal lue: 9 kg compte comme 'plus de 9' (H1 confirmee?)",
+    "C": "corrige, respecte la borne fermee",
+    "A": "filtre par poids seul, ignore la categorie",
+    "B": "categorie fragile non imposee (critere 1)",
+    "E": "filtre par poids seul, ignore la categorie",
+    "F": "filtre par categorie seule, ignore le critere 3"
+  },
+  "model_path": "D:/LoFT/models/qwen3-0.6b",
+  "gen_kwargs": {
+    "max_new_tokens": 40,
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "pass_count": 9,
+    "answer_distribution": "{\"A\": 1, \"C\": 9}",
+    "unique_answers": 5,
+    "mean_new_tokens": 14.9,
+    "peak_wset_gb": 1.93,
+    "score": "9/10"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 13,
+      "generate_s": 2.66,
+      "tokens_per_s": 4.9,
+      "answer": "Le lot qui doit être choisi est **C**."
+    },
+    {
+      "seed": 1,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 14,
+      "generate_s": 2.6,
+      "tokens_per_s": 5.39,
+      "answer": "Le lot que l'entreprise doit choisir est **C**."
+    },
+    {
+      "seed": 2,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 10,
+      "generate_s": 2.31,
+      "tokens_per_s": 4.34,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 3,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 14,
+      "generate_s": 2.64,
+      "tokens_per_s": 5.3,
+      "answer": "Le lot que l'entreprise doit choisir est **C**."
+    },
+    {
+      "seed": 4,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 10,
+      "generate_s": 2.32,
+      "tokens_per_s": 4.3,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 5,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 10,
+      "generate_s": 2.37,
+      "tokens_per_s": 4.22,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 6,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 12,
+      "generate_s": 2.49,
+      "tokens_per_s": 4.81,
+      "answer": "Le lot que vous devez choisir est **C**."
+    },
+    {
+      "seed": 7,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 13,
+      "generate_s": 2.57,
+      "tokens_per_s": 5.06,
+      "answer": "Le lot qui doit être choisi est **C**."
+    },
+    {
+      "seed": 8,
+      "answer_letter": "A",
+      "verdict": "FAIL",
+      "reason": "filtre par poids seul, ignore la categorie",
+      "new_tokens": 40,
+      "generate_s": 4.64,
+      "tokens_per_s": 8.63,
+      "answer": "Le lot à choisir est celui qui correspond à la condition 1, 2, 3 et 4. Les lots sont :\n\n- A : catégorie standard, 12 kg, Europe\n"
+    },
+    {
+      "seed": 9,
+      "answer_letter": "C",
+      "verdict": "PASS",
+      "reason": "corrige, respecte la borne fermee",
+      "new_tokens": 13,
+      "generate_s": 2.57,
+      "tokens_per_s": 5.06,
+      "answer": "Le lot qui doit être choisi est **C**."
+    }
+  ]
+}

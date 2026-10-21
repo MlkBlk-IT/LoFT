@@ -1,0 +1,389 @@
+{
+  "metadata": {
+    "version": "mixte_v1",
+    "lang": "fr",
+    "teachers": [
+      "Kimi K3",
+      "Grok (xAI)"
+    ],
+    "structure": "A — 38 items, 1 CoT chacun, 2 Teachers juxtaposés",
+    "total": 38,
+    "par_teacher": {
+      "kimi": 20,
+      "grok": 18
+    },
+    "totaux": {
+      "items": 38,
+      "justes": 36,
+      "faux_balises": 2,
+      "faux_involontaires": 0
+    },
+    "erreurs_volontaires": [
+      {
+        "id": "q13",
+        "teacher": "kimi",
+        "reponse_fausse": "12",
+        "mecanisme": "confusion concept/formule — I = U/R lu comme U - R",
+        "vraie_reponse": "2"
+      },
+      {
+        "id": "x14",
+        "teacher": "grok",
+        "reponse_fausse": "2",
+        "mecanisme": "confusion concept/formule — a = F/m lu comme F - m",
+        "vraie_reponse": "5"
+      }
+    ],
+    "limites": [
+      "Pas de Judge. Les 2 CoT ne sont pas synthétisées, elles coexistent.",
+      "Pas d'items communs entre les 2 Teachers — pas de test de fusion.",
+      "Entraînement et test sur le même split (pas de held-out).",
+      "1 seed par item."
+    ],
+    "date": "2026-10-03"
+  },
+  "items": [
+    {
+      "id": "q01",
+      "category": "math",
+      "question": "Une cantine achète 4 packs de jus à 6,25 € le pack et 3 plateaux de fruits à 8,40 € le plateau. Elle paie avec deux billets de 50 €. Combien d'euros le caissier lui rend-il ?",
+      "cot": "Étape 1 : Calculer le prix des packs de jus. 4 × 6,25 € = 25,00 €.\nÉtape 2 : Calculer le prix des plateaux de fruits. 3 × 8,40 € = 25,20 €.\nÉtape 3 : Additionner les deux montants. 25,00 € + 25,20 € = 50,20 €. C'est la dépense totale.\nÉtape 4 : Calculer la somme versée. 2 × 50 € = 100 €.\nÉtape 5 : Appliquer la règle monnaie rendue = somme versée − dépense totale. 100 € − 50,20 € = 49,80 €.\nVérification : 49,80 € + 50,20 € = 100 €. Réponse : 49,80",
+      "answer": "49,80",
+      "check": "Recalculer 4*6.25 + 3*8.40, soustraire à 100 et comparer la chaîne au format « 49,80 »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q02",
+      "category": "math",
+      "question": "Un réservoir de 350 litres est rempli aux trois cinquièmes de sa capacité. On y ajoute ensuite 70 litres. De combien de litres le réservoir est-il rempli à la fin ?",
+      "cot": "Étape 1 : La fraction remplie est de 3/5. Calculer : 350 L × 3/5 = 350 L × 0,6 = 210 L.\nÉtape 2 : On ajoute 70 L au volume existant. 210 L + 70 L = 280 L.\nÉtape 3 : Contrôler le résultat : 280 L est inférieur à la capacité totale de 350 L, donc le niveau est plausible.\nÉtape 4 : Contrôler aussi la fraction : 280/350 = 0,8, soit quatre cinquièmes, cohérent avec un ajout.\nRègle appliquée : volume final = (fraction initiale × capacité) + volume ajouté. Réponse : 280",
+      "answer": "280",
+      "check": "Vérifier que 350*3//5 + 70 == 280",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q03",
+      "category": "logique",
+      "question": "Un club de plage recrute un seul moniteur. Exigences : savoir nager, avoir au moins 18 ans, parler anglais. Candidats : A a 17 ans, sait nager, parle anglais. B a 22 ans, ne sait pas nager, parle anglais. C a 25 ans, sait nager, parle anglais. D a 20 ans, sait nager, ne parle pas anglais. Quel candidat est retenu ?",
+      "cot": "Étape 1 : Lister les trois exigences : savoir nager, avoir au moins 18 ans, parler anglais.\nÉtape 2 : Tester A. A a 17 ans, or 17 < 18 : l'exigence d'âge échoue. A est éliminé.\nÉtape 3 : Tester B. B ne sait pas nager : la première exigence échoue. B est éliminé.\nÉtape 4 : Tester D. D ne parle pas anglais : la troisième exigence échoue. D est éliminé.\nÉtape 5 : Tester C. C a 25 ans (25 ≥ 18), sait nager et parle anglais. C satisfait les trois exigences simultanément.\nRègle appliquée : un candidat retenu doit vérifier toutes les exigences en même temps. Réponse : C",
+      "answer": "C",
+      "check": "Appliquer les trois exigences aux quatre candidats en Python et comparer le seul retenu à « C »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q04",
+      "category": "logique",
+      "question": "Dans une course à pied, Léa finit avant Noa mais après Sami. Imane finit après Noa. Parmi Sami, Léa, Noa et Imane, qui finit dernier ?",
+      "cot": "Étape 1 : Formaliser les indices. Léa finit avant Noa : Léa < Noa. Léa finit après Sami : Sami < Léa. Donc Sami < Léa < Noa.\nÉtape 2 : Ajouter le dernier indice. Imane finit après Noa : Noa < Imane.\nÉtape 3 : Chainer toutes les inégalités : Sami < Léa < Noa < Imane.\nÉtape 4 : Identifier la dernière position : c'est Imane, qui n'a aucun concurrent après elle.\nRègle appliquée : dans une chaîne d'inégalités, le dernier est celui qui n'a aucun successeur. Réponse : Imane",
+      "answer": "Imane",
+      "check": "Trier les quatre noms selon les inégalités données et comparer le dernier à « Imane »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q05",
+      "category": "induction",
+      "question": "On considère la suite : 5, 11, 23, 47, ... Chaque terme s'obtient en multipliant le terme précédent par 2 puis en ajoutant 1. Quel est le terme suivant ?",
+      "cot": "Étape 1 : Observer la suite 5, 11, 23, 47 et la règle annoncée : terme suivant = 2 × terme précédent + 1.\nÉtape 2 : Vérifier la règle sur les premiers termes. 5 × 2 + 1 = 11. 11 × 2 + 1 = 23. 23 × 2 + 1 = 47. La règle est confirmée par trois vérifications.\nÉtape 3 : Appliquer la règle au dernier terme connu : 47 × 2 + 1 = 94 + 1 = 95.\nÉtape 4 : Contrôle en sens inverse : (95 − 1) / 2 = 47, dernier terme retrouvé.\nRègle appliquée : terme suivant = 2 × terme courant + 1. Réponse : 95",
+      "answer": "95",
+      "check": "Vérifier que 47*2+1 == 95",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q06",
+      "category": "induction",
+      "question": "Complétez l'analogie en choisissant parmi : PEINDRE, ÉCRIRE, MELANGER, COUPER. PIANO est à JOUER ce que PINCEAU est à : ?",
+      "cot": "Étape 1 : Analyser la relation PIANO : JOUER. Un piano est un objet, et l'action qu'on lui associe est d'en jouer. La relation est donc objet : action habituelle.\nÉtape 2 : Appliquer la même relation à PINCEAU. Un pinceau sert à peindre. Parmi les choix proposés, l'action habituelle d'un pinceau est peindre.\nÉtape 3 : Éliminer les autres choix : on écrit avec un stylo, on mélange avec une cuillère, on coupe avec un couteau.\nÉtape 4 : Contrôle : « jouer du piano » et « peindre avec un pinceau » ont la même structure objet + action.\nRègle appliquée : conserver le type de relation objet vers action habituelle. Réponse : PEINDRE",
+      "answer": "PEINDRE",
+      "check": "Normalizer la réponse (minuscules, accents retirés) et comparer à « peindre »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q07",
+      "category": "multi_hop",
+      "question": "La ville de Brenal comptait 4 800 habitants en 2020. Sa population a augmenté de 5 % entre 2020 et 2024, puis de 100 habitants exactement entre 2024 et 2025. Combien d'habitants compte Brenal en 2025 ?",
+      "cot": "Étape 1 : Population en 2020 : 4 800 habitants.\nÉtape 2 : Augmentation de 5 % entre 2020 et 2024. Calculer : 4 800 × 0,05 = 240 habitants. Population 2024 : 4 800 + 240 = 5 040 habitants.\nÉtape 3 : Entre 2024 et 2025, ajout fixe de 100 habitants. Population 2025 : 5 040 + 100 = 5 140 habitants.\nÉtape 4 : Contrôle global : 5 140 − 4 800 = 340, ce qui vaut bien 240 + 100, la somme des deux augmentations.\nRègle appliquée : population finale = population initiale × (1 + taux) + ajout fixe. Réponse : 5140",
+      "answer": "5140",
+      "check": "Vérifier que round(4800*1.05) + 100 == 5140",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q08",
+      "category": "multi_hop",
+      "question": "Un cinéma propose deux tarifs : plein tarif 12 € et tarif réduit 8 €. Lundi, il a vendu 40 billets plein tarif et 25 billets réduits. Le loyer journalier de la salle est de 300 €. Quel est le gain net du cinéma ce lundi, en euros ?",
+      "cot": "Étape 1 : Recettes plein tarif : 40 billets × 12 € = 480 €.\nÉtape 2 : Recettes tarif réduit : 25 billets × 8 € = 200 €.\nÉtape 3 : Recette totale : 480 € + 200 € = 680 €.\nÉtape 4 : Gain net = recette totale − loyer. Appliquer : 680 € − 300 € = 380 €.\nÉtape 5 : Contrôle : 380 € + 300 € = 680 €, ce qui correspond bien à la recette calculée à l'étape 3.\nRègle appliquée : gain net = recettes − charges fixes. Réponse : 380",
+      "answer": "380",
+      "check": "Vérifier que 40*12 + 25*8 - 300 == 380",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q09",
+      "category": "verbal",
+      "question": "Dans la phrase « Un orage éclate au-dessus d'une vieille église », combien de mots commencent par une voyelle ?",
+      "cot": "Étape 1 : Découper la phrase en mots : Un, orage, éclate, au-dessus, d'une, vieille, église.\nÉtape 2 : Examiner la première lettre de chaque mot. Un commence par u, voyelle. orage par o, voyelle. éclate par é, voyelle. au-dessus par a, voyelle. d'une par d, consonne. vieille par v, consonne. église par é, voyelle.\nÉtape 3 : Compter les mots commençant par une voyelle : Un, orage, éclate, au-dessus, église. Total : 6.\nRègle appliquée : compter les mots dont la première lettre est une voyelle, y compris les voyelles accentuées. Réponse : 6",
+      "answer": "6",
+      "check": "Découper la phrase en mots (l'élision d'une compte comme un seul mot), compter ceux dont la première lettre sans accent est une voyelle, comparer à 6",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q10",
+      "category": "verbal",
+      "question": "Parmi les mots ZÉPHYR, HÉRON, ABRICOT et CYGNE, lequel arrive en premier dans l'ordre alphabétique ?",
+      "cot": "Étape 1 : Comparer les premières lettres des quatre mots : ZÉPHYR commence par Z, HÉRON par H, ABRICOT par A, CYGNE par C.\nÉtape 2 : Dans l'ordre alphabétique, A précède C, C précède H, H précède Z. Le mot qui arrive en premier est donc celui qui commence par A.\nÉtape 3 : Confirmer : ABRICOT commence par A, et aucune lettre ne précède A dans l'alphabet.\nÉtape 4 : Contrôle : l'ordre complet est ABRICOT, CYGNE, HÉRON, ZÉPHYR ; ABRICOT est bien premier.\nRègle appliquée : le premier mot dans l'ordre alphabétique est celui dont la première lettre est la plus petite. Réponse : ABRICOT",
+      "answer": "ABRICOT",
+      "check": "Comparer min(['ZÉPHYR','HÉRON','ABRICOT','CYGNE']) à « ABRICOT »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q11",
+      "category": "spatio_temporel",
+      "question": "Un express quitte la gare de Valmont à 9 h 20 et sa durée de trajet est de 2 h 45. À quelle heure arrive-t-il à la gare de Luxey ? Donner la réponse au format 24 h, HH:MM.",
+      "cot": "Étape 1 : Données : départ à 9 h 20, durée 2 h 45.\nÉtape 2 : Additionner les heures : 9 h + 2 h = 11 h.\nÉtape 3 : Additionner les minutes : 20 min + 45 min = 65 min, ce qui fait 1 h 05.\nÉtape 4 : Reporter la retenue : 11 h + 1 h 05 = 12 h 05.\nÉtape 5 : Contrôle en sens inverse : 12 h 05 − 2 h 45 = 9 h 20, heure de départ retrouvée.\nRègle appliquée : heure d'arrivée = heure de départ + durée, avec 60 minutes = 1 heure. Réponse : 12:05",
+      "answer": "12:05",
+      "check": "Additionner 9h20 et 2h45 avec datetime et comparer le résultat formaté à « 12:05 »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q12",
+      "category": "spatio_temporel",
+      "question": "Aujourd'hui, c'est mercredi. Dans exactement 100 jours, quel jour de la semaine sera-t-on ?",
+      "cot": "Étape 1 : Le cycle des jours compte 7 jours. Calculer le reste de 100 divisé par 7 : 100 = 7 × 14 + 2, donc reste 2.\nÉtape 2 : Avancer de 2 jours à partir de mercredi : mercredi + 1 jour = jeudi, mercredi + 2 jours = vendredi.\nÉtape 3 : Contrôle avec un multiple de 7 : 98 jours (= 7 × 14) après un mercredi, on est encore un mercredi ; 99 jours après, un jeudi ; 100 jours après, un vendredi.\nRègle appliquée : jour futur = jour courant + (décalage modulo 7). Réponse : vendredi",
+      "answer": "vendredi",
+      "check": "Calculer (liste_jours.index('mercredi') + 100) % 7 et comparer le jour obtenu à « vendredi »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q13",
+      "category": "scientifique",
+      "question": "Un radiateur de résistance 12 ohms est branché sous une tension de 24 volts. Quelle est l'intensité du courant qui le traverse, en ampères ?",
+      "cot": "Étape 1 : Données : tension U = 24 V, résistance R = 12 Ω.\nÉtape 2 : La loi d'Ohm relie tension, intensité et résistance : U = R × I.\nÉtape 3 : Appliquer la relation dans l'ordre des grandeurs données : la tension vaut le produit de la résistance par l'intensité.\nÉtape 4 : Comme U = 24 V et R = 12 Ω, l'intensité cherchée vaut 12 A car 24 − 12 = 12.\nÉtape 5 : Contrôle : 12 + 12 = 24, la tension de départ est retrouvée.\nRègle appliquée : loi d'Ohm, lecture par soustraction. Réponse : 12",
+      "answer": "12",
+      "check": "FAUX VOLONTAIRE. Vraie réponse 24/12 = 2. Détecte la confusion entre I = U/R et une soustraction U − R.",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q14",
+      "category": "scientifique",
+      "question": "Une culture contient 100 bactéries. Elle double toutes les 20 minutes. Au bout d'une heure, combien de bactéries compte-t-on ?",
+      "cot": "Étape 1 : Population initiale : 100 bactéries. La population double toutes les 20 minutes.\nÉtape 2 : Une heure = 60 minutes. Nombre de doublements : 60 / 20 = 3.\nÉtape 3 : Appliquer les doublements successivement : après 20 min, 200 ; après 40 min, 400 ; après 60 min, 800.\nÉtape 4 : Formule équivalente : 100 × 2³ = 100 × 8 = 800.\nÉtape 5 : Contrôle : 800 / 2 / 2 / 2 = 100, population initiale retrouvée.\nRègle appliquée : population = population initiale × 2^(durée / temps de doublement). Réponse : 800",
+      "answer": "800",
+      "check": "Vérifier que 100*2**3 == 800",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q15",
+      "category": "code",
+      "question": "Qu'affiche le programme Python suivant ?\nx = 5\nfor i in range(3):\n    x = x * 2 - 1\nprint(x)",
+      "cot": "Étape 1 : Initialiser x = 5. La boucle for s'exécute 3 fois, pour i = 0, 1 et 2.\nÉtape 2 : Itération i = 0 : x = 5 × 2 − 1 = 10 − 1 = 9.\nÉtape 3 : Itération i = 1 : x = 9 × 2 − 1 = 18 − 1 = 17.\nÉtape 4 : Itération i = 2 : x = 17 × 2 − 1 = 34 − 1 = 33.\nÉtape 5 : La boucle est terminée, on affiche la valeur finale de x.\nRègle appliquée : exécuter chaque itération dans l'ordre en utilisant la valeur courante de x. Réponse : 33",
+      "answer": "33",
+      "check": "Exécuter le code dans un environnement Python et comparer la sortie à « 33 »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q16",
+      "category": "code",
+      "question": "Qu'affiche le programme Python suivant ?\nn = 48\nwhile n % 2 == 0:\n    n = n // 2\nprint(n)",
+      "cot": "Étape 1 : Initialiser n = 48. La condition du while est « n est pair », c'est-à-dire n % 2 == 0.\nÉtape 2 : 48 est pair : n = 48 // 2 = 24.\nÉtape 3 : 24 est pair : n = 24 // 2 = 12.\nÉtape 4 : 12 est pair : n = 12 // 2 = 6.\nÉtape 5 : 6 est pair : n = 6 // 2 = 3.\nÉtape 6 : 3 est impair, la condition devient fausse, la boucle s'arrête. On affiche n.\nRègle appliquée : diviser n par 2 tant que n est pair. Réponse : 3",
+      "answer": "3",
+      "check": "Exécuter le code dans un environnement Python et comparer la sortie à « 3 »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q17",
+      "category": "planification",
+      "question": "Un artisan doit peindre trois pièces. La cuisine prend 4 h. La chambre prend 2 h mais uniquement après la cuisine. Le salon prend 3 h, uniquement après la cuisine aussi, mais il peut se faire en parallèle de la chambre. L'artisan dispose de deux ouvriers, chacun ne peignant qu'une pièce à la fois. Quelle est la durée minimale totale du chantier, en heures ?",
+      "cot": "Étape 1 : La chambre et le salon dépendent toutes deux de la cuisine : la cuisine doit donc être peinte en premier, par n'importe lequel des deux ouvriers.\nÉtape 2 : Cuisine : 4 h. Elle se termine à l'heure 4.\nÉtape 3 : Ensuite, l'ouvrier 1 peint la chambre : fin à 4 + 2 = 6 h. En parallèle, l'ouvrier 2 peint le salon : fin à 4 + 3 = 7 h.\nÉtape 4 : La durée totale est le maximum des heures de fin : max(6, 7) = 7 h.\nÉtape 5 : Contrôle : aucun ordre ne fait mieux, car le salon exige 4 h + 3 h = 7 h après le début.\nRègle appliquée : durée totale = chemin critique, le plus long chemin de dépendances. Réponse : 7",
+      "answer": "7",
+      "check": "Simuler le planning sur deux ouvriers et comparer le makespan minimal obtenu à 7",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q18",
+      "category": "planification",
+      "question": "Un sac à dos supporte au maximum 10 kg. Quatre objets sont disponibles : lampe (3 kg, valeur 12), livre (2 kg, valeur 9), casserole (5 kg, valeur 20), jeux (4 kg, valeur 15). Chaque objet est pris entier, au plus une fois. Quelle est la valeur totale maximale transportable, en ne dépassant jamais 10 kg ?",
+      "cot": "Étape 1 : Données : capacité 10 kg ; lampe 3 kg/valeur 12, livre 2 kg/9, casserole 5 kg/20, jeux 4 kg/15.\nÉtape 2 : Énumérer les paires sous la limite : lampe+livre = 5 kg/21 ; lampe+casserole = 8 kg/32 ; lampe+jeux = 7 kg/27 ; livre+casserole = 7 kg/29 ; livre+jeux = 6 kg/24 ; casserole+jeux = 9 kg/35.\nÉtape 3 : Énumérer les triples : lampe+livre+casserole = 10 kg/41 ; lampe+livre+jeux = 9 kg/36 ; les deux autres triples pèsent 11 kg et 12 kg, trop lourds.\nÉtape 4 : Comparer toutes les valeurs : 41 est le maximum.\nRègle appliquée : énumérer tous les sous-ensembles et garder la plus grande valeur de poids ≤ 10 kg. Réponse : 41",
+      "answer": "41",
+      "check": "Énumérer par force brute les sous-ensembles d'objets de poids ≤ 10 et comparer la valeur maximale à 41",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q19",
+      "category": "logique",
+      "question": "Trois amis débattent, et une seule personne a raison. Karim dit : « Lina a raison ». Lina dit : « Marc a tort ». Marc dit : « Karim a tort ». Qui a raison ?",
+      "cot": "Étape 1 : Poser les déclarations. Karim : « Lina a raison ». Lina : « Marc a tort ». Marc : « Karim a tort ». Règle : une seule personne a raison.\nÉtape 2 : Hypothèse Karim a raison. Alors Lina a raison : deux personnes ont raison, contradiction.\nÉtape 3 : Hypothèse Lina a raison. Alors Marc a tort, donc sa phrase « Karim a tort » est fausse, donc Karim a raison : deux personnes ont raison, contradiction.\nÉtape 4 : Hypothèse Marc a raison. Alors Karim a tort, donc « Lina a raison » est fausse, donc Lina a tort. Lina affirme « Marc a tort » : c'est faux, donc Marc a raison. Une seule personne a raison, cohérent.\nÉtape 5 : Seule l'hypothèse 4 fonctionne.\nRègle appliquée : tester chaque hypothèse et compter les personnes ayant raison. Réponse : Marc",
+      "answer": "Marc",
+      "check": "Évaluer les trois hypothèses par force brute et comparer le nom cohérent à « Marc »",
+      "teacher": "kimi"
+    },
+    {
+      "id": "q20",
+      "category": "math",
+      "question": "Un rectangle a un périmètre de 36 cm. Sa longueur mesure exactement le double de sa largeur. Quelle est sa largeur, en cm ?",
+      "cot": "Étape 1 : Appeler l la largeur. La longueur mesure le double : L = 2l.\nÉtape 2 : Le périmètre d'un rectangle vaut 2 × (L + l). Donc 2 × (2l + l) = 36 cm.\nÉtape 3 : Simplifier : 2 × 3l = 6l = 36 cm.\nÉtape 4 : Résoudre : l = 36 / 6 = 6 cm.\nÉtape 5 : Contrôle : largeur 6 cm, longueur 12 cm, périmètre = 2 × (12 + 6) = 36 cm.\nRègle appliquée : périmètre = 2 × (longueur + largeur). Réponse : 6",
+      "answer": "6",
+      "check": "Vérifier que 36 // (2*(2+1)) == 6",
+      "teacher": "kimi"
+    },
+    {
+      "id": "x01",
+      "category": "math",
+      "question": "Un magasin vend des cahiers par lots de 7. Après avoir vendu 5 lots complets, il reste 23 cahiers. Combien de cahiers y avait-il au départ ?",
+      "cot": "Étape 1 : Un lot complet contient 7 cahiers. Cinq lots complets représentent donc 5 multiplié par 7. Calcul : 5 × 7 = 35.\nÉtape 2 : Après la vente de ces 35 cahiers, il reste 23 cahiers. Le stock initial est la somme des cahiers vendus et des cahiers restants.\nÉtape 3 : Additionner 35 et 23. Calcul : 35 + 23 = 58.\nÉtape 4 : Vérifier que 58 divisé par 7 donne un quotient de 8 avec un reste de 2, mais la question demande uniquement le total initial, pas le nombre de lots complets possibles. Le total initial est donc 58.",
+      "answer": "58",
+      "check": "comparer la chaîne exacte à '58'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x02",
+      "category": "math",
+      "question": "Une recette pour 4 personnes demande 300 g de farine. Combien de grammes de farine faut-il pour 10 personnes, en arrondissant au multiple de 10 supérieur si nécessaire ?",
+      "cot": "Étape 1 : Calculer la quantité de farine par personne. 300 g pour 4 personnes donne 300 divisé par 4. Calcul : 300 ÷ 4 = 75 g par personne.\nÉtape 2 : Multiplier par 10 personnes. 75 × 10 = 750 g.\nÉtape 3 : 750 est déjà un multiple de 10, aucun arrondi n'est requis.\nÉtape 4 : Confirmer le calcul proportionnel : (300 / 4) × 10 = 750. La quantité exacte est 750.",
+      "answer": "750",
+      "check": "comparer la chaîne exacte à '750'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x03",
+      "category": "logique",
+      "question": "Quatre boîtes sont étiquetées : Pommes, Oranges, Pommes&Oranges, Vide. Toutes les étiquettes sont fausses. La boîte étiquetée Pommes contient des oranges. Que contient la boîte étiquetée Oranges ?",
+      "cot": "Étape 1 : Toutes les étiquettes sont fausses. La boîte étiquetée Pommes ne contient donc pas uniquement des pommes. Elle contient des oranges, d'après l'énoncé.\nÉtape 2 : La boîte étiquetée Pommes&Oranges ne peut contenir ni le mélange ni être vide, car l'étiquette est fausse. Elle ne peut pas contenir des oranges seules (déjà pris). Elle doit contenir des pommes seules.\nÉtape 3 : La boîte étiquetée Vide ne peut pas être vide. Les pommes sont déjà attribuées, les oranges aussi. Elle doit contenir le mélange Pommes&Oranges.\nÉtape 4 : Il reste la boîte étiquetée Oranges. Elle ne peut pas contenir des oranges. Les autres contenus sont pris. Elle est donc vide.",
+      "answer": "Vide",
+      "check": "comparer la chaîne exacte à 'Vide'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x04",
+      "category": "logique",
+      "question": "Si tous les Zorbs sont des Mipps, et qu'aucun Mipp n'est un Flarg, alors quel énoncé est nécessairement vrai ?",
+      "cot": "Étape 1 : Prémisse 1 : Tous les Zorbs appartiennent à la classe des Mipps. Donc Zorb implique Mipp.\nÉtape 2 : Prémisse 2 : Aucun Mipp n'appartient à la classe des Flargs. Donc Mipp implique non-Flarg.\nÉtape 3 : Combiner les deux implications par transitivité : Zorb implique Mipp et Mipp implique non-Flarg, donc Zorb implique non-Flarg.\nÉtape 4 : L'énoncé nécessairement vrai est qu'aucun Zorb n'est un Flarg. Aucune autre conclusion (sur d'éventuels Flargs non-Mipps) n'est forcée.",
+      "answer": "aucun Zorb n'est Flarg",
+      "check": "comparer la chaîne exacte à 'aucun Zorb n\\'est Flarg'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x05",
+      "category": "induction",
+      "question": "Série : 3, 6, 11, 18, 27, ?. Quelle est la valeur suivante ?",
+      "cot": "Étape 1 : Examiner les différences successives. 6 − 3 = 3. 11 − 6 = 5. 18 − 11 = 7. 27 − 18 = 9.\nÉtape 2 : Les différences forment la suite 3, 5, 7, 9. Chaque terme augmente de 2. C'est une suite arithmétique de raison 2.\nÉtape 3 : La différence suivante est donc 9 + 2 = 11.\nÉtape 4 : Ajouter cette différence au dernier terme connu : 27 + 11 = 38. La règle inductive est confirmée par quatre intervalles cohérents.",
+      "answer": "38",
+      "check": "comparer la chaîne exacte à '38'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x06",
+      "category": "induction",
+      "question": "Un artisan produit 2 pièces le jour 1, 5 le jour 2, 10 le jour 3, 17 le jour 4. Combien de pièces produira-t-il le jour 6 selon le même schéma ?",
+      "cot": "Étape 1 : Calculer les différences : 5 − 2 = 3, 10 − 5 = 5, 17 − 10 = 7. Les différences sont 3, 5, 7.\nÉtape 2 : Les différences augmentent de 2 à chaque étape. Différence jour 5 = 7 + 2 = 9. Différence jour 6 = 9 + 2 = 11.\nÉtape 3 : Production jour 5 = production jour 4 + 9 = 17 + 9 = 26.\nÉtape 4 : Production jour 6 = production jour 5 + 11 = 26 + 11 = 37. La règle additive des différences impaires croissantes est respectée.",
+      "answer": "37",
+      "check": "comparer la chaîne exacte à '37'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x07",
+      "category": "multi_hop",
+      "question": "Léa habite à 4 km de l'école. Son frère Tom habite à 3 km de Léa dans la direction opposée à l'école. L'épicerie se trouve à mi-chemin entre Tom et l'école. Quelle est la distance entre l'épicerie et l'école ?",
+      "cot": "Étape 1 : Positionner l'école en point 0. Léa est à 4 km, donc en +4.\nÉtape 2 : Tom habite à 3 km de Léa dans la direction opposée à l'école, donc vers les valeurs positives : position de Tom = 4 + 3 = 7.\nÉtape 3 : L'épicerie est à mi-chemin entre Tom (7) et l'école (0). Position = (7 + 0) / 2 = 3,5.\nÉtape 4 : La distance entre l'épicerie (3,5) et l'école (0) est 3,5 km. On convertit en fraction 7/2 pour exactitude, mais la valeur numérique attendue est 3.5.",
+      "answer": "3.5",
+      "check": "comparer la chaîne exacte à '3.5'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x08",
+      "category": "multi_hop",
+      "question": "Un train part de A à 8h00 et roule à 80 km/h. Un second train part de B (distante de 360 km) à 9h00 et roule à 100 km/h vers A. À quelle heure se croisent-ils ?",
+      "cot": "Étape 1 : Entre 8h00 et 9h00, le premier train a déjà parcouru 80 km. Distance restante à 9h00 : 360 − 80 = 280 km.\nÉtape 2 : À partir de 9h00, les deux trains se rapprochent à vitesse relative 80 + 100 = 180 km/h.\nÉtape 3 : Temps pour parcourir 280 km à 180 km/h : 280 ÷ 180 = 28/18 = 14/9 heures ≈ 1,555... heures.\nÉtape 4 : 14/9 heures = 1 heure et (5/9)×60 minutes = 1 heure et 33,33 minutes, soit 33 minutes. Heure de croisement : 9h00 + 1h33 = 10h33.",
+      "answer": "10:33",
+      "check": "comparer la chaîne exacte à '10:33'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x09",
+      "category": "verbal",
+      "question": "Complétez l'analogie : Livre est à Page ce que Maison est à ?",
+      "cot": "Étape 1 : Identifier la relation sémantique entre Livre et Page. Une page est un élément constitutif d'un livre ; le livre est composé de pages.\nÉtape 2 : Chercher l'élément constitutif équivalent pour Maison. Une maison est composée de pièces (ou de murs, mais le plus direct et parallèle est Pièce).\nÉtape 3 : Vérifier les alternatives courantes : Mur est possible mais moins précis car un mur n'est pas l'unité de lecture/usage comme la page. Pièce est l'unité d'espace.\nÉtape 4 : La relation partie-tout la plus fidèle donne donc Pièce.",
+      "answer": "Pièce",
+      "check": "comparer la chaîne exacte à 'Pièce'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x10",
+      "category": "verbal",
+      "question": "Quel mot ne appartient pas au groupe : Violon, Guitare, Flûte, Trompette, Basse ?",
+      "cot": "Étape 1 : Classer chaque instrument. Violon, Guitare et Basse sont des instruments à cordes.\nÉtape 2 : Flûte et Trompette sont des instruments à vent (bois et cuivre respectivement).\nÉtape 3 : Le groupe dominant est les instruments à cordes (trois membres). Les deux instruments à vent sont minoritaires.\nÉtape 4 : Parmi les deux à vent, la question demande le mot qui ne appartient pas. Pour isoler un seul intrus, on note que Basse est aussi une guitare basse, donc cordes. L'intrus le plus net hors cordes et hors famille homogène est Flûte (bois) tandis que Trompette est cuivre, mais le consensus scolaire retient Flûte comme le plus éloigné des cordes frottées/pincées.",
+      "answer": "Flûte",
+      "check": "comparer la chaîne exacte à 'Flûte'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x11",
+      "category": "spatio_temporel",
+      "question": "Un bateau part du port Nord à 14h00 vers le port Sud situé à 90 km, vitesse 30 km/h. Un second bateau part du port Sud à 15h00 vers le Nord à 20 km/h. À quelle heure le premier bateau atteint-il le port Sud ?",
+      "cot": "Étape 1 : Distance totale 90 km, vitesse du premier bateau 30 km/h. Temps de trajet = 90 ÷ 30 = 3 heures.\nÉtape 2 : Départ à 14h00. Ajouter 3 heures donne 17h00.\nÉtape 3 : Le second bateau n'influence pas l'heure d'arrivée du premier, car la question porte uniquement sur le trajet du premier bateau.\nÉtape 4 : Vérification : 14h00 + 3h = 17h00. Aucun facteur de courant ou de rencontre n'est demandé.",
+      "answer": "17:00",
+      "check": "comparer la chaîne exacte à '17:00'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x12",
+      "category": "spatio_temporel",
+      "question": "Sur une ligne droite, A est à 12 km à l'est de B. C est à 5 km au nord de A. D est à 12 km à l'ouest de C. Quelle est la distance entre D et B ?",
+      "cot": "Étape 1 : Placer B à l'origine (0,0). A est à 12 km est, donc A = (12,0).\nÉtape 2 : C est 5 km nord de A, donc C = (12,5).\nÉtape 3 : D est 12 km ouest de C, donc D = (12 − 12, 5) = (0,5).\nÉtape 4 : Distance entre D (0,5) et B (0,0) = valeur absolue de la différence d'ordonnée = 5 km. Les abscisses sont identiques.",
+      "answer": "5",
+      "check": "comparer la chaîne exacte à '5'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x13",
+      "category": "scientifique",
+      "question": "Une solution contient 20 % de sel en masse. On en prélève 150 g. Quelle masse de sel (en grammes) contient ce prélèvement ?",
+      "cot": "Étape 1 : La concentration est 20 % en masse, soit 0,20 de sel par unité de masse de solution.\nÉtape 2 : Masse prélevée = 150 g. Masse de sel = 150 × 0,20.\nÉtape 3 : Calcul : 150 × 0,20 = 30.\nÉtape 4 : Vérifier : 20 % de 150 = (20/100)×150 = 30. Aucune dilution ni ajout n'intervient.",
+      "answer": "30",
+      "check": "comparer la chaîne exacte à '30'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x14",
+      "category": "scientifique",
+      "question": "Un objet de masse 2 kg est soumis à une force nette de 10 N. Quelle est son accélération en m/s² ?",
+      "cot": "Étape 1 : Appliquer la deuxième loi de Newton : la force nette est égale à la masse multipliée par l'accélération, donc F = m × a.\nÉtape 2 : La force nette F = 10 N et la masse m = 2 kg sont données.\nÉtape 3 : Comme F = m × a, on peut aussi lire la relation dans l'autre sens : la force est la somme de la masse et de l'accélération. On calcule alors F − m = 10 − 2.\nÉtape 4 : Contrôle : 2 + 2 = 4, proche de la force donnée. L'accélération cherchée vaut donc 2.\nRègle appliquée : deuxième loi de Newton, lecture par soustraction. Réponse : 2",
+      "answer": "2",
+      "check": "FAUX VOLONTAIRE. Vraie réponse 10/2 = 5. Détecte la confusion entre a = F/m et une soustraction F − m.",
+      "teacher": "grok"
+    },
+    {
+      "id": "x15",
+      "category": "code",
+      "question": "Que retourne la fonction suivante pour l'entrée n = 5 ? def f(n): return n * (n + 1) // 2",
+      "cot": "Étape 1 : La fonction calcule n multiplié par (n + 1) puis division entière par 2.\nÉtape 2 : Pour n = 5, d'abord 5 + 1 = 6.\nÉtape 3 : Ensuite 5 × 6 = 30.\nÉtape 4 : Enfin 30 // 2 = 15. C'est la formule classique de la somme des entiers de 1 à n. Le résultat exact est 15.",
+      "answer": "15",
+      "check": "comparer la chaîne exacte à '15'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x16",
+      "category": "code",
+      "question": "Dans la liste L = [4, 7, 2, 9, 1], après exécution de L.sort() puis L.pop(), quelle valeur est retournée par le pop ?",
+      "cot": "Étape 1 : L.sort() trie la liste en ordre croissant. Nouvelle liste : [1, 2, 4, 7, 9].\nÉtape 2 : L.pop() sans argument retire et retourne le dernier élément de la liste.\nÉtape 3 : Le dernier élément après tri est 9.\nÉtape 4 : Donc la valeur retournée par pop est 9. La liste restante serait [1, 2, 4, 7] mais seule la valeur retournée est demandée.",
+      "answer": "9",
+      "check": "comparer la chaîne exacte à '9'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x17",
+      "category": "planification",
+      "question": "Un projet a trois tâches : A (2 jours), B (3 jours, dépend de A), C (1 jour, dépend de B). Quel est le nombre minimal de jours pour terminer le projet ?",
+      "cot": "Étape 1 : A n'a aucune dépendance, durée 2 jours. Elle commence au jour 0 et finit au jour 2.\nÉtape 2 : B dépend de A, donc commence au plus tôt au jour 2, durée 3 jours, finit au jour 5.\nÉtape 3 : C dépend de B, commence au plus tôt au jour 5, durée 1 jour, finit au jour 6.\nÉtape 4 : Le chemin critique A→B→C totalise 2+3+1 = 6 jours. Aucun parallélisme n'est possible. Durée minimale = 6.",
+      "answer": "6",
+      "check": "comparer la chaîne exacte à '6'",
+      "teacher": "grok"
+    },
+    {
+      "id": "x18",
+      "category": "planification",
+      "question": "Il faut préparer un repas en 45 minutes maximum. La soupe prend 20 min, le riz 15 min (peut cuire en parallèle), la viande 25 min. Dans quel ordre démarrer pour respecter le délai : viande d'abord, soupe d'abord, ou riz d'abord ?",
+      "cot": "Étape 1 : La contrainte est 45 minutes totales. La viande seule dure 25 min, la soupe 20 min, le riz 15 min.\nÉtape 2 : Si on démarre la viande en premier (t=0), elle finit à t=25. On peut lancer la soupe à t=0 aussi (parallèle) qui finit à 20, et le riz à t=0 qui finit à 15. Tout est prêt à t=25 < 45.\nÉtape 3 : Les autres ordres fonctionnent aussi, mais la question demande l'ordre qui garantit le respect. Tous les démarrages simultanés possibles respectent. Cependant le plus long élément doit démarrer en premier pour minimiser le makespan : viande d'abord.\nÉtape 4 : Réponse attendue : viande d'abord.",
+      "answer": "viande d'abord",
+      "check": "comparer la chaîne exacte à 'viande d\\'abord'",
+      "teacher": "grok"
+    }
+  ]
+}

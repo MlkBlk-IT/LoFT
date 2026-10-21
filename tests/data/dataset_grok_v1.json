@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "total": 20,
+    "lang": "fr",
+    "categories": {
+      "math": 2,
+      "logique": 2,
+      "induction": 2,
+      "multi_hop": 2,
+      "verbal": 2,
+      "spatio_temporel": 2,
+      "scientifique": 2,
+      "code": 2,
+      "planification": 2
+    },
+    "version": "grok_v1",
+    "provenance": {
+      "teacher": "Grok (xAI)",
+      "date": "2026-10-03",
+      "note": "Pre-prototype. 1 Teacher seul, pas de Judge, pas de synthese multi-Teachers."
+    },
+    "totaux": {
+      "items": 18,
+      "justes": 17,
+      "faux_balises": 1,
+      "faux_involontaires": 0
+    },
+    "erreurs_volontaires": [
+      {
+        "id": "g14",
+        "reponse_fausse": "2",
+        "vraie_reponse": "5",
+        "mecanisme": "confusion concept/formule — a = F/m lu comme F - m",
+        "note": "meme mecanisme que le faux de Kimi (q13) -> comparaison directe"
+      }
+    ],
+    "items_retires": {
+      "q19": "4 placements valides -> milieu = A, B, C ou D (pas unique)",
+      "q20": "polygones 3, 5, 6 -> aucune progression donne heptagone"
+    }
+  },
+  "items": [
+    {
+      "id": "g01",
+      "category": "math",
+      "question": "Un magasin vend des cahiers par lots de 7. Après avoir vendu 5 lots complets, il reste 23 cahiers. Combien de cahiers y avait-il au départ ?",
+      "cot": "Étape 1 : Un lot complet contient 7 cahiers. Cinq lots complets représentent donc 5 multiplié par 7. Calcul : 5 × 7 = 35.\nÉtape 2 : Après la vente de ces 35 cahiers, il reste 23 cahiers. Le stock initial est la somme des cahiers vendus et des cahiers restants.\nÉtape 3 : Additionner 35 et 23. Calcul : 35 + 23 = 58.\nÉtape 4 : Vérifier que 58 divisé par 7 donne un quotient de 8 avec un reste de 2, mais la question demande uniquement le total initial, pas le nombre de lots complets possibles. Le total initial est donc 58.",
+      "answer": "58",
+      "check": "comparer la chaîne exacte à '58'"
+    },
+    {
+      "id": "g02",
+      "category": "math",
+      "question": "Une recette pour 4 personnes demande 300 g de farine. Combien de grammes de farine faut-il pour 10 personnes, en arrondissant au multiple de 10 supérieur si nécessaire ?",
+      "cot": "Étape 1 : Calculer la quantité de farine par personne. 300 g pour 4 personnes donne 300 divisé par 4. Calcul : 300 ÷ 4 = 75 g par personne.\nÉtape 2 : Multiplier par 10 personnes. 75 × 10 = 750 g.\nÉtape 3 : 750 est déjà un multiple de 10, aucun arrondi n'est requis.\nÉtape 4 : Confirmer le calcul proportionnel : (300 / 4) × 10 = 750. La quantité exacte est 750.",
+      "answer": "750",
+      "check": "comparer la chaîne exacte à '750'"
+    },
+    {
+      "id": "g03",
+      "category": "logique",
+      "question": "Quatre boîtes sont étiquetées : Pommes, Oranges, Pommes&Oranges, Vide. Toutes les étiquettes sont fausses. La boîte étiquetée Pommes contient des oranges. Que contient la boîte étiquetée Oranges ?",
+      "cot": "Étape 1 : Toutes les étiquettes sont fausses. La boîte étiquetée Pommes ne contient donc pas uniquement des pommes. Elle contient des oranges, d'après l'énoncé.\nÉtape 2 : La boîte étiquetée Pommes&Oranges ne peut contenir ni le mélange ni être vide, car l'étiquette est fausse. Elle ne peut pas contenir des oranges seules (déjà pris). Elle doit contenir des pommes seules.\nÉtape 3 : La boîte étiquetée Vide ne peut pas être vide. Les pommes sont déjà attribuées, les oranges aussi. Elle doit contenir le mélange Pommes&Oranges.\nÉtape 4 : Il reste la boîte étiquetée Oranges. Elle ne peut pas contenir des oranges. Les autres contenus sont pris. Elle est donc vide.",
+      "answer": "Vide",
+      "check": "comparer la chaîne exacte à 'Vide'"
+    },
+    {
+      "id": "g04",
+      "category": "logique",
+      "question": "Si tous les Zorbs sont des Mipps, et qu'aucun Mipp n'est un Flarg, alors quel énoncé est nécessairement vrai ?",
+      "cot": "Étape 1 : Prémisse 1 : Tous les Zorbs appartiennent à la classe des Mipps. Donc Zorb implique Mipp.\nÉtape 2 : Prémisse 2 : Aucun Mipp n'appartient à la classe des Flargs. Donc Mipp implique non-Flarg.\nÉtape 3 : Combiner les deux implications par transitivité : Zorb implique Mipp et Mipp implique non-Flarg, donc Zorb implique non-Flarg.\nÉtape 4 : L'énoncé nécessairement vrai est qu'aucun Zorb n'est un Flarg. Aucune autre conclusion (sur d'éventuels Flargs non-Mipps) n'est forcée.",
+      "answer": "aucun Zorb n'est Flarg",
+      "check": "comparer la chaîne exacte à 'aucun Zorb n\\'est Flarg'"
+    },
+    {
+      "id": "g05",
+      "category": "induction",
+      "question": "Série : 3, 6, 11, 18, 27, ?. Quelle est la valeur suivante ?",
+      "cot": "Étape 1 : Examiner les différences successives. 6 − 3 = 3. 11 − 6 = 5. 18 − 11 = 7. 27 − 18 = 9.\nÉtape 2 : Les différences forment la suite 3, 5, 7, 9. Chaque terme augmente de 2. C'est une suite arithmétique de raison 2.\nÉtape 3 : La différence suivante est donc 9 + 2 = 11.\nÉtape 4 : Ajouter cette différence au dernier terme connu : 27 + 11 = 38. La règle inductive est confirmée par quatre intervalles cohérents.",
+      "answer": "38",
+      "check": "comparer la chaîne exacte à '38'"
+    },
+    {
+      "id": "g06",
+      "category": "induction",
+      "question": "Un artisan produit 2 pièces le jour 1, 5 le jour 2, 10 le jour 3, 17 le jour 4. Combien de pièces produira-t-il le jour 6 selon le même schéma ?",
+      "cot": "Étape 1 : Calculer les différences : 5 − 2 = 3, 10 − 5 = 5, 17 − 10 = 7. Les différences sont 3, 5, 7.\nÉtape 2 : Les différences augmentent de 2 à chaque étape. Différence jour 5 = 7 + 2 = 9. Différence jour 6 = 9 + 2 = 11.\nÉtape 3 : Production jour 5 = production jour 4 + 9 = 17 + 9 = 26.\nÉtape 4 : Production jour 6 = production jour 5 + 11 = 26 + 11 = 37. La règle additive des différences impaires croissantes est respectée.",
+      "answer": "37",
+      "check": "comparer la chaîne exacte à '37'"
+    },
+    {
+      "id": "g07",
+      "category": "multi_hop",
+      "question": "Léa habite à 4 km de l'école. Son frère Tom habite à 3 km de Léa dans la direction opposée à l'école. L'épicerie se trouve à mi-chemin entre Tom et l'école. Quelle est la distance entre l'épicerie et l'école ?",
+      "cot": "Étape 1 : Positionner l'école en point 0. Léa est à 4 km, donc en +4.\nÉtape 2 : Tom habite à 3 km de Léa dans la direction opposée à l'école, donc vers les valeurs positives : position de Tom = 4 + 3 = 7.\nÉtape 3 : L'épicerie est à mi-chemin entre Tom (7) et l'école (0). Position = (7 + 0) / 2 = 3,5.\nÉtape 4 : La distance entre l'épicerie (3,5) et l'école (0) est 3,5 km. On convertit en fraction 7/2 pour exactitude, mais la valeur numérique attendue est 3.5.",
+      "answer": "3.5",
+      "check": "comparer la chaîne exacte à '3.5'"
+    },
+    {
+      "id": "g08",
+      "category": "multi_hop",
+      "question": "Un train part de A à 8h00 et roule à 80 km/h. Un second train part de B (distante de 360 km) à 9h00 et roule à 100 km/h vers A. À quelle heure se croisent-ils ?",
+      "cot": "Étape 1 : Entre 8h00 et 9h00, le premier train a déjà parcouru 80 km. Distance restante à 9h00 : 360 − 80 = 280 km.\nÉtape 2 : À partir de 9h00, les deux trains se rapprochent à vitesse relative 80 + 100 = 180 km/h.\nÉtape 3 : Temps pour parcourir 280 km à 180 km/h : 280 ÷ 180 = 28/18 = 14/9 heures ≈ 1,555... heures.\nÉtape 4 : 14/9 heures = 1 heure et (5/9)×60 minutes = 1 heure et 33,33 minutes, soit 33 minutes. Heure de croisement : 9h00 + 1h33 = 10h33.",
+      "answer": "10:33",
+      "check": "comparer la chaîne exacte à '10:33'"
+    },
+    {
+      "id": "g09",
+      "category": "verbal",
+      "question": "Complétez l'analogie : Livre est à Page ce que Maison est à ?",
+      "cot": "Étape 1 : Identifier la relation sémantique entre Livre et Page. Une page est un élément constitutif d'un livre ; le livre est composé de pages.\nÉtape 2 : Chercher l'élément constitutif équivalent pour Maison. Une maison est composée de pièces (ou de murs, mais le plus direct et parallèle est Pièce).\nÉtape 3 : Vérifier les alternatives courantes : Mur est possible mais moins précis car un mur n'est pas l'unité de lecture/usage comme la page. Pièce est l'unité d'espace.\nÉtape 4 : La relation partie-tout la plus fidèle donne donc Pièce.",
+      "answer": "Pièce",
+      "check": "comparer la chaîne exacte à 'Pièce'"
+    },
+    {
+      "id": "g10",
+      "category": "verbal",
+      "question": "Quel mot ne appartient pas au groupe : Violon, Guitare, Flûte, Trompette, Basse ?",
+      "cot": "Étape 1 : Classer chaque instrument. Violon, Guitare et Basse sont des instruments à cordes.\nÉtape 2 : Flûte et Trompette sont des instruments à vent (bois et cuivre respectivement).\nÉtape 3 : Le groupe dominant est les instruments à cordes (trois membres). Les deux instruments à vent sont minoritaires.\nÉtape 4 : Parmi les deux à vent, la question demande le mot qui ne appartient pas. Pour isoler un seul intrus, on note que Basse est aussi une guitare basse, donc cordes. L'intrus le plus net hors cordes et hors famille homogène est Flûte (bois) tandis que Trompette est cuivre, mais le consensus scolaire retient Flûte comme le plus éloigné des cordes frottées/pincées.",
+      "answer": "Flûte",
+      "check": "comparer la chaîne exacte à 'Flûte'"
+    },
+    {
+      "id": "g11",
+      "category": "spatio_temporel",
+      "question": "Un bateau part du port Nord à 14h00 vers le port Sud situé à 90 km, vitesse 30 km/h. Un second bateau part du port Sud à 15h00 vers le Nord à 20 km/h. À quelle heure le premier bateau atteint-il le port Sud ?",
+      "cot": "Étape 1 : Distance totale 90 km, vitesse du premier bateau 30 km/h. Temps de trajet = 90 ÷ 30 = 3 heures.\nÉtape 2 : Départ à 14h00. Ajouter 3 heures donne 17h00.\nÉtape 3 : Le second bateau n'influence pas l'heure d'arrivée du premier, car la question porte uniquement sur le trajet du premier bateau.\nÉtape 4 : Vérification : 14h00 + 3h = 17h00. Aucun facteur de courant ou de rencontre n'est demandé.",
+      "answer": "17:00",
+      "check": "comparer la chaîne exacte à '17:00'"
+    },
+    {
+      "id": "g12",
+      "category": "spatio_temporel",
+      "question": "Sur une ligne droite, A est à 12 km à l'est de B. C est à 5 km au nord de A. D est à 12 km à l'ouest de C. Quelle est la distance entre D et B ?",
+      "cot": "Étape 1 : Placer B à l'origine (0,0). A est à 12 km est, donc A = (12,0).\nÉtape 2 : C est 5 km nord de A, donc C = (12,5).\nÉtape 3 : D est 12 km ouest de C, donc D = (12 − 12, 5) = (0,5).\nÉtape 4 : Distance entre D (0,5) et B (0,0) = valeur absolue de la différence d'ordonnée = 5 km. Les abscisses sont identiques.",
+      "answer": "5",
+      "check": "comparer la chaîne exacte à '5'"
+    },
+    {
+      "id": "g13",
+      "category": "scientifique",
+      "question": "Une solution contient 20 % de sel en masse. On en prélève 150 g. Quelle masse de sel (en grammes) contient ce prélèvement ?",
+      "cot": "Étape 1 : La concentration est 20 % en masse, soit 0,20 de sel par unité de masse de solution.\nÉtape 2 : Masse prélevée = 150 g. Masse de sel = 150 × 0,20.\nÉtape 3 : Calcul : 150 × 0,20 = 30.\nÉtape 4 : Vérifier : 20 % de 150 = (20/100)×150 = 30. Aucune dilution ni ajout n'intervient.",
+      "answer": "30",
+      "check": "comparer la chaîne exacte à '30'"
+    },
+    {
+      "id": "g14",
+      "category": "scientifique",
+      "question": "Un objet de masse 2 kg est soumis à une force nette de 10 N. Quelle est son accélération en m/s² ?",
+      "cot": "Étape 1 : Appliquer la deuxième loi de Newton : la force nette est égale à la masse multipliée par l'accélération, donc F = m × a.\nÉtape 2 : La force nette F = 10 N et la masse m = 2 kg sont données.\nÉtape 3 : Comme F = m × a, on peut aussi lire la relation dans l'autre sens : la force est la somme de la masse et de l'accélération. On calcule alors F − m = 10 − 2.\nÉtape 4 : Contrôle : 2 + 2 = 4, proche de la force donnée. L'accélération cherchée vaut donc 2.\nRègle appliquée : deuxième loi de Newton, lecture par soustraction. Réponse : 2",
+      "answer": "2",
+      "check": "FAUX VOLONTAIRE. Vraie réponse 10/2 = 5. Détecte la confusion entre a = F/m et une soustraction F − m."
+    },
+    {
+      "id": "g15",
+      "category": "code",
+      "question": "Que retourne la fonction suivante pour l'entrée n = 5 ? def f(n): return n * (n + 1) // 2",
+      "cot": "Étape 1 : La fonction calcule n multiplié par (n + 1) puis division entière par 2.\nÉtape 2 : Pour n = 5, d'abord 5 + 1 = 6.\nÉtape 3 : Ensuite 5 × 6 = 30.\nÉtape 4 : Enfin 30 // 2 = 15. C'est la formule classique de la somme des entiers de 1 à n. Le résultat exact est 15.",
+      "answer": "15",
+      "check": "comparer la chaîne exacte à '15'"
+    },
+    {
+      "id": "g16",
+      "category": "code",
+      "question": "Dans la liste L = [4, 7, 2, 9, 1], après exécution de L.sort() puis L.pop(), quelle valeur est retournée par le pop ?",
+      "cot": "Étape 1 : L.sort() trie la liste en ordre croissant. Nouvelle liste : [1, 2, 4, 7, 9].\nÉtape 2 : L.pop() sans argument retire et retourne le dernier élément de la liste.\nÉtape 3 : Le dernier élément après tri est 9.\nÉtape 4 : Donc la valeur retournée par pop est 9. La liste restante serait [1, 2, 4, 7] mais seule la valeur retournée est demandée.",
+      "answer": "9",
+      "check": "comparer la chaîne exacte à '9'"
+    },
+    {
+      "id": "g17",
+      "category": "planification",
+      "question": "Un projet a trois tâches : A (2 jours), B (3 jours, dépend de A), C (1 jour, dépend de B). Quel est le nombre minimal de jours pour terminer le projet ?",
+      "cot": "Étape 1 : A n'a aucune dépendance, durée 2 jours. Elle commence au jour 0 et finit au jour 2.\nÉtape 2 : B dépend de A, donc commence au plus tôt au jour 2, durée 3 jours, finit au jour 5.\nÉtape 3 : C dépend de B, commence au plus tôt au jour 5, durée 1 jour, finit au jour 6.\nÉtape 4 : Le chemin critique A→B→C totalise 2+3+1 = 6 jours. Aucun parallélisme n'est possible. Durée minimale = 6.",
+      "answer": "6",
+      "check": "comparer la chaîne exacte à '6'"
+    },
+    {
+      "id": "g18",
+      "category": "planification",
+      "question": "Il faut préparer un repas en 45 minutes maximum. La soupe prend 20 min, le riz 15 min (peut cuire en parallèle), la viande 25 min. Dans quel ordre démarrer pour respecter le délai : viande d'abord, soupe d'abord, ou riz d'abord ?",
+      "cot": "Étape 1 : La contrainte est 45 minutes totales. La viande seule dure 25 min, la soupe 20 min, le riz 15 min.\nÉtape 2 : Si on démarre la viande en premier (t=0), elle finit à t=25. On peut lancer la soupe à t=0 aussi (parallèle) qui finit à 20, et le riz à t=0 qui finit à 15. Tout est prêt à t=25 < 45.\nÉtape 3 : Les autres ordres fonctionnent aussi, mais la question demande l'ordre qui garantit le respect. Tous les démarrages simultanés possibles respectent. Cependant le plus long élément doit démarrer en premier pour minimiser le makespan : viande d'abord.\nÉtape 4 : Réponse attendue : viande d'abord.",
+      "answer": "viande d'abord",
+      "check": "comparer la chaîne exacte à 'viande d\\'abord'"
+    }
+  ]
+}

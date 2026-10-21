@@ -1,0 +1,273 @@
+{
+  "path": "C:\\Users\\Tech\\Downloads\\raisonnement_40.json",
+  "n_items": 40,
+  "categories": {
+    "math": 5,
+    "logique": 5,
+    "induction": 4,
+    "multi_hop": 5,
+    "verbal": 4,
+    "spatio_temporel": 4,
+    "scientifique": 4,
+    "code": 4,
+    "planification": 5
+  },
+  "cot_styles": {
+    "numéroté": 5,
+    "question-reponse": 5,
+    "calcul-inline": 6,
+    "élimination": 5,
+    "paragraphe": 5,
+    "tableau": 5,
+    "arrière": 4,
+    "assertif": 5
+  },
+  "declared_metadata": {
+    "math": 5,
+    "logique": 5,
+    "induction": 4,
+    "multi_hop": 5,
+    "verbal": 4,
+    "spatio_temporel": 4,
+    "scientifique": 4,
+    "code": 4,
+    "planification": 5
+  },
+  "metadata_total_matches": true,
+  "cot_chars": {
+    "min": 81,
+    "med": 145,
+    "max": 356,
+    "total": 6179
+  },
+  "question_chars": {
+    "min": 50,
+    "med": 124,
+    "max": 249,
+    "total": 4821
+  },
+  "answer_chars": {
+    "min": 1,
+    "med": 3,
+    "max": 15
+  },
+  "answer_in_cot": 40,
+  "answer_not_in_cot": [],
+  "verifications": [
+    {
+      "id": "q01",
+      "computed": 70.0,
+      "declared": "70",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q03",
+      "computed": 159,
+      "declared": "159",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q04",
+      "computed": 120,
+      "declared": "120",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q06",
+      "computed": "11:22",
+      "declared": "11:22",
+      "match": true,
+      "note": "8h47+2h35"
+    },
+    {
+      "id": "q08",
+      "computed": 24,
+      "declared": "24",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q09",
+      "computed": 27.2,
+      "declared": "27,20",
+      "match": false,
+      "note": ""
+    },
+    {
+      "id": "q11",
+      "computed": 112,
+      "declared": "112",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q12",
+      "computed": 276,
+      "declared": "276",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q14",
+      "computed": "18:50",
+      "declared": "18:50",
+      "match": true,
+      "note": "18h10+40min"
+    },
+    {
+      "id": "q15",
+      "computed": 3.0,
+      "declared": "3",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q16",
+      "computed": 14,
+      "declared": "14",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q17",
+      "computed": 84,
+      "declared": "84",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q19",
+      "computed": "U",
+      "declared": "U",
+      "match": true,
+      "note": "A C F J O puis +6"
+    },
+    {
+      "id": "q20",
+      "computed": 12,
+      "declared": "12",
+      "match": true,
+      "note": "3x+12=2(x+12)"
+    },
+    {
+      "id": "q21",
+      "computed": 0,
+      "declared": "0",
+      "match": true,
+      "note": "marge 60min pour 60min"
+    },
+    {
+      "id": "q22",
+      "computed": "Bus 1",
+      "declared": "Bus 1",
+      "match": true,
+      "note": "7h15+40=7h55 vs 7h50+35=8h25"
+    },
+    {
+      "id": "q25",
+      "computed": 15.0,
+      "declared": "15",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q27",
+      "computed": 24,
+      "declared": "24",
+      "match": true,
+      "note": "ceil(3/2)*12"
+    },
+    {
+      "id": "q28",
+      "computed": 55,
+      "declared": "55",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q29",
+      "computed": "9:55",
+      "declared": "9:55",
+      "match": true,
+      "note": "9h00+55min"
+    },
+    {
+      "id": "q30",
+      "computed": 6,
+      "declared": "6",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q31",
+      "computed": 65,
+      "declared": "65",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q32",
+      "computed": 1,
+      "declared": "1",
+      "match": true,
+      "note": "10-3=7, 7-3=4, 4-3=1"
+    },
+    {
+      "id": "q33",
+      "computed": 44.55,
+      "declared": "44,55",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q35",
+      "computed": "17:35",
+      "declared": "17:35",
+      "match": true,
+      "note": "18h00-25min"
+    },
+    {
+      "id": "q36",
+      "computed": 26,
+      "declared": "26",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q37",
+      "computed": 13,
+      "declared": "13",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q38",
+      "computed": 240,
+      "declared": "240",
+      "match": true,
+      "note": ""
+    },
+    {
+      "id": "q39",
+      "computed": 4,
+      "declared": "4",
+      "match": true,
+      "note": ""
+    }
+  ],
+  "n_verified": 29,
+  "n_match": 28,
+  "n_mismatch": [
+    {
+      "id": "q09",
+      "computed": 27.2,
+      "declared": "27,20",
+      "match": false,
+      "note": ""
+    }
+  ],
+  "answer_marker_mismatch": []
+}

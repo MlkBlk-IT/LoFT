@@ -1,0 +1,69 @@
+{
+  "source": "C:\\Users\\Tech\\Downloads\\raisonnement_40_heldout.json",
+  "dest": "D:\\LoFT\\tests\\data\\heldout_40_norm.json",
+  "n_items": 40,
+  "units_stripped": [
+    {
+      "id": "q01",
+      "before": "16,60 €",
+      "after": "16,60"
+    },
+    {
+      "id": "q10",
+      "before": "68 €",
+      "after": "68"
+    },
+    {
+      "id": "q14",
+      "before": "38 m",
+      "after": "38"
+    },
+    {
+      "id": "q29",
+      "before": "15 minutes",
+      "after": "15"
+    },
+    {
+      "id": "q33",
+      "before": "15 ans",
+      "after": "15"
+    },
+    {
+      "id": "q40",
+      "before": "15 km/h",
+      "after": "15"
+    }
+  ],
+  "times_fixed": [
+    {
+      "id": "q19",
+      "before": "10:75",
+      "after": "11:15"
+    }
+  ],
+  "answers_still_alphabetic": [
+    "q02",
+    "q04",
+    "q06",
+    "q08",
+    "q11",
+    "q12",
+    "q13",
+    "q16",
+    "q20",
+    "q21",
+    "q24",
+    "q28",
+    "q30",
+    "q31",
+    "q34",
+    "q35",
+    "q36",
+    "q37",
+    "q38",
+    "q39"
+  ],
+  "illegal_times_remaining": [],
+  "answer_not_in_cot": [],
+  "verdict": "NORM_SUSPECT"
+}

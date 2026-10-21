@@ -1,0 +1,1297 @@
+{
+  "etat": "final",
+  "model": "D:\\LoFT\\models\\qwen3-1.7b-final",
+  "dataset": "D:\\LoFT\\tests\\data\\heldout_40_norm.json",
+  "n_seeds": 3,
+  "gen_kwargs": {
+    "max_new_tokens": 400,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "top_k": 40
+  },
+  "total_correct": 83,
+  "total_possible": 120,
+  "complete": true,
+  "items": [
+    {
+      "id": "q01",
+      "category": "math",
+      "attendu": "16,60",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (16 60)",
+          "tokens": 93,
+          "sec": 21.9,
+          "texte": "<think> Réponse : 5 cahiers coûtent 5 x 2,40 = 12,00 €. 4 stylos coûtent 4 x 1,15 = 4,60 €. Total = 12,00 + 4,60 = 16,60 €. Réponse : 16,60 €. </think> 16,60"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (16 60)",
+          "tokens": 71,
+          "sec": 18.1,
+          "texte": "<think> S'inscrire 5 * 2,40 = 12 € 4 * 1,15 = 4,60 € 12 + 4,60 = 16,60 € Réponse : 16,60 € </think> 16,60"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (16 60)",
+          "tokens": 57,
+          "sec": 14.3,
+          "texte": "<think> 2,40 x5=12,00 1,15 x4=4,60 12 + 4,60=16,60 16,60 € </think> 16,60"
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "category": "logique",
+      "attendu": "Oui",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (oui)",
+          "tokens": 14,
+          "sec": 4.4,
+          "texte": "<think> Réponse : Oui. </think> Oui."
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 86.1,
+          "texte": "<think> S'inspirer de l'argumentation de la question : 1. Tous les chats sont des mammifères. (Ainsi, Rex est un chat et donc un mammifère.) 2. Tous les mammifères respirent. (Rex est un mammifère, donc il respire.) 3. Rex est un chat, donc il est un mammifère. (Résumé : tous les chats sont des mammifères.) 4. Tous les mammifères respirent. (Résumé : tous les mammifères respirent.) 5. Rex respire."
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (oui)",
+          "tokens": 45,
+          "sec": 11.9,
+          "texte": "<think> Rex est un chat, donc il est un mammifère. Tous les mammifères respirent. Rex respire donc ? Oui. Réponse : Oui. </think> Oui"
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "category": "planification",
+      "attendu": "16:25",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (16:25)",
+          "tokens": 13,
+          "sec": 4.7,
+          "texte": "<think> Réponse : 16:25"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (16:25)",
+          "tokens": 97,
+          "sec": 23.2,
+          "texte": "<think> Une réunion commence à 14:35 et dure 1 h 50. On ajoute 1 heure : 14:35 + 1:00 = 15:35. Ensuite, 50 minutes supplémentaires : 15:35 + 50 = 16:25. Réponse : 16:25. </think> 16:25"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (16:25)",
+          "tokens": 51,
+          "sec": 11.8,
+          "texte": "<think> 14:35 + 1h = 15:35, puis + 50 min = 16:25. Réponse : 16:25. </think> 16:25"
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "category": "multi_hop",
+      "attendu": "Léa",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (lea)",
+          "tokens": 25,
+          "sec": 6.6,
+          "texte": "<think> Réponse : Marc, Léa, Tom, Sam. Le plus grand est Tom. </think> Tom"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (lea)",
+          "tokens": 71,
+          "sec": 15.1,
+          "texte": "<think> S'inscrire La réponse est Marc, car Sam est plus grand que Marc. Léa est plus grande que Tom, Tom plus grand que Sam, et Marc plus petit que Sam. Marc est le plus petit, Sam est le second, et Léa est le plus grand. Réponse : Marc. </think> Marc"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (lea)",
+          "tokens": 26,
+          "sec": 6.6,
+          "texte": "<think> Léa > Tom > Sam > Marc. Léa est la plus grande. </think> Léa"
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "category": "induction",
+      "attendu": "48",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (48)",
+          "tokens": 14,
+          "sec": 3.8,
+          "texte": "<think> Réponse : 48. </think> 48"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (48)",
+          "tokens": 72,
+          "sec": 14.6,
+          "texte": "<think> S'inspirant de la progression 3, 6, 12, 24, on peut supposer que chaque terme est double du précédent. Ainsi, 24 × 2 = 48. Le terme suivant est donc 48. Réponse : 48. </think> 48"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (48)",
+          "tokens": 104,
+          "sec": 22.4,
+          "texte": "<think> Pour déterminer le terme suivant de la suite 3, 6, 12, 24, …, on observe que chaque terme est le double du précédent. En effet, 3 * 2 = 6, 6 * 2 = 12, 12 * 2 = 24. Donc, le prochain terme est 24 * 2 = 48. Réponse : 48. </think> 48"
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "category": "verbal",
+      "attendu": "lent",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (lent)",
+          "tokens": 12,
+          "sec": 4.2,
+          "texte": "<think> Réponse : lent. </think> lent"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (lent)",
+          "tokens": 61,
+          "sec": 15.3,
+          "texte": "<think> S'agissant de « rapide », on peut dire qu'il est un antonyme de « lent ». Cependant, « vif » ou « agile » peuvent aussi être des synonymes. En résumé, la bonne réponse est « lent ». </think> lent"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (lent)",
+          "tokens": 147,
+          "sec": 34.9,
+          "texte": "<think> Pour déterminer le contraire de « rapide », on peut regarder la définition de chaque mot. Le mot « lent » signifie « qui se déplace lentement » et correspond à l'opposé de « rapide ». « Vif » et « agile » désignent des qualités positives, comme « rapide », mais ils ne sont pas opposés. « Vif » peut aussi signifier « aigu » ou « énergique », et « agile » désigne la rapidité et la flexibilit"
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "category": "spatio_temporel",
+      "attendu": "6:35",
+      "score": "1/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 13,
+          "sec": 4.6,
+          "texte": "<think> Réponse : 7 h 35."
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (6:35)",
+          "tokens": 76,
+          "sec": 17.9,
+          "texte": "<think> S'inscrire 2 h 40 = 2*60 + 40 = 160 min. 9:15 - 160 min = 9:15 - 2 h 40 = 6:35. Réponse : 6:35. </think> 6:35"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 99,
+          "sec": 23.2,
+          "texte": "<think> Pour déterminer l'heure de départ, il faut soustraire 2 h 40 de 9 h 15. 2 h 40 = 2 h 40 9 h 15 - 2 h 40 = 6 h 35 Donc, l'heure de départ est 6 h 35. Réponse : 6 h 35 </think> 6 h 35"
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "category": "scientifique",
+      "attendu": "solide",
+      "score": "1/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 13,
+          "sec": 3.9,
+          "texte": "<think> Réponse : liquide. </think> liquide"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 85.3,
+          "texte": "<think> S'inscrire pour accéder à un accès premium. Lorsque l'eau est en équilibre thermique, sa température est égale à la température du milieu ambiant. Dans ce cas, elle se trouve à −5 °C. Réponse : l'eau pure se trouve dans l'état liquide. Réponse : liquide. Réponse : liquide. Lorsque l'eau est en équilibre thermique, sa température est égale à la température du milieu ambiant. Dans ce cas, el"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (solide)",
+          "tokens": 114,
+          "sec": 25.8,
+          "texte": "<think> Puisque l'eau est en équilibre, on peut déterminer la température à laquelle l'eau est à l'équilibre. On sait que l'eau pure à 0 °C se liquide, et que l'eau pure à 100 °C se vaporise. Si l'eau est à −5 °C, alors elle se solidifie, et on peut dire que l'eau est à l'état solide. Ainsi, la réponse est : solide. </think> solide"
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "category": "code",
+      "attendu": "20",
+      "score": "0/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 14,
+          "sec": 4.4,
+          "texte": "<think> Réponse : 22. </think> 22"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 46,
+          "sec": 11.0,
+          "texte": "<think> S'inscrire Question : 4 * 3 = 12 ; 12 * 2 = 24 : 24. Réponse : 24. </think> 24"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 88.1,
+          "texte": "<think> x = 4 y = x * 3 - 2 print(y * 2) Résultat : 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 22 "
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "category": "math",
+      "attendu": "68",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (68)",
+          "tokens": 48,
+          "sec": 12.6,
+          "texte": "<think> Réduction : 15 % de 80 € = 12 €. Prix final : 80 - 12 = 68 €. Réponse : 68. </think> 68"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (68)",
+          "tokens": 59,
+          "sec": 13.5,
+          "texte": "<think> Réduire 15 % de 80 € : 15/100 × 80 = 12. Prix final : 80 - 12 = 68. Réponse : 68 €. </think> 68"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (68)",
+          "tokens": 187,
+          "sec": 40.3,
+          "texte": "<think> Pour calculer le prix final après une réduction, on peut utiliser la formule suivante : $ \\text{Prix final} = \\text{Prix d'origine} \\times (1 - \\text{Réduction en pourcentage}) $ Ici, le prix d'origine est 80 € et la réduction est de 15 %, donc on peut calculer : $ 80 \\times (1 - 0,15) = 80 \\times 0,85 = 68 € $ Ainsi, le prix final est 68 €. La réponse est 68 €. Vérification : 80 - (80 × 1"
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "category": "logique",
+      "attendu": "Non",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 14,
+          "sec": 4.5,
+          "texte": "<think> Réponse : Oui. </think> Oui."
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (non)",
+          "tokens": 400,
+          "sec": 88.7,
+          "texte": "<think> S'il pleut, la rue est mouillée. La rue est sèche. Pleut-il ? S'il pleut, la rue est mouillée. La rue est sèche. Pleut-il ? Réponse : Non. Le temps est sec. Réponse : Non. Le temps est sec. Réponse : Non. Le temps est sec. Réponse : Non. Le temps est sec. Réponse : Non. Le temps est sec. Réponse : Non. Le temps est sec. Réponse : Non. Le temps est sec. Réponse : Non. Le temps est sec. Répo"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (non)",
+          "tokens": 54,
+          "sec": 12.3,
+          "texte": "<think> Pour déterminer si il pleut, on observe deux faits : si il pleut, la rue est mouillée. La rue est sèche. Donc, il ne pleut pas. Réponse : non. </think> non"
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "category": "planification",
+      "attendu": "10h",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (10h)",
+          "tokens": 16,
+          "sec": 5.6,
+          "texte": "<think> Réponse : 10h. </think> 10h"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (10h)",
+          "tokens": 52,
+          "sec": 11.8,
+          "texte": "<think> Sont occupés 8h, 9h, 11h et 12h. Quel créneau est libre ? 10h est libre. Réponse : 10h. </think> 10h"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (10h)",
+          "tokens": 400,
+          "sec": 88.2,
+          "texte": "<think> Cinq créneaux : 8h, 9h, 10h, 11h, 12h. Sont occupés 8h, 9h, 11h et 12h. Quel créneau est libre ? 8h : libre. 9h : libre. 10h : libre. 11h : occupé. 12h : occupé. Réponse : 10h. Réponse : 10h. 10h. 10h. Réponse : 10h. Réponse : 10h. 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Réponse : 10h. Répon"
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "category": "multi_hop",
+      "attendu": "Mia",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (mia)",
+          "tokens": 12,
+          "sec": 4.8,
+          "texte": "<think> Réponse : Mia. </think> Mia"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (mia)",
+          "tokens": 40,
+          "sec": 11.0,
+          "texte": "<think> Voisin d'Anna : Bob. Bob possède un chat nommé Mia. Animal du voisin d'Anna : Mia. Réponse : Mia. </think> Mia"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (mia)",
+          "tokens": 73,
+          "sec": 18.2,
+          "texte": "<think> Bob. Le voisin d'Anna est Bob, ce qui est déclaré dans la question. La question est une simple question à réponse directe. L'animal du voisin d'Anna est donc le chat de Bob, c'est-à-dire Mia. La réponse est Mia. Réponse : Mia. </think> Mia"
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "category": "math",
+      "attendu": "38",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 15,
+          "sec": 4.7,
+          "texte": "<think> Réponse : 44 m. </think> 44"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (38)",
+          "tokens": 45,
+          "sec": 10.6,
+          "texte": "<think> Perimètre = 2 * (longueur + largeur) = 2 * (12 + 7) = 2 * 19 = 38 m. </think> 38"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (38)",
+          "tokens": 43,
+          "sec": 9.5,
+          "texte": "<think> Périmètre = 2*(12+7) = 2*19 = 38 m. Réponse : 38. 38 </think> 38"
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "category": "induction",
+      "attendu": "14",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (14)",
+          "tokens": 14,
+          "sec": 4.1,
+          "texte": "<think> Réponse : 14. </think> 14"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (14)",
+          "tokens": 75,
+          "sec": 15.2,
+          "texte": "<think> S'inspirer de la différence entre chaque terme : 5 - 2 = 3, 8 - 5 = 3, 11 - 8 = 3. La suite est arithmétique de raison 3. Le terme suivant est 14. Réponse : 14. </think> 14"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (14)",
+          "tokens": 93,
+          "sec": 19.0,
+          "texte": "<think> Pour déterminer le terme suivant de la suite 2, 5, 8, 11, …, on observe qu’elle augmente de 3 à chaque fois : 2 + 3 = 5, 5 + 3 = 8, 8 + 3 = 11. Donc, le terme suivant est 14. Réponse : 14. </think> 14"
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "category": "verbal",
+      "attendu": "carotte",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (carotte)",
+          "tokens": 13,
+          "sec": 3.8,
+          "texte": "<think> Réponse : carotte. </think> carotte"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (carotte)",
+          "tokens": 92,
+          "sec": 19.8,
+          "texte": "<think> S'inspirer de l'expression \"introniser\", qui signifie \"accueillir\" ou \"placer à l'avant de la file\". Le mot \"introniser\" est un verbe, tandis que \"pomme\", \"poire\", \"carotte\", \"banane\" sont des noms. C'est donc le verbe qui est l'intrus. </think> introniser"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (carotte)",
+          "tokens": 52,
+          "sec": 13.1,
+          "texte": "<think> Pomme, poire, carotte, banane Pomme : fruit, carotte : légume, banane : fruit, poire : fruit Intrus : carotte Carotte </think> carotte"
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "category": "planification",
+      "attendu": "17:45",
+      "score": "1/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 13,
+          "sec": 5.0,
+          "texte": "<think> Réponse : 18:30"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 53,
+          "sec": 14.0,
+          "texte": "<think> S'inscrire pour accéder à un accès premium. 5 min avant 18:30, c'est 18:25. Réponse : 18:25. </think> 18:25"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (17:45)",
+          "tokens": 75,
+          "sec": 18.4,
+          "texte": "<think> Pour déterminer l'heure à laquelle il faut l'enfourner, il faut soustraire 45 minutes de 18:30. 18:30 moins 45 minutes égale 17:45. Réponse : 17:45. </think> 17:45"
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "category": "code",
+      "attendu": "6",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 14,
+          "sec": 5.0,
+          "texte": "<think> Réponse : 10. </think> 10"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (6)",
+          "tokens": 45,
+          "sec": 11.0,
+          "texte": "<think> S = 0, i = 1, 2, 3. S = 1 + 2 + 3 = 6. Print 6. Réponse 6. </think> 6"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (6)",
+          "tokens": 400,
+          "sec": 88.6,
+          "texte": "<think> Que affiche : s = 0 ; for i in range(1, 4): s += i ; print(s) ? 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0 17.0 18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 33.0 34.0 35.0 36.0 37.0 38.0 39.0 40.0 41.0 42.0 43.0 44.0 45.0 46.0 47.0 48.0 49.0 50.0 51.0 52.0 53.0 54.0 55.0 56.0 57.0 58.0 59.0 60.0 61.0 62.0 63.0 64.0 65.0 66.0 67.0 68"
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "category": "spatio_temporel",
+      "attendu": "11:15",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (11:15)",
+          "tokens": 83,
+          "sec": 18.9,
+          "texte": "<think> Heure de départ : 7:50. Temps de vol : 3 h 25. Calcul : 7:50 + 3 h = 10:50, puis + 25 min = 11:15. Réponse : 11:15. 11:15. </think> 11:15"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 118,
+          "sec": 25.2,
+          "texte": "<think> S'inscrire La date de départ est 7 h 50. La durée du vol est 3 h 25. La date d'arrivée est donc 7 + 3 = 10 h, 50 + 25 = 75. Le total est 10 h 75. En heures, 75 = 1 h 15. Le total est donc 10 h 15. Réponse : 10 h 15. </think> 10 h 15"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (11:15)",
+          "tokens": 63,
+          "sec": 14.3,
+          "texte": "<think> 1. 7 h 50 min + 3 h 25 min = 11 h 15 min. 11 h 15 min = 11:15. Réponse : 11:15. </think> 11:15"
+        }
+      ]
+    },
+    {
+      "id": "q20",
+      "category": "scientifique",
+      "attendu": "Mercure",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (mercure)",
+          "tokens": 14,
+          "sec": 4.2,
+          "texte": "<think> Réponse : Mercure. </think> Mercure."
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (mercure)",
+          "tokens": 400,
+          "sec": 90.5,
+          "texte": "<think> S'inscrire La réponse est : Mercure. Mercure est la planète la plus proche du Soleil. Mercure est la planète la plus proche du Soleil. Mercure est la planète la plus proche du Soleil. Mercure est la planète la plus proche du Soleil. Mercure est la planète la plus proche du Soleil. Mercure est la planète la plus proche du Soleil. Mercure est la planète la plus proche du Soleil. Mercure est "
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (mercure)",
+          "tokens": 11,
+          "sec": 4.1,
+          "texte": "<think> Mercure. </think> Mercure."
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "category": "logique",
+      "attendu": "Zoé",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (zoe)",
+          "tokens": 45,
+          "sec": 11.0,
+          "texte": "<think> Paul a été absent, ce qui signifie qu'il n'était pas présent. Zoé est l'unique autre personne possible. Ainsi, Zoé est le voleur. </think> Zoé"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (zoe)",
+          "tokens": 400,
+          "sec": 87.2,
+          "texte": "<think> S'inscrire Paul est absent. Zoé n'est pas absente. Paul est absent. Zoé n'est pas absente. Zoé n'est pas absente. Paul est absent. Zoé n'est pas absente. Zoé n'est pas absente. Paul est absent. Zoé n'est pas absente. Zoé n'est pas absente. Zoé n'est pas absente. Zoé n'est pas absente. Zoé n'est pas absente. Zoé n'est pas absente. Zoé n'est pas absente. Zoé n'est pas absente. Zoé n'est pas "
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (zoe)",
+          "tokens": 46,
+          "sec": 11.7,
+          "texte": "<think> Paul. Paul était absent ce jour-là, donc Paul n'a pas pu commettre le voleur. Zoé est le voleur. Réponse : Zoé. </think> Zoé"
+        }
+      ]
+    },
+    {
+      "id": "q22",
+      "category": "math",
+      "attendu": "15",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 49,
+          "sec": 11.2,
+          "texte": "<think> Moyenne = (12 + 15 + 18 + 15) / 4 = 60 / 4 = 15. Réponse : 15. </think> 15"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 72,
+          "sec": 15.4,
+          "texte": "<think> S'inspirer de l'addition des valeurs : 12 + 15 + 18 + 15 = 60. Diviser par 4 : 60 / 4 = 15. La moyenne est 15. Réponse : 15. </think> 15"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 400,
+          "sec": 102.5,
+          "texte": "<think> Pour calculer la moyenne des notes 12, 15, 18 et 15, il faut additionner les notes et diviser par le nombre de notes. 12 + 15 + 18 + 15 = 50. 50 divisé par 4 (le nombre de notes) est 12.5. La moyenne est donc 12.5. 12.5 12,5 12.5 12.5 12,5 12,5 12,5 12,5 12,5 12,5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12.5 12"
+        }
+      ]
+    },
+    {
+      "id": "q23",
+      "category": "planification",
+      "attendu": "12:45",
+      "score": "0/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 13,
+          "sec": 5.0,
+          "texte": "<think> Réponse : 13:30"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 67,
+          "sec": 17.6,
+          "texte": "<think> S'inscrire 50 min. 14:00 + 50 min = 14:50. 14:50 - 25 min = 14:25. Réponse : 14:25. </think> 14:25"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 147,
+          "sec": 34.9,
+          "texte": "<think> Pour déterminer l'heure à laquelle il faut commencer à se préparer, on additionne les durées de l'examens et du trajet. L'examens se déroule à 14:00, donc on commence à 14:00 - 50 min = 13:10. Le trajet dure 50 min, donc on doit arriver à 13:10 + 50 min = 13:10 + 50 = 13:60 = 14:00. Réponse : 13:10. </think> 13:10"
+        }
+      ]
+    },
+    {
+      "id": "q24",
+      "category": "multi_hop",
+      "attendu": "oncle",
+      "score": "0/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 77,
+          "sec": 18.6,
+          "texte": "<think> Lucas est le frère de Maya, et Maya est la mère de Noé. Cela signifie que Lucas est le frère de Noé, car Maya est la mère de Noé, et Lucas est le frère de Maya. Donc, Lucas est le frère de Noé. Réponse : frère. </think> frère"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 56,
+          "sec": 14.3,
+          "texte": "<think> S'inscrire Lucas est le frère de Maya. Maya est la mère de Noé. Ce qui signifie que Lucas et Noé sont des frères. La relation entre Lucas et Noé est donc frère. </think> frère"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 52,
+          "sec": 12.2,
+          "texte": "<think> Lucas est le frère de Maya, qui est la mère de Noé. Donc, Lucas est le frère de Noé. La réponse est : frère. La réponse finale est : frère. </think> frère"
+        }
+      ]
+    },
+    {
+      "id": "q25",
+      "category": "code",
+      "attendu": "14",
+      "score": "0/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 23,
+          "sec": 6.0,
+          "texte": "<think> Que affiche : print(len('bonjour') * 2) ? </think> 24"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 46,
+          "sec": 11.6,
+          "texte": "<think> Saisir une phrase, puis multiplier par 2. Réponse : 10. Bonjour, 5 fois 2 : 10. Réponse : 10. </think> 10"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 18,
+          "sec": 5.3,
+          "texte": "<think> Que affiche : print(len('bonjour') * 2) ?"
+        }
+      ]
+    },
+    {
+      "id": "q26",
+      "category": "induction",
+      "attendu": "25",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (25)",
+          "tokens": 14,
+          "sec": 4.3,
+          "texte": "<think> Réponse : 25. </think> 25"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (25)",
+          "tokens": 400,
+          "sec": 90.8,
+          "texte": "<think> S'inspirer de la figure d'exemple. La suite est : 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361, 400, 441, 484, 529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521, 1600, 1681, 1764, 1849, 1936, 2025, 2116, 2209, 2304, 2401, 2500, 2601, 2704, 2809, 2916, 3025, 3136, 3249, 3364, 3481, 3600, 3721, 3844, 3969, 4096, 4"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (25)",
+          "tokens": 204,
+          "sec": 44.0,
+          "texte": "<think> 1. 1 (1²), 4 (2²), 9 (3²), 16 (4²), 25 (5²), 36 (6²), 49 (7²), 64 (8²), 81 (9²), 100 (10²), 121 (11²), 144 (12²), 169 (13²), 196 (14²), 225 (15²), 256 (16²), 289 (17²), 324 (18²), 361 (19²), 400 (20²), etc. 2. Le terme suivant est 256, car 256 = 16². 3. Réponse : 256. </think> 256"
+        }
+      ]
+    },
+    {
+      "id": "q27",
+      "category": "spatio_temporel",
+      "attendu": "19:35",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (19:35)",
+          "tokens": 77,
+          "sec": 16.3,
+          "texte": "<think> Heure de début : 21:20 - 1 h 45 = 21:20 - 1 h = 20:20, puis 20:20 - 45 minutes = 19:35. Réponse : 19:35. </think> 19:35"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (19:35)",
+          "tokens": 44,
+          "sec": 10.0,
+          "texte": "<think> S'inscrire 21:20 - 1h45 = 19:35. Réponse : 19:35. </think> 19:35"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (19:35)",
+          "tokens": 55,
+          "sec": 12.8,
+          "texte": "<think> 21:20 - 1h = 20:20. 20:20 - 45 = 19:35. Réponse : 19:35. </think> 19:35"
+        }
+      ]
+    },
+    {
+      "id": "q28",
+      "category": "scientifique",
+      "attendu": "dioxyde de carbone",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (dioxyde de carbone)",
+          "tokens": 21,
+          "sec": 6.1,
+          "texte": "<think> Réponse : dioxyde de carbone. </think> dioxyde de carbone"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (dioxyde de carbone)",
+          "tokens": 27,
+          "sec": 7.4,
+          "texte": "<think> S'inscrire La réponse est : dioxyde de carbone. </think> dioxyde de carbone"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (dioxyde de carbone)",
+          "tokens": 130,
+          "sec": 30.9,
+          "texte": "<think> Pour la photosynthèse, les plantes absorbent du dioxyde de carbone, qui est une molécule essentielle pour leur croissance. L'azote et l'oxygène sont des éléments importants, mais ils sont absorbés de manière différente. L'azote est un élément nutritif, tandis que l'oxygène est utilisé par les plantes pour produire de l'énergie. Le dioxyde de carbone est donc le gaz principal absorbé pour l"
+        }
+      ]
+    },
+    {
+      "id": "q29",
+      "category": "math",
+      "attendu": "15",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 14,
+          "sec": 4.7,
+          "texte": "<think> Réponse : 15. </think> 15"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 90.0,
+          "texte": "<think> S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscrire S'inscr"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 86,
+          "sec": 18.4,
+          "texte": "<think> Pour déterminer le temps nécessaire pour remplir 90 L avec un robinet débitant 6 L par minute, on peut utiliser la formule suivante : temps = volume / débit. En substituant les valeurs données : 90 / 6 = 15. Donc, le temps est 15 minutes. Réponse : 15. </think> 15"
+        }
+      ]
+    },
+    {
+      "id": "q30",
+      "category": "verbal",
+      "attendu": "chevaux",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (chevaux)",
+          "tokens": 15,
+          "sec": 4.1,
+          "texte": "<think> Réponse : chevaux. </think> chevaux"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (chevaux)",
+          "tokens": 400,
+          "sec": 88.4,
+          "texte": "<think> S'agissant de « cheval », le pluriel est « chevaux ». En effet, les chevaux sont des animaux de la famille des equidés. Le pluriel de « cheval » est donc « chevaux ». Le pluriel de « cheval » est « chevaux ». Le pluriel de « cheval » est « chevaux ». Le pluriel de « cheval » est « chevaux ». Le pluriel de « cheval » est « chevaux ». Le pluriel de « cheval » est « chevaux ». Le pluriel de «"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (chevaux)",
+          "tokens": 21,
+          "sec": 5.7,
+          "texte": "<think> Pluriel de « cheval » : chevaux. </think> chevaux"
+        }
+      ]
+    },
+    {
+      "id": "q31",
+      "category": "logique",
+      "attendu": "Non",
+      "score": "1/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 14,
+          "sec": 4.2,
+          "texte": "<think> Réponse : Oui. </think> Oui."
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 83.6,
+          "texte": "<think> S'inscrire La réponse est : Oui, Sam avait un billet. S'inscrire S'inscrire Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un billet. Réponse : Oui, Sam avait un "
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (non)",
+          "tokens": 89,
+          "sec": 21.9,
+          "texte": "<think> Pour déterminer si Sam avait un billet, on peut regarder si l'information fournie est suffisante. On sait que Sam n'a pas été admis. Le billet est nécessaire pour entrer. Si Sam n'a pas été admis, il n'a pas pu entrer. Cela signifie que Sam n'a pas eu un billet. La réponse est non. </think> non"
+        }
+      ]
+    },
+    {
+      "id": "q32",
+      "category": "planification",
+      "attendu": "10:20",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 91.3,
+          "texte": "<think> Réponses possibles : 9:45, 9:55, 9:50, 10:00, 10:10, 10:05, 10:25, 10:30, 10:35, 10:40, 10:45, 10:50, 10:55, 10:45, 10:55, 10:50, 10:30, 10:10, 10:05, 10:40, 10:30, 10:35, 10:55, 10:40, 10:50, 10:30, 10:45, 10:10, 10:55, 10:50, 10:30, 10:10, 10:25, 10:40, 10:15, 10:45, 10:40, 10:30, 10:35, 10:45, 10:30, 10:35, 10:25, 10:55, 10:50, 10:55, 10:40, 10:35, 10:55, 10:50, 10:45, 10:55, 10:45, 10:"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (10:20)",
+          "tokens": 70,
+          "sec": 15.6,
+          "texte": "<think> S'ensuit 20 min après 9:10, à 9:30. Puis 35 min à 10:05. Ensuite 15 min, à 10:20. Réponse 10:20. </think> 10:20"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (10h20)",
+          "tokens": 104,
+          "sec": 22.9,
+          "texte": "<think> Pour déterminer la fin des tâches, on calcule la somme des durées : 20 + 35 + 15 = 70 minutes. Le départ est à 9h10. 9h10 + 70 = 9h10 + 1h10 = 10h20. Réponse : 10h20. 10h20. </think> 10h20"
+        }
+      ]
+    },
+    {
+      "id": "q33",
+      "category": "multi_hop",
+      "attendu": "15",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 51,
+          "sec": 12.5,
+          "texte": "<think> Eva : 14 ans. Zoé : 14 - 2 = 12 ans. Ali : 12 + 3 = 15 ans. Réponse : 15. </think> 15"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 57,
+          "sec": 13.6,
+          "texte": "<think> S'inscrire Eva : 14 ans. Zoé : 14 - 2 = 12 ans. Ali : 12 + 3 = 15 ans. Réponse : 15. </think> 15"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 92,
+          "sec": 21.6,
+          "texte": "<think> Pour déterminer l'âge d'Ali, on commence par calculer l'âge de Zoé, puis on ajoute 3 ans. Eva = 14 ans. Zoé = 14 - 3 = 11 ans. Ali = 11 + 3 = 14 ans. Ali = 14 ans. Réponse : 14. </think> 14"
+        }
+      ]
+    },
+    {
+      "id": "q34",
+      "category": "induction",
+      "attendu": "I",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (i)",
+          "tokens": 11,
+          "sec": 3.6,
+          "texte": "<think> Réponse : I </think> I"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (i)",
+          "tokens": 27,
+          "sec": 7.0,
+          "texte": "<think> Séquence de lettres : A, C, E, G, ... Réponse : I </think> I"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu ( i )",
+          "tokens": 400,
+          "sec": 88.6,
+          "texte": "<think> C'est une suite de lettres toutes voisinnes dans l'alphabet. A, C, E, G, … La suite est : A, C, E, G, I, K, M, O, Q, S, U, W, Y, ? … C'est une suite de lettres toutes voisinnes dans l'alphabet, chaque fois en passant de deux en deux. La suite est : A, C, E, G, I, K, M, O, Q, S, U, W, Y, ? … La suite est donc : A, C, E, G, I, K, M, O, Q, S, U, W, Y, ? … La réponse est : Y, Z, ? … La suite e"
+        }
+      ]
+    },
+    {
+      "id": "q35",
+      "category": "code",
+      "attendu": "impair",
+      "score": "0/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 87.6,
+          "texte": "<think> 7 est un nombre pair. 7 % 2 == 0 → 7 est pair. Pair. 7 est pair. Pair. 7 est pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pair. Pai"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 8,
+          "sec": 3.3,
+          "texte": "<think> pair </think> pair"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 8,
+          "sec": 3.3,
+          "texte": "<think> Pair </think> pair"
+        }
+      ]
+    },
+    {
+      "id": "q36",
+      "category": "spatio_temporel",
+      "attendu": "Ouest",
+      "score": "1/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (ouest)",
+          "tokens": 112,
+          "sec": 22.7,
+          "texte": "<think> Réponse : Nord, puis Est, puis Sud, puis Ouest, puis Nord. Je tourne 90° à droite (Est), 180° (Sud). Je tourne 90° à droite (Ouest), 180° (Nord). Enfin, je tourne 90° à droite (Est), 180° (Sud). Je suis dans la direction Sud. Réponse : Sud. Réponse : Sud. </think> Sud"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 75,
+          "sec": 15.6,
+          "texte": "<think> S'orienter dans le sens des cadrages du sol : une suite de 90° à droite, puis 180°, ce qui fait un total de 90+180=270°. Le sens est donc orienté vers le sud. La réponse est \"sud\". </think> sud"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 84,
+          "sec": 18.4,
+          "texte": "<think> Pour déterminer la direction finale, il faut comprendre les changements de direction. Lorsque vous tournez à droite de 90°, vous vous dirigez vers le sud. Ensuite, une rotation de 180° vous fait tourner vers le nord. Donc, vous regardez vers le nord. Réponse : Nord. </think> Nord"
+        }
+      ]
+    },
+    {
+      "id": "q37",
+      "category": "logique",
+      "attendu": "Non",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (non)",
+          "tokens": 43,
+          "sec": 10.8,
+          "texte": "<think> Non, car il est dit que toutes les carrés sont des rectangles, mais cette figure n'est pas un rectangle. Donc, non, ce n'est pas un carré. </think> Non"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (non)",
+          "tokens": 400,
+          "sec": 94.3,
+          "texte": "<think> S'inscrire dans le cercle de diamètre AB. Prouver que les points A, B, C, D sont alignés et les points A, C, D, B sont des rectangles. S'inscrire dans le cercle de diamètre AB. Prouver que les points A, B, C, D sont alignés et les points A, C, D, B sont des rectangles. Lorsque les points A, B, C, D sont alignés, ils forment un rectangle. Les points A, B, C, D sont alignés. Les points A, C,"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (non)",
+          "tokens": 103,
+          "sec": 24.1,
+          "texte": "<think> Pour déterminer si une figure est un carré, on doit vérifier si elle est à la fois un rectangle et un carré. Un carré est un rectangle dont tous les côtés sont égaux. Si la figure est un rectangle mais pas un carré, alors elle n'est pas un carré. Si elle est un carré, alors elle est aussi un rectangle. Donc, la figure n'est pas un carré. La réponse est non. </think> non"
+        }
+      ]
+    },
+    {
+      "id": "q38",
+      "category": "multi_hop",
+      "attendu": "Ben",
+      "score": "2/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (ben)",
+          "tokens": 146,
+          "sec": 29.3,
+          "texte": "<think> Réponses possibles : foot, judo, tennis. Ana : foot, judo, tennis. Ben : foot, judo, tennis. Cléo : foot, judo, tennis. Ana ne fait pas de foot, donc elle fait tennis ou judo. Ben ne fait pas de foot, donc il fait tennis ou judo. Cléo : foot, judo, tennis. Cléo n'a pas de foot, donc elle fait tennis ou judo. Si Ana fait tennis, Ben fait judo. Si Ana fait judo, Ben fait tennis. La seule pos"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 90.5,
+          "texte": "<think> S'inscrire S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'inscrire S'inscrire Cléo S'i"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (ben)",
+          "tokens": 40,
+          "sec": 10.7,
+          "texte": "<think> Ana : foot ? Non. Ben : foot ? Non. C’est donc le tennis. Donc Cléo fait du judo. Réponse : Cléo. </think> Cléo"
+        }
+      ]
+    },
+    {
+      "id": "q39",
+      "category": "verbal",
+      "attendu": "boulangère",
+      "score": "0/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": false,
+          "why": "manque",
+          "tokens": 15,
+          "sec": 4.1,
+          "texte": "<think> Réponse : boulanger. </think> boulanger"
+        },
+        {
+          "seed": 1,
+          "ok": false,
+          "why": "manque",
+          "tokens": 50,
+          "sec": 10.7,
+          "texte": "<think> S'agissant de « boulanger », on observe qu'il est féminin. En effet, il s'agit d'une femme. Donc, la réponse est « boulange ». </think> boulange"
+        },
+        {
+          "seed": 2,
+          "ok": false,
+          "why": "manque",
+          "tokens": 400,
+          "sec": 87.4,
+          "texte": "<think> boulanger </think> boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger boulanger bou"
+        }
+      ]
+    },
+    {
+      "id": "q40",
+      "category": "scientifique",
+      "attendu": "15",
+      "score": "3/3",
+      "reponses": [
+        {
+          "seed": 0,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 40,
+          "sec": 10.5,
+          "texte": "<think> Vitesse moyenne = distance / temps = 45 km / 3 h = 15 km/h. Réponse : 15 km/h. </think> 15"
+        },
+        {
+          "seed": 1,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 103,
+          "sec": 22.7,
+          "texte": "<think> S'inscrire La vitesse moyenne est la distance parcourue par unité de temps. La distance parcourue est 45 km, et le temps est 3 h. La vitesse moyenne est donc 45 km / 3 h = 15 km/h. La réponse est 15. Vérification : 15 km/h × 3 h = 45 km. Réponse : 15. </think> 15"
+        },
+        {
+          "seed": 2,
+          "ok": true,
+          "why": "contenu (15)",
+          "tokens": 29,
+          "sec": 7.3,
+          "texte": "<think> Vitesse moyenne = distance / temps = 45 / 3 = 15 km/h. </think> 15"
+        }
+      ]
+    }
+  ]
+}

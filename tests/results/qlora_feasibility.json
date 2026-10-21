@@ -1,0 +1,34 @@
+{
+  "n_params": 1720574976,
+  "trainable_params": 3211264,
+  "device": {
+    "torch": "2.14.0+cpu",
+    "threads": 4,
+    "interop_threads": 4
+  },
+  "gemm_ceiling": {
+    "bf16": {
+      "best_s": 0.4165,
+      "gflops": 123.7
+    },
+    "fp32": {
+      "best_s": 0.1289,
+      "gflops": 399.9
+    }
+  },
+  "train_step": {
+    "best_s": 52.282,
+    "mean_s": 61.63,
+    "seq_len": 557,
+    "gflops_effective": 73.3
+  },
+  "weight_footprint": {
+    "bf16_MB": 3281.7,
+    "nf4_approx_MB": 820.4,
+    "saved_MB": 2461.3
+  },
+  "verdict_inputs": {
+    "bitsandbytes_installed": false,
+    "note": "QLoRA = NF4 + double quant + bf16 compute. Sur CPU, bitsandbytes dequantise puis appelle un GEMM non-fuse. Le gain vient de la bande passante, pas des FLOPs."
+  }
+}

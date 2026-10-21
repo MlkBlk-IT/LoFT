@@ -1,0 +1,122 @@
+{
+  "tag": "qwen_halluc_B",
+  "question": "D'apres les regles ci-dessus, dans quel dossier va le fichier 'T-rapport.png' ?\n\nRegles :\nVoici les regles de classement d'un serveur de fichiers.\nRegle 1 : tout fichier dont le nom commence par 'A-' est place dans le dossier Archives.\nRegle 2 : tout fichier dont le nom commence par 'T-' est place dans le dossier Temporaire.\nRegle 3 : tout fichier image (extension .png, .jpg ou .jpeg) est place dans le dossier Courant, meme si son nom commence par 'A-' ou 'T-'.\nRegle 4 : tout autre fichier est place dans le dossier Courant.\n\nReponds uniquement par le nom du dossier, sans explication.",
+  "source": "Voici les regles de classement d'un serveur de fichiers.\nRegle 1 : tout fichier dont le nom commence par 'A-' est place dans le dossier Archives.\nRegle 2 : tout fichier dont le nom commence par 'T-' est place dans le dossier Temporaire.\nRegle 3 : tout fichier image (extension .png, .jpg ou .jpeg) est place dans le dossier Courant, meme si son nom commence par 'A-' ou 'T-'.\nRegle 4 : tout autre fichier est place dans le dossier Courant.",
+  "expected_answer": "courant",
+  "model_path": "D:/LoFT/models/qwen3-0.6b",
+  "gen_kwargs": {
+    "max_new_tokens": 120,
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "pass_count": 10,
+    "fail_count": 0,
+    "unique_answers": 1,
+    "mean_new_tokens": 3.0,
+    "mean_tokens_per_s": 1.81,
+    "peak_wset_gb": 1.93,
+    "score": "10/10"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.69,
+      "tokens_per_s": 1.78,
+      "answer": "Courant"
+    },
+    {
+      "seed": 1,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.66,
+      "tokens_per_s": 1.81,
+      "answer": "Courant"
+    },
+    {
+      "seed": 2,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.66,
+      "tokens_per_s": 1.81,
+      "answer": "Courant"
+    },
+    {
+      "seed": 3,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.64,
+      "tokens_per_s": 1.83,
+      "answer": "Courant"
+    },
+    {
+      "seed": 4,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.64,
+      "tokens_per_s": 1.83,
+      "answer": "Courant"
+    },
+    {
+      "seed": 5,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.7,
+      "tokens_per_s": 1.76,
+      "answer": "Courant"
+    },
+    {
+      "seed": 6,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.64,
+      "tokens_per_s": 1.83,
+      "answer": "Courant"
+    },
+    {
+      "seed": 7,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.67,
+      "tokens_per_s": 1.8,
+      "answer": "Courant"
+    },
+    {
+      "seed": 8,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.63,
+      "tokens_per_s": 1.84,
+      "answer": "Courant"
+    },
+    {
+      "seed": 9,
+      "verdict": "PASS",
+      "reason": "deduit 'courant' sans recital",
+      "new_tokens": 3,
+      "generate_s": 1.64,
+      "tokens_per_s": 1.83,
+      "answer": "Courant"
+    }
+  ]
+}

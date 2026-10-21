@@ -1,0 +1,139 @@
+{
+  "tag": "en_google_d2",
+  "prompt": "A train leaves at 14:00 and travels for 2h45. What time does it arrive? Explain in short steps.",
+  "expected": "16:45",
+  "gen_kwargs": {
+    "max_new_tokens": 512,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_k": 64,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "correct": 6,
+    "invalid_time": 0,
+    "stopped_on_eos": 10,
+    "mean_new_tokens": 145.7,
+    "mean_tokens_per_s": 7.04,
+    "peak_wset_gb": 2.62
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "new_tokens": 109,
+      "stopped_on_eos": true,
+      "generate_s": 12.56,
+      "tokens_per_s": 8.68,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the minutes to hours:** 45 minutes / 60 minutes/hour = 0.75 hours\n3. **Add the travel time to the departure time:** 14:00 + 2 hours 0.75 hours = 16:45\n\n**Therefore, the train arrives at 16:45.**\n"
+    },
+    {
+      "seed": 1,
+      "new_tokens": 135,
+      "stopped_on_eos": true,
+      "generate_s": 16.01,
+      "tokens_per_s": 8.43,
+      "last_time": "16:46",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the minutes to hours:** 45 minutes / 60 minutes/hour = 0.75 hours\n3. **Add the travel time to the departure time:** 14:00 + 2 hours + 0.75 hours = 16:45.75\n4. **Round to the nearest minute:** 16:46\n\n**Therefore, the train arrives at approximately 16:46.**\n"
+    },
+    {
+      "seed": 2,
+      "new_tokens": 154,
+      "stopped_on_eos": true,
+      "generate_s": 17.11,
+      "tokens_per_s": 9.0,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the minutes to hours:** 45 minutes / 60 minutes/hour = 0.75 hours\n3. **Add the travel time to the departure time:** 14:00 + 2 hours = 16:00\n4. **Add the 0.75 hours:** 16:00 + 0.75 hours = 16:00 + 45 minutes = 16:45\n\n**Therefore, the train arrives at 16:45.** \n\n"
+    },
+    {
+      "seed": 3,
+      "new_tokens": 231,
+      "stopped_on_eos": true,
+      "generate_s": 27.95,
+      "tokens_per_s": 8.27,
+      "last_time": "21:30",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Here's how to figure out the arrival time:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the travel time to minutes:** 45 minutes * 60 seconds/minute = 2700 seconds.\n3. **Add the travel time to the departure time:** 14:00 + 2 hours 2700 seconds = 16:2700.\n4. **Convert the total time back to hours and minutes:** 16 hours and 2700 seconds / 60 seconds/minute = 16 hours and 450 minutes.\n5. **Convert 450 minutes to hours and minutes:** 450 minutes / 60 minutes/hour = 7 hours and 30 minutes.\n6. **Add the arrival time to the departure time:** 14:00 + 7 hours 30 minutes = 21:30.\n\n**Therefore, the train arrives at 21:30.**"
+    },
+    {
+      "seed": 4,
+      "new_tokens": 188,
+      "stopped_on_eos": true,
+      "generate_s": 25.35,
+      "tokens_per_s": 7.42,
+      "last_time": "14:45",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the total time to minutes:** 45 minutes * 60 seconds/minute = 2700 seconds.\n3. **Add the travel time to the departure time:** 14:00 (14:00) + 2700 seconds = 14:00 + 2700 seconds.\n4. **Convert the total time to hours and minutes:** 2700 seconds / 60 seconds/minute = 45 minutes.\n5. **Add the hours and minutes:** 14:00 + 45 minutes = 14:45\n\n**Therefore, the train arrives at 14:45.**\n"
+    },
+    {
+      "seed": 5,
+      "new_tokens": 107,
+      "stopped_on_eos": true,
+      "generate_s": 16.9,
+      "tokens_per_s": 6.33,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down:\n\n1. **Calculate the travel time:** 2 hours and 45 minutes.\n2. **Convert minutes to hours:** 45 minutes / 60 minutes/hour = 0.75 hours\n3. **Add the travel time to the departure time:** 14:00 + 2 hours 0.75 hours = 16:45\n\n**Therefore, the train arrives at 16:45.**\n"
+    },
+    {
+      "seed": 6,
+      "new_tokens": 175,
+      "stopped_on_eos": true,
+      "generate_s": 30.56,
+      "tokens_per_s": 5.73,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Here's how to figure out the arrival time:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert minutes to hours:** 45 minutes / 60 minutes/hour = 0.75 hours\n3. **Add the travel time to the departure time:** 14:00 + 2 hours + 0.75 hours = 16:00 + 0.75 hours\n4. **Convert 0.75 hours to minutes:** 0.75 hours * 60 minutes/hour = 45 minutes\n5. **Final arrival time:** 16:00 + 45 minutes = 16:45\n\n**Therefore, the train arrives at 16:45.**"
+    },
+    {
+      "seed": 7,
+      "new_tokens": 110,
+      "stopped_on_eos": true,
+      "generate_s": 20.85,
+      "tokens_per_s": 5.27,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the minutes to hours:** 45 minutes / 60 minutes/hour = 0.75 hours\n3. **Add the travel time to the departure time:** 14:00 + 2 hours 0.75 hours = 16:45\n\n**Therefore, the train arrives at 16:45.** \n"
+    },
+    {
+      "seed": 8,
+      "new_tokens": 132,
+      "stopped_on_eos": true,
+      "generate_s": 24.43,
+      "tokens_per_s": 5.4,
+      "last_time": "16:46",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Here's how to figure out the arrival time:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the minutes to hours:** 45 minutes / 60 minutes/hour = 0.75 hours\n3. **Add the travel time to the departure time:** 14:00 + 2 hours + 0.75 hours = 16:45.75 \n4. **Round to the nearest minute:** 16:46\n\n**Therefore, the train arrives at approximately 16:46.**"
+    },
+    {
+      "seed": 9,
+      "new_tokens": 116,
+      "stopped_on_eos": true,
+      "generate_s": 19.87,
+      "tokens_per_s": 5.84,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break down this problem step-by-step:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the total time to minutes:** 45 minutes * 60 seconds/minute = 2700 seconds.\n3. **Add the travel time to the departure time:** 14:00 + 2h 45m = 16:45\n\n**Therefore, the train arrives at 16:45.** \n"
+    }
+  ]
+}

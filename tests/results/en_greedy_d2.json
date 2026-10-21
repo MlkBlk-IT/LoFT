@@ -1,0 +1,36 @@
+{
+  "tag": "en_greedy_d2",
+  "prompt": "A train leaves at 14:00 and travels for 2h45. What time does it arrive? Explain in short steps.",
+  "expected": "16:45",
+  "gen_kwargs": {
+    "max_new_tokens": 512,
+    "do_sample": false
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 1,
+    "correct": 1,
+    "invalid_time": 0,
+    "stopped_on_eos": 1,
+    "mean_new_tokens": 121.0,
+    "mean_tokens_per_s": 10.34,
+    "peak_wset_gb": 2.6
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "new_tokens": 121,
+      "stopped_on_eos": true,
+      "generate_s": 11.71,
+      "tokens_per_s": 10.34,
+      "last_time": "16:45",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Okay, let's break this down step-by-step:\n\n1. **Calculate the total travel time:** 2 hours and 45 minutes.\n2. **Convert the total time to minutes:** 45 minutes * 60 seconds/minute = 2700 seconds.\n3. **Add the travel time to the departure time:** 14:00 (14:00) + 2h 45m = 16:45\n\n**Therefore, the train arrives at 16:45.**\n"
+    }
+  ]
+}

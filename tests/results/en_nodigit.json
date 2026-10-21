@@ -1,0 +1,159 @@
+{
+  "tag": "en_nodigit",
+  "prompt": "Rules: Answer in at most 3 sentences. Do NOT write any digit (0-9). Write every number as a word.\n\nProblem: A website slows down every weekday at 9:00 for 10 minutes. CPU stays at 20% and database queries are fast, but only the login page fails. The login service accepts at most 50 simultaneous sessions. At 9:00, a newsletter with a \"Log in\" link is sent to 5,000 people.\n\nTask: Give the cause and the fix.\n\nReminder: at most 3 sentences, zero digits.",
+  "gen_kwargs": {
+    "max_new_tokens": 512,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_k": 64,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "digits_ok": 9,
+    "sentences_ok": 10,
+    "both_ok": 9,
+    "stopped_on_eos": 10,
+    "mean_new_tokens": 48.0,
+    "mean_tokens_per_s": 6.92,
+    "peak_wset_gb": 2.62
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "new_tokens": 50,
+      "stopped_on_eos": true,
+      "generate_s": 7.04,
+      "tokens_per_s": 7.1,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The slowdown is caused by the website’s scheduling, hindering login service performance. To resolve this, optimize database queries and scale the login service’s capacity to handle the increased traffic. This will improve responsiveness and ensure all sessions are processed efficiently."
+    },
+    {
+      "seed": 1,
+      "new_tokens": 49,
+      "stopped_on_eos": true,
+      "generate_s": 6.83,
+      "tokens_per_s": 7.17,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The website’s slowdown is likely due to a resource bottleneck, preventing efficient processing.  A fix would involve optimizing code and database queries to improve performance.  Increasing resources or implementing caching strategies could resolve the issue and ensure smooth operation."
+    },
+    {
+      "seed": 2,
+      "new_tokens": 43,
+      "stopped_on_eos": true,
+      "generate_s": 6.26,
+      "tokens_per_s": 6.87,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The website slows down due to a scheduled maintenance period.  A faulty login page is the root cause, causing it to fail.  Fixing the login service with better code and testing will resolve the issue."
+    },
+    {
+      "seed": 3,
+      "new_tokens": 47,
+      "stopped_on_eos": true,
+      "generate_s": 6.72,
+      "tokens_per_s": 7.0,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The slow website is caused by the weekday slowdown, impacting login requests. To fix this, the newsletter’s distribution system should be optimized to handle the increased traffic.  A revised routing strategy will improve performance and prevent login failures."
+    },
+    {
+      "seed": 4,
+      "new_tokens": 45,
+      "stopped_on_eos": true,
+      "generate_s": 6.52,
+      "tokens_per_s": 6.9,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The website’s slowdown is caused by a surge in login requests. To address this, implement a caching mechanism to reduce database load and handle the increased traffic. This will improve performance and maintain the service’s capacity."
+    },
+    {
+      "seed": 5,
+      "new_tokens": 45,
+      "stopped_on_eos": true,
+      "generate_s": 6.52,
+      "tokens_per_s": 6.9,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The slowdown is caused by the website’s scheduling, limiting server resources. Fixing it involves optimizing database queries and increasing CPU utilization to handle the increased load. This will improve login service performance and accommodate the larger user base."
+    },
+    {
+      "seed": 6,
+      "new_tokens": 54,
+      "stopped_on_eos": true,
+      "generate_s": 7.46,
+      "tokens_per_s": 7.24,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The website’s slow response is caused by the weekday slowdown.  A fix involves optimizing the login service’s performance and increasing the number of simultaneous sessions to handle the increased load.  This will prevent the login page from failing and ensure a smoother user experience."
+    },
+    {
+      "seed": 7,
+      "new_tokens": 55,
+      "stopped_on_eos": true,
+      "generate_s": 7.67,
+      "tokens_per_s": 7.17,
+      "n_digits": 2,
+      "n_sentences": 3,
+      "digits_ok": false,
+      "sentences_ok": true,
+      "both_ok": false,
+      "answer": "The slowdown is caused by the website’s slow processing, impacting the login page.  Fixing the issue involves optimizing the database queries and increasing server capacity to handle the increased login requests. This will resolve the problem and allow for the expected 50 simultaneous sessions."
+    },
+    {
+      "seed": 8,
+      "new_tokens": 46,
+      "stopped_on_eos": true,
+      "generate_s": 7.08,
+      "tokens_per_s": 6.5,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The slowdown is caused by the website’s schedule, limiting the number of simultaneous logins. To address this, optimize the login service’s performance and increase session limits.  This will improve the user experience and reduce congestion."
+    },
+    {
+      "seed": 9,
+      "new_tokens": 46,
+      "stopped_on_eos": true,
+      "generate_s": 7.23,
+      "tokens_per_s": 6.36,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "The website’s slowdown is caused by a system overload during weekday hours. A fix involves optimizing database queries and scaling the CPU to handle the increased load. This will improve login service performance and accommodate the newsletter’s requests."
+    }
+  ]
+}

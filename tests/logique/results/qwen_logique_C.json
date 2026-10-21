@@ -1,0 +1,131 @@
+{
+  "tag": "qwen_logique_C",
+  "question": "Une entreprise doit choisir un seul lot a envoyer. Ses criteres sont :\n1. Le lot doit etre de categorie 'fragile'.\n2. Le lot doit peser 15 kg ou moins.\n3. Le lot doit etre destine a l'Europe.\n\nInventaire :\nLot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 16 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  |  9 kg | Asie\n\nQuel lot faut-il choisir ? Reponds uniquement par la lettre du lot.",
+  "inventory": "Lot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 16 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  |  9 kg | Asie",
+  "criteres_inverses": false,
+  "model_path": "D:/LoFT/models/qwen3-0.6b",
+  "expected_answer": "C",
+  "diagnostic": {
+    "A": "categorie fragile non imposee (critere 1)",
+    "B": "categorie fragile non imposee (critere 1)",
+    "E": "categorie fragile non imposee (critere 1)",
+    "D": "poids <= 15 kg non verifie (critere 2)",
+    "F": "destination Europe non verifiee (critere 3)"
+  },
+  "gen_kwargs": {
+    "max_new_tokens": 40,
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "pass_count": 10,
+    "fail_count": 0,
+    "unique_answers": 4,
+    "answer_distribution": "{\"C\": 10}",
+    "mean_new_tokens": 15.1,
+    "mean_tokens_per_s": 4.75,
+    "peak_wset_gb": 1.94,
+    "score": "10/10"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 13,
+      "generate_s": 2.7,
+      "tokens_per_s": 4.81,
+      "answer": "Le lot qui doit être choisi est **C**."
+    },
+    {
+      "seed": 1,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 14,
+      "generate_s": 2.74,
+      "tokens_per_s": 5.11,
+      "answer": "Le lot que l'entreprise doit choisir est **C**."
+    },
+    {
+      "seed": 2,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 10,
+      "generate_s": 2.37,
+      "tokens_per_s": 4.23,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 3,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 14,
+      "generate_s": 2.81,
+      "tokens_per_s": 4.98,
+      "answer": "Le lot que l'entreprise doit choisir est **C**."
+    },
+    {
+      "seed": 4,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 10,
+      "generate_s": 2.49,
+      "tokens_per_s": 4.02,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 5,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 10,
+      "generate_s": 2.41,
+      "tokens_per_s": 4.15,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 6,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 14,
+      "generate_s": 3.0,
+      "tokens_per_s": 4.66,
+      "answer": "Le lot que l'entreprise doit choisir est **C**."
+    },
+    {
+      "seed": 7,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 13,
+      "generate_s": 3.07,
+      "tokens_per_s": 4.23,
+      "answer": "Le lot qui doit être choisi est **C**."
+    },
+    {
+      "seed": 8,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 40,
+      "generate_s": 5.58,
+      "tokens_per_s": 7.17,
+      "answer": "Le lot à choisir est celui qui correspond à la condition la plus restrictive. Les critères sont :\n\n1. Categorie 'fragile' (C et D) ou 'standard' (A,"
+    },
+    {
+      "seed": 9,
+      "verdict": "PASS",
+      "reason": "lot C, les 3 criteres respectes",
+      "new_tokens": 13,
+      "generate_s": 3.16,
+      "tokens_per_s": 4.11,
+      "answer": "Le lot qui doit être choisi est **C**."
+    }
+  ]
+}

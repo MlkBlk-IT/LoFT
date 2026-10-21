@@ -1,0 +1,139 @@
+{
+  "tag": "sweep_d1",
+  "prompt": "Un train part à 14h20 et roule 2h30. À quelle heure arrive-t-il ? Explique en étapes courtes.",
+  "expected": "16:50",
+  "gen_kwargs": {
+    "max_new_tokens": 512,
+    "do_sample": true,
+    "temperature": 0.5,
+    "top_k": 64,
+    "top_p": 0.95,
+    "repetition_penalty": 1.05
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "correct": 1,
+    "invalid_time": 0,
+    "stopped_on_eos": 10,
+    "mean_new_tokens": 132.5,
+    "mean_tokens_per_s": 7.23,
+    "peak_wset_gb": 2.63
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "new_tokens": 121,
+      "stopped_on_eos": true,
+      "generate_s": 13.62,
+      "tokens_per_s": 8.88,
+      "last_time": "17:50",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Déterminer la durée du trajet :** Le train roule pendant 3 heures et 30 minutes (2h30).\n2. **Additionner la durée du trajet à l'heure de départ :** 14h20 + 3h30 = 17h50.\n3. **Conclusion :** Le train arrive à 17h50.\n\n**Réponse :** Le train arrive à 17h50.\n"
+    },
+    {
+      "seed": 1,
+      "new_tokens": 129,
+      "stopped_on_eos": true,
+      "generate_s": 17.24,
+      "tokens_per_s": 7.48,
+      "last_time": "17:50",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Calculer le temps de trajet :** 2 heures et 30 minutes.\n2. **Additionner le temps de départ au temps de trajet :** 14h20 + 2h30 = 16h50.\n3. **Ajouter le temps de trajet à l'heure de départ :** 16h50 + 1h00 = 17h50.\n\n**L'heure d'arrivée du train est donc 17h50.**"
+    },
+    {
+      "seed": 2,
+      "new_tokens": 137,
+      "stopped_on_eos": true,
+      "generate_s": 15.9,
+      "tokens_per_s": 8.62,
+      "last_time": "17:50",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Déterminer la durée du trajet :** Le train roule pendant 3 heures et 30 minutes (2h30).\n2. **Additionner l'heure de départ et la durée du trajet :** 14h20 + 3h30 = 17h50.\n3. **Ajouter l'heure de départ :** 17h50 + 0h30 = 17h50.\n\n**L'heure d'arrivée du train est donc 17h50.**"
+    },
+    {
+      "seed": 3,
+      "new_tokens": 133,
+      "stopped_on_eos": true,
+      "generate_s": 16.02,
+      "tokens_per_s": 8.3,
+      "last_time": "16:50",
+      "valid_time": true,
+      "correct": true,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Calculer le temps de trajet:** Le train roule pendant 2 heures et 30 minutes (2h30).\n2. **Déterminer l'heure de départ:** Le train part à 14h20.\n3. **Ajouter le temps de trajet:**  14h20 + 2h30 = 16h50.\n4. **Conclusion:** Le train arrive à 16h50.\n\n**Réponse:** Le train arrive à 16h50."
+    },
+    {
+      "seed": 4,
+      "new_tokens": 130,
+      "stopped_on_eos": true,
+      "generate_s": 16.19,
+      "tokens_per_s": 8.03,
+      "last_time": "17:50",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Déterminer la durée du trajet :** Le train roule pendant 3 heures et 30 minutes (2h30).\n2. **Additionner l'heure de départ au temps de trajet :** 14h20 + 2h30 = 16h50\n3. **Ajouter l'heure de départ :** 16h50 + 1 heure = 17h50\n\n**Réponse :** Le train arrive à 17h50."
+    },
+    {
+      "seed": 5,
+      "new_tokens": 138,
+      "stopped_on_eos": true,
+      "generate_s": 20.28,
+      "tokens_per_s": 6.8,
+      "last_time": "17:50",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Déterminer la durée du trajet :** Le train roule pendant 3 heures et 30 minutes (2h30).\n2. **Calculer l'heure de départ :** Le train part à 14h20.\n3. **Ajouter la durée du trajet :** 14h20 + 3h30 = 17h50.\n4. **Conclusion :** Le train arrive à 17h50.\n\n**Réponse : Le train arrive à 17h50.**\n"
+    },
+    {
+      "seed": 6,
+      "new_tokens": 133,
+      "stopped_on_eos": true,
+      "generate_s": 20.23,
+      "tokens_per_s": 6.57,
+      "last_time": "17:20",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Déterminer la durée du trajet :** Le train roule pendant 3 heures et 30 minutes (2h30).\n2. **Additionner l'heure de départ au temps de trajet :** 14h20 + 2h30 = 16h50.\n3. **Ajouter l'heure de départ :** 16h50 + 30 minutes = 17h20.\n\n**Réponse :** Le train arrive à 17h20."
+    },
+    {
+      "seed": 7,
+      "new_tokens": 139,
+      "stopped_on_eos": true,
+      "generate_s": 24.56,
+      "tokens_per_s": 5.66,
+      "last_time": "17:50",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Déterminer la durée du trajet :** Le train roule pendant 3 heures et 30 minutes (2h30).\n2. **Calculer l'heure de départ :** Le train part à 14h20.\n3. **Ajouter la durée du trajet :** 14h20 + 3h30 = 17h50.\n4. **Conclusion :** Le train arrive à 17h50.\n\n**Réponse :** Le train arrive à 17h50.\n"
+    },
+    {
+      "seed": 8,
+      "new_tokens": 129,
+      "stopped_on_eos": true,
+      "generate_s": 22.94,
+      "tokens_per_s": 5.62,
+      "last_time": "21:20",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1. **Déterminer la durée du trajet :** Le train roule pendant 3 heures et 30 minutes (2 heures 30 minutes).\n2. **Additionner l'heure de départ :** 14h20 + 3h30 = 17h50\n3. **Ajouter la durée du trajet :** 17h50 + 3h30 = 21h20\n\n**Réponse :** Le train arrive à 21h20."
+    },
+    {
+      "seed": 9,
+      "new_tokens": 136,
+      "stopped_on_eos": true,
+      "generate_s": 21.35,
+      "tokens_per_s": 6.37,
+      "last_time": "18:10",
+      "valid_time": true,
+      "correct": false,
+      "answer": "Voici les étapes pour calculer l'heure d'arrivée du train :\n\n1.  **Calculer le temps de trajet :** Le train roule pendant 2 heures et 30 minutes (2h30).\n2.  **Additionner le temps de trajet au départ :** 14h20 + 2h30 = 16h50\n3.  **Ajouter le temps de trajet à l'heure de départ :** 16h50 + 1h20 = 18h10\n\n**Réponse :** Le train arrive à 18h10."
+    }
+  ]
+}

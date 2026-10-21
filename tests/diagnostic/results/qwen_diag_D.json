@@ -1,0 +1,138 @@
+{
+  "tag": "qwen_diag_D",
+  "question": "Une entreprise doit choisir un seul lot a envoyer. Ses criteres sont :\n1. Le lot doit etre de categorie 'fragile'.\n2. Le lot doit peser 15 kg ou moins.\n3. Le lot doit etre destine a l'Europe.\n4. Le lot doit peser plus de 9 kg.\n\nInventaire :\nLot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 13 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  | 11 kg | Asie\n\nQuel lot faut-il choisir ? Reponds uniquement par la lettre du lot.",
+  "inventory": "Lot | Categorie | Poids | Destination\n A  | standard | 12 kg | Europe\n B  | standard | 15 kg | Europe\n C  | fragile  |  9 kg | Europe\n D  | fragile  | 13 kg | Europe\n E  | standard |  9 kg | Europe\n F  | fragile  | 11 kg | Asie",
+  "expected_answer": "D",
+  "diagnostic": {
+    "B": "reponse memorisee du test C (aucun recalcul)",
+    "C": "a applique la regle 4 a l'envers, ou ignore le poids",
+    "E": "filtre par poids seul, ignore la categorie",
+    "A": "aucun critere de poids applique",
+    "F": "filtre par categorie seule, ignore le critere 3"
+  },
+  "model_path": "D:/LoFT/models/qwen3-0.6b",
+  "gen_kwargs": {
+    "max_new_tokens": 40,
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "pass_count": 0,
+    "answer_distribution": "{\"A\": 1, \"C\": 9}",
+    "unique_answers": 5,
+    "mean_new_tokens": 14.9,
+    "peak_wset_gb": 1.94,
+    "score": "0/10"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 13,
+      "generate_s": 2.54,
+      "tokens_per_s": 5.12,
+      "answer": "Le lot qui doit être choisi est **C**."
+    },
+    {
+      "seed": 1,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 14,
+      "generate_s": 2.67,
+      "tokens_per_s": 5.24,
+      "answer": "Le lot que l'entreprise doit choisir est **C**."
+    },
+    {
+      "seed": 2,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 10,
+      "generate_s": 2.32,
+      "tokens_per_s": 4.32,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 3,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 14,
+      "generate_s": 2.66,
+      "tokens_per_s": 5.26,
+      "answer": "Le lot que l'entreprise doit choisir est **C**."
+    },
+    {
+      "seed": 4,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 10,
+      "generate_s": 2.35,
+      "tokens_per_s": 4.26,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 5,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 10,
+      "generate_s": 2.34,
+      "tokens_per_s": 4.27,
+      "answer": "Le lot à choisir est **C**."
+    },
+    {
+      "seed": 6,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 12,
+      "generate_s": 2.46,
+      "tokens_per_s": 4.87,
+      "answer": "Le lot que vous devez choisir est **C**."
+    },
+    {
+      "seed": 7,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 13,
+      "generate_s": 2.61,
+      "tokens_per_s": 4.99,
+      "answer": "Le lot qui doit être choisi est **C**."
+    },
+    {
+      "seed": 8,
+      "answer_letter": "A",
+      "verdict": "FAIL",
+      "reason": "aucun critere de poids applique",
+      "new_tokens": 40,
+      "generate_s": 4.69,
+      "tokens_per_s": 8.54,
+      "answer": "Le lot à choisir est celui qui correspond à la condition 1, 2, 3 et 4. En examinant les données fournies :\n\n- **Categorie :** 'fragile"
+    },
+    {
+      "seed": 9,
+      "answer_letter": "C",
+      "verdict": "FAIL",
+      "reason": "a applique la regle 4 a l'envers, ou ignore le poids",
+      "new_tokens": 13,
+      "generate_s": 2.6,
+      "tokens_per_s": 5.0,
+      "answer": "Le lot qui doit être choisi est **C**."
+    }
+  ]
+}

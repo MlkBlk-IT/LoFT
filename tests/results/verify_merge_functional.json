@@ -1,0 +1,54 @@
+{
+  "base": "D:\\LoFT\\models\\qwen3-1.7b",
+  "merged": "D:\\LoFT\\models\\qwen3-1.7b-merged1",
+  "adapter": "D:\\LoFT\\runs\\autodistill_17b\\adapter",
+  "prompts": [
+    "Une cantine achète 4 packs de jus à 6,25 € le pack et 3 plateaux de fruits à 8,40 €. Elle paie avec deux billets de 50 €. Combien reçoit-elle de monnaie ?",
+    "Calcule 17 × 23 puis explique la méthode."
+  ],
+  "results": [
+    {
+      "peft_vs_merged": {
+        "prompt": "Une cantine achète 4 packs de jus à 6,25 € le pack et 3 plat",
+        "a": "base+adapter",
+        "b": "merged",
+        "max_abs_logit_diff": 0.25,
+        "mean_abs_logit_diff": 0.040126,
+        "argmax_equal": true,
+        "top5_overlap": 4
+      },
+      "base_vs_merged": {
+        "prompt": "Une cantine achète 4 packs de jus à 6,25 € le pack et 3 plat",
+        "a": "base",
+        "b": "merged",
+        "max_abs_logit_diff": 3.269531,
+        "mean_abs_logit_diff": 1.043614,
+        "argmax_equal": true,
+        "top5_overlap": 3
+      }
+    },
+    {
+      "peft_vs_merged": {
+        "prompt": "Calcule 17 × 23 puis explique la méthode.",
+        "a": "base+adapter",
+        "b": "merged",
+        "max_abs_logit_diff": 0.1875,
+        "mean_abs_logit_diff": 0.031351,
+        "argmax_equal": true,
+        "top5_overlap": 5
+      },
+      "base_vs_merged": {
+        "prompt": "Calcule 17 × 23 puis explique la méthode.",
+        "a": "base",
+        "b": "merged",
+        "max_abs_logit_diff": 2.898438,
+        "mean_abs_logit_diff": 1.074766,
+        "argmax_equal": true,
+        "top5_overlap": 4
+      }
+    }
+  ],
+  "max_diff_peft_vs_merged": 0.25,
+  "max_diff_base_vs_merged": 3.269531,
+  "verdict": "MERGE_SUSPECT"
+}

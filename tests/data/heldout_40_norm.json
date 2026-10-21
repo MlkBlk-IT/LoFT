@@ -1,0 +1,410 @@
+{
+  "metadata": {
+    "total": 40,
+    "lang": "fr",
+    "normalized_by": "normalize_heldout.py",
+    "source": "raisonnement_40_heldout.json"
+  },
+  "items": [
+    {
+      "id": "q01",
+      "category": "math",
+      "cot_style": "numéroté",
+      "question": "Un cahier coûte 2,40 € et un stylo 1,15 €. Combien coûtent 5 cahiers et 4 stylos ?",
+      "cot": "1. 5 × 2,40 = 12,00.\n2. 4 × 1,15 = 4,60.\n3. 12,00 + 4,60 = 16,60.\n4. Réponse : 16,60 €.",
+      "answer": "16,60",
+      "check": "calculer 5*2.40 + 4*1.15",
+      "answer_original": "16,60 €"
+    },
+    {
+      "id": "q02",
+      "category": "logique",
+      "cot_style": "question-réponse",
+      "question": "Tous les chats sont des mammifères. Tous les mammifères respirent. Rex est un chat. Rex respire-t-il ?",
+      "cot": "Rex est un mammifère ? Oui. Un mammifère respire ? Oui. Donc Rex respire. Réponse : Oui.",
+      "answer": "Oui",
+      "check": "enchaîner les deux implications (syllogisme)",
+      "answer_original": "Oui"
+    },
+    {
+      "id": "q03",
+      "category": "planification",
+      "cot_style": "calcul-inline",
+      "question": "Une réunion commence à 14:35 et dure 1 h 50. À quelle heure finit-elle ?",
+      "cot": "14:35 + 1:00 = 15:35 ; 15:35 + 0:50 = 16:25. Réponse : 16:25.",
+      "answer": "16:25",
+      "check": "ajouter 1:50 à 14:35",
+      "answer_original": "16:25"
+    },
+    {
+      "id": "q04",
+      "category": "multi_hop",
+      "cot_style": "élimination",
+      "question": "Léa est plus grande que Tom. Tom est plus grand que Sam. Marc est plus petit que Sam. Qui est le plus grand ?",
+      "cot": "On écarte Marc, Sam et Tom : tous sont plus petits que Léa. Réponse : Léa.",
+      "answer": "Léa",
+      "check": "ordonner Léa > Tom > Sam > Marc",
+      "answer_original": "Léa"
+    },
+    {
+      "id": "q05",
+      "category": "induction",
+      "cot_style": "paragraphe",
+      "question": "Quel est le terme suivant : 3, 6, 12, 24, … ?",
+      "cot": "Chaque terme est le double du précédent : 3, 6, 12, 24, puis 24 × 2 = 48. Réponse : 48.",
+      "answer": "48",
+      "check": "calculer 24*2",
+      "answer_original": "48"
+    },
+    {
+      "id": "q06",
+      "category": "verbal",
+      "cot_style": "tableau",
+      "question": "Quel mot est le contraire de « rapide » : lent, vif ou agile ?",
+      "cot": "Mot | Lien\nlent | contraire\nvif | synonyme\nagile | synonyme\nRéponse : lent.",
+      "answer": "lent",
+      "check": "identifier l'antonyme de rapide",
+      "answer_original": "lent"
+    },
+    {
+      "id": "q07",
+      "category": "spatio_temporel",
+      "cot_style": "arrière",
+      "question": "Un trajet de 2 h 40 se termine à 9:15. À quelle heure est-on parti ?",
+      "cot": "Arrivée 9:15. On remonte : 9:15 − 2:00 = 7:15, puis − 0:40 = 6:35. Réponse : 6:35.",
+      "answer": "6:35",
+      "check": "soustraire 2:40 de 9:15",
+      "answer_original": "6:35"
+    },
+    {
+      "id": "q08",
+      "category": "scientifique",
+      "cot_style": "assertif",
+      "question": "Dans quel état se trouve l'eau pure à −5 °C (pression normale) ?",
+      "cot": "L'eau gèle à 0 °C. À −5 °C, elle est sous ce seuil, donc elle est solide. Réponse : solide.",
+      "answer": "solide",
+      "check": "comparer −5 °C au point de congélation (0 °C)",
+      "answer_original": "solide"
+    },
+    {
+      "id": "q09",
+      "category": "code",
+      "cot_style": "numéroté",
+      "question": "Que affiche : x = 4 ; y = x * 3 - 2 ; print(y * 2) ?",
+      "cot": "1. x = 4.\n2. y = 4 × 3 − 2 = 10.\n3. y × 2 = 20.\n4. Réponse : 20.",
+      "answer": "20",
+      "check": "évaluer (4*3-2)*2",
+      "answer_original": "20"
+    },
+    {
+      "id": "q10",
+      "category": "math",
+      "cot_style": "question-réponse",
+      "question": "Un article coûte 80 € et subit une réduction de 15 %. Quel est le prix final ?",
+      "cot": "Réduction : 15 % de 80 ? 12. Prix final : 80 − 12 = 68. Réponse : 68 €.",
+      "answer": "68",
+      "check": "calculer 80 - 0.15*80",
+      "answer_original": "68 €"
+    },
+    {
+      "id": "q11",
+      "category": "logique",
+      "cot_style": "calcul-inline",
+      "question": "S'il pleut, la rue est mouillée. La rue est sèche. Pleut-il ?",
+      "cot": "pleut → mouillée ; sèche = non mouillée ⇒ non pluie. Réponse : Non.",
+      "answer": "Non",
+      "check": "appliquer le modus tollens",
+      "answer_original": "Non"
+    },
+    {
+      "id": "q12",
+      "category": "planification",
+      "cot_style": "élimination",
+      "question": "Cinq créneaux : 8h, 9h, 10h, 11h, 12h. Sont occupés 8h, 9h, 11h et 12h. Quel créneau est libre ?",
+      "cot": "On retire 8h, 9h, 11h et 12h. Il reste 10h. Réponse : 10h.",
+      "answer": "10h",
+      "check": "retirer les créneaux occupés de la liste des cinq",
+      "answer_original": "10h"
+    },
+    {
+      "id": "q13",
+      "category": "multi_hop",
+      "cot_style": "paragraphe",
+      "question": "Le voisin d'Anna est Bob. Bob possède un chat nommé Mia. Quel est le nom de l'animal du voisin d'Anna ?",
+      "cot": "Le voisin d'Anna est Bob. Bob a un chat. Ce chat s'appelle Mia. Réponse : Mia.",
+      "answer": "Mia",
+      "check": "suivre voisin d'Anna → Bob → animal de Bob",
+      "answer_original": "Mia"
+    },
+    {
+      "id": "q14",
+      "category": "math",
+      "cot_style": "tableau",
+      "question": "Un rectangle mesure 12 m sur 7 m. Quel est son périmètre ?",
+      "cot": "Étape | Valeur\nL + l | 12 + 7 = 19\n× 2 | 38\nRéponse : 38 m.",
+      "answer": "38",
+      "check": "calculer 2*(12+7)",
+      "answer_original": "38 m"
+    },
+    {
+      "id": "q15",
+      "category": "induction",
+      "cot_style": "arrière",
+      "question": "Quel est le terme suivant : 2, 5, 8, 11, … ?",
+      "cot": "Écarts : 5−2, 8−5, 11−8 valent tous 3. Suivant : 11 + 3 = 14. Réponse : 14.",
+      "answer": "14",
+      "check": "ajouter la raison 3 au dernier terme 11",
+      "answer_original": "14"
+    },
+    {
+      "id": "q16",
+      "category": "verbal",
+      "cot_style": "assertif",
+      "question": "Quel est l'intrus : pomme, poire, carotte, banane ?",
+      "cot": "Pomme, poire et banane sont des fruits. La carotte est un légume. Réponse : carotte.",
+      "answer": "carotte",
+      "check": "classer chaque mot en fruit ou légume",
+      "answer_original": "carotte"
+    },
+    {
+      "id": "q17",
+      "category": "planification",
+      "cot_style": "numéroté",
+      "question": "Un gâteau cuit 45 min et doit être prêt à 18:30. À quelle heure au plus tard faut-il l'enfourner ?",
+      "cot": "1. Prêt à 18:30.\n2. 18:30 − 0:45 = 17:45.\n3. Réponse : 17:45.",
+      "answer": "17:45",
+      "check": "soustraire 0:45 de 18:30",
+      "answer_original": "17:45"
+    },
+    {
+      "id": "q18",
+      "category": "code",
+      "cot_style": "question-réponse",
+      "question": "Que affiche : s = 0 ; for i in range(1, 4): s += i ; print(s) ?",
+      "cot": "Valeurs de i ? 1, 2, 3. Somme ? 1 + 2 + 3 = 6. Réponse : 6.",
+      "answer": "6",
+      "check": "sommer les entiers de range(1,4), borne 4 exclue",
+      "answer_original": "6"
+    },
+    {
+      "id": "q19",
+      "category": "spatio_temporel",
+      "cot_style": "calcul-inline",
+      "question": "Un avion décolle à 7:50 et vole 3 h 25 (même heure locale à l'arrivée). Quelle est l'heure d'arrivée ?",
+      "cot": "7:50 + 3:25 = 11:15 = 11:15. Réponse : 11:15.",
+      "answer": "11:15",
+      "check": "ajouter 3:25 à 7:50",
+      "answer_original": "11:15"
+    },
+    {
+      "id": "q20",
+      "category": "scientifique",
+      "cot_style": "élimination",
+      "question": "Quelle planète est la plus proche du Soleil : Mars, Mercure, Vénus ou la Terre ?",
+      "cot": "Terre, Mars et Vénus sont plus loin du Soleil que Mercure. On les écarte. Réponse : Mercure.",
+      "answer": "Mercure",
+      "check": "ordre des planètes à partir du Soleil",
+      "answer_original": "Mercure"
+    },
+    {
+      "id": "q21",
+      "category": "logique",
+      "cot_style": "paragraphe",
+      "question": "Le voleur est Paul ou Zoé. Paul était absent ce jour-là. Qui est le voleur ?",
+      "cot": "Le voleur est Paul ou Zoé. Paul était absent, il est donc innocent. Il reste Zoé. Réponse : Zoé.",
+      "answer": "Zoé",
+      "check": "appliquer le syllogisme disjonctif en écartant Paul",
+      "answer_original": "Zoé"
+    },
+    {
+      "id": "q22",
+      "category": "math",
+      "cot_style": "tableau",
+      "question": "Quelle est la moyenne des notes 12, 15, 18 et 15 ?",
+      "cot": "Notes | 12, 15, 18, 15\nSomme | 60\nMoyenne | 60 ÷ 4 = 15\nRéponse : 15.",
+      "answer": "15",
+      "check": "calculer (12+15+18+15)/4",
+      "answer_original": "15"
+    },
+    {
+      "id": "q23",
+      "category": "planification",
+      "cot_style": "arrière",
+      "question": "Un examen est à 14:00. Le trajet dure 50 min et la préparation 25 min. À quelle heure commencer à se préparer ?",
+      "cot": "Examen 14:00. − 0:50 = 13:10 (départ). − 0:25 = 12:45. Réponse : 12:45.",
+      "answer": "12:45",
+      "check": "calculer 14:00 - 0:50 - 0:25",
+      "answer_original": "12:45"
+    },
+    {
+      "id": "q24",
+      "category": "multi_hop",
+      "cot_style": "assertif",
+      "question": "Lucas est le frère de Maya. Maya est la mère de Noé. Quel lien y a-t-il entre Lucas et Noé ?",
+      "cot": "Lucas est le frère de Maya, mère de Noé. Lucas est donc l'oncle de Noé. Réponse : oncle.",
+      "answer": "oncle",
+      "check": "frère de la mère = oncle",
+      "answer_original": "oncle"
+    },
+    {
+      "id": "q25",
+      "category": "code",
+      "cot_style": "numéroté",
+      "question": "Que affiche : print(len('bonjour') * 2) ?",
+      "cot": "1. 'bonjour' a 7 lettres.\n2. 7 × 2 = 14.\n3. Réponse : 14.",
+      "answer": "14",
+      "check": "compter les lettres de bonjour puis multiplier par 2",
+      "answer_original": "14"
+    },
+    {
+      "id": "q26",
+      "category": "induction",
+      "cot_style": "question-réponse",
+      "question": "Quel est le terme suivant : 1, 4, 9, 16, … ?",
+      "cot": "Que sont 1, 4, 9, 16 ? Des carrés : 1², 2², 3², 4². Suivant : 5² = 25. Réponse : 25.",
+      "answer": "25",
+      "check": "calculer 5*5",
+      "answer_original": "25"
+    },
+    {
+      "id": "q27",
+      "category": "spatio_temporel",
+      "cot_style": "calcul-inline",
+      "question": "Il est 21:20. Un match a commencé il y a 1 h 45. À quelle heure a-t-il commencé ?",
+      "cot": "21:20 − 1:00 = 20:20 ; 20:20 − 0:45 = 19:35. Réponse : 19:35.",
+      "answer": "19:35",
+      "check": "soustraire 1:45 de 21:20",
+      "answer_original": "19:35"
+    },
+    {
+      "id": "q28",
+      "category": "scientifique",
+      "cot_style": "élimination",
+      "question": "Quel gaz les plantes absorbent-elles pour la photosynthèse : oxygène, azote ou dioxyde de carbone ?",
+      "cot": "L'oxygène est rejeté : on l'écarte. L'azote n'y sert pas. Reste le CO2. Réponse : dioxyde de carbone.",
+      "answer": "dioxyde de carbone",
+      "check": "rappeler l'équation CO2 + eau + lumière → glucose + O2",
+      "answer_original": "dioxyde de carbone"
+    },
+    {
+      "id": "q29",
+      "category": "math",
+      "cot_style": "paragraphe",
+      "question": "Un robinet débite 6 L par minute. Combien de minutes pour remplir 90 L ?",
+      "cot": "Le robinet donne 6 L chaque minute. Pour 90 L, il faut 90 ÷ 6 = 15 minutes. Réponse : 15 minutes.",
+      "answer": "15",
+      "check": "calculer 90/6",
+      "answer_original": "15 minutes"
+    },
+    {
+      "id": "q30",
+      "category": "verbal",
+      "cot_style": "tableau",
+      "question": "Quel est le pluriel de « cheval » ?",
+      "cot": "Singulier | Pluriel\ncheval | chevaux\nRègle | -al devient -aux\nRéponse : chevaux.",
+      "answer": "chevaux",
+      "check": "appliquer la règle -al → -aux",
+      "answer_original": "chevaux"
+    },
+    {
+      "id": "q31",
+      "category": "logique",
+      "cot_style": "arrière",
+      "question": "Si on a un billet, on entre. Sam n'est pas entré. Sam avait-il un billet ?",
+      "cot": "Sam n'est pas entré. S'il avait eu un billet, il serait entré. Donc pas de billet. Réponse : Non.",
+      "answer": "Non",
+      "check": "appliquer le modus tollens",
+      "answer_original": "Non"
+    },
+    {
+      "id": "q32",
+      "category": "planification",
+      "cot_style": "assertif",
+      "question": "Trois tâches de 20, 35 et 15 min s'enchaînent à partir de 9:10. À quelle heure finissent-elles ?",
+      "cot": "20 + 35 + 15 = 70 min, soit 1:10. 9:10 + 1:10 = 10:20. Réponse : 10:20.",
+      "answer": "10:20",
+      "check": "calculer 9:10 + (20+35+15) minutes",
+      "answer_original": "10:20"
+    },
+    {
+      "id": "q33",
+      "category": "multi_hop",
+      "cot_style": "numéroté",
+      "question": "Eva a 14 ans. Zoé a 2 ans de moins qu'Eva. Ali a 3 ans de plus que Zoé. Quel âge a Ali ?",
+      "cot": "1. Zoé = 14 − 2 = 12.\n2. Ali = 12 + 3 = 15.\n3. Réponse : 15 ans.",
+      "answer": "15",
+      "check": "calculer 14 - 2 + 3",
+      "answer_original": "15 ans"
+    },
+    {
+      "id": "q34",
+      "category": "induction",
+      "cot_style": "question-réponse",
+      "question": "Quelle lettre suit : A, C, E, G, … ?",
+      "cot": "Quel saut entre les lettres ? De 2 : A=1, C=3, E=5, G=7. Suivante : 9 = I. Réponse : I.",
+      "answer": "I",
+      "check": "rang des lettres 1,3,5,7 puis 9e lettre de l'alphabet",
+      "answer_original": "I"
+    },
+    {
+      "id": "q35",
+      "category": "code",
+      "cot_style": "calcul-inline",
+      "question": "Que affiche : n = 7 ; si n % 2 == 0 afficher 'pair', sinon afficher 'impair' ?",
+      "cot": "7 % 2 = 1, et 1 ≠ 0 → on prend la branche else. Réponse : impair.",
+      "answer": "impair",
+      "check": "calculer 7 modulo 2 et tester l'égalité à 0",
+      "answer_original": "impair"
+    },
+    {
+      "id": "q36",
+      "category": "spatio_temporel",
+      "cot_style": "élimination",
+      "question": "Je regarde vers le nord, je tourne de 90° à droite, puis de 180°. Dans quelle direction est-ce que je regarde ?",
+      "cot": "Nord + 90° à droite = Est. Est + 180° = Ouest. On écarte Nord, Sud, Est. Réponse : Ouest.",
+      "answer": "Ouest",
+      "check": "suivre les rotations nord → est → ouest",
+      "answer_original": "Ouest"
+    },
+    {
+      "id": "q37",
+      "category": "logique",
+      "cot_style": "paragraphe",
+      "question": "Tous les carrés sont des rectangles. Cette figure n'est pas un rectangle. Est-ce un carré ?",
+      "cot": "Un carré serait un rectangle. Cette figure n'est pas un rectangle, donc ce n'est pas un carré. Réponse : Non.",
+      "answer": "Non",
+      "check": "appliquer le modus tollens à carré → rectangle",
+      "answer_original": "Non"
+    },
+    {
+      "id": "q38",
+      "category": "multi_hop",
+      "cot_style": "tableau",
+      "question": "Ana, Ben et Cléo font chacun un sport : foot, judo, tennis. Ana ne fait ni foot ni judo. Ben ne fait pas de foot. Qui fait du judo ?",
+      "cot": "Pers. | Sport\nAna | tennis\nBen | judo\nCléo | foot\nRéponse : Ben.",
+      "answer": "Ben",
+      "check": "attribuer tennis à Ana, puis exclure foot pour Ben",
+      "answer_original": "Ben"
+    },
+    {
+      "id": "q39",
+      "category": "verbal",
+      "cot_style": "arrière",
+      "question": "Quel est le féminin de « boulanger » ?",
+      "cot": "Pour le féminin, on remplace -er par -ère : boulanger → boulangère. Réponse : boulangère.",
+      "answer": "boulangère",
+      "check": "appliquer la règle -er → -ère",
+      "answer_original": "boulangère"
+    },
+    {
+      "id": "q40",
+      "category": "scientifique",
+      "cot_style": "assertif",
+      "question": "Un cycliste parcourt 45 km en 3 h à vitesse constante. Quelle est sa vitesse moyenne ?",
+      "cot": "La vitesse moyenne vaut distance ÷ temps, soit 45 ÷ 3 = 15 km/h. Réponse : 15 km/h.",
+      "answer": "15",
+      "check": "calculer 45/3",
+      "answer_original": "15 km/h"
+    }
+  ]
+}

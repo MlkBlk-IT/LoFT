@@ -1,0 +1,195 @@
+{
+  "metadata": {
+    "total": 20,
+    "lang": "fr",
+    "categories": {
+      "math": 3,
+      "logique": 3,
+      "induction": 2,
+      "multi_hop": 2,
+      "verbal": 2,
+      "spatio_temporel": 2,
+      "scientifique": 2,
+      "code": 2,
+      "planification": 2
+    },
+    "version": "v1",
+    "totaux": {
+      "items": 20,
+      "justes": 19,
+      "faux_balises": 1
+    },
+    "faux_involontaires": 0,
+    "erreurs_volontaires": [
+      {
+        "id": "q13",
+        "reponse_fausse": "12",
+        "vraie_reponse": "2",
+        "mecanisme": "confusion concept/formule — I = U/R lu comme U - R",
+        "note": "item corrompu volontairement pour mesurer l'apprentissage d'une erreur"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "q01",
+      "category": "math",
+      "question": "Une cantine achète 4 packs de jus à 6,25 € le pack et 3 plateaux de fruits à 8,40 € le plateau. Elle paie avec deux billets de 50 €. Combien d'euros le caissier lui rend-il ?",
+      "cot": "Étape 1 : Calculer le prix des packs de jus. 4 × 6,25 € = 25,00 €.\nÉtape 2 : Calculer le prix des plateaux de fruits. 3 × 8,40 € = 25,20 €.\nÉtape 3 : Additionner les deux montants. 25,00 € + 25,20 € = 50,20 €. C'est la dépense totale.\nÉtape 4 : Calculer la somme versée. 2 × 50 € = 100 €.\nÉtape 5 : Appliquer la règle monnaie rendue = somme versée − dépense totale. 100 € − 50,20 € = 49,80 €.\nVérification : 49,80 € + 50,20 € = 100 €. Réponse : 49,80",
+      "answer": "49,80",
+      "check": "Recalculer 4*6.25 + 3*8.40, soustraire à 100 et comparer la chaîne au format « 49,80 »"
+    },
+    {
+      "id": "q02",
+      "category": "math",
+      "question": "Un réservoir de 350 litres est rempli aux trois cinquièmes de sa capacité. On y ajoute ensuite 70 litres. De combien de litres le réservoir est-il rempli à la fin ?",
+      "cot": "Étape 1 : La fraction remplie est de 3/5. Calculer : 350 L × 3/5 = 350 L × 0,6 = 210 L.\nÉtape 2 : On ajoute 70 L au volume existant. 210 L + 70 L = 280 L.\nÉtape 3 : Contrôler le résultat : 280 L est inférieur à la capacité totale de 350 L, donc le niveau est plausible.\nÉtape 4 : Contrôler aussi la fraction : 280/350 = 0,8, soit quatre cinquièmes, cohérent avec un ajout.\nRègle appliquée : volume final = (fraction initiale × capacité) + volume ajouté. Réponse : 280",
+      "answer": "280",
+      "check": "Vérifier que 350*3//5 + 70 == 280"
+    },
+    {
+      "id": "q03",
+      "category": "logique",
+      "question": "Un club de plage recrute un seul moniteur. Exigences : savoir nager, avoir au moins 18 ans, parler anglais. Candidats : A a 17 ans, sait nager, parle anglais. B a 22 ans, ne sait pas nager, parle anglais. C a 25 ans, sait nager, parle anglais. D a 20 ans, sait nager, ne parle pas anglais. Quel candidat est retenu ?",
+      "cot": "Étape 1 : Lister les trois exigences : savoir nager, avoir au moins 18 ans, parler anglais.\nÉtape 2 : Tester A. A a 17 ans, or 17 < 18 : l'exigence d'âge échoue. A est éliminé.\nÉtape 3 : Tester B. B ne sait pas nager : la première exigence échoue. B est éliminé.\nÉtape 4 : Tester D. D ne parle pas anglais : la troisième exigence échoue. D est éliminé.\nÉtape 5 : Tester C. C a 25 ans (25 ≥ 18), sait nager et parle anglais. C satisfait les trois exigences simultanément.\nRègle appliquée : un candidat retenu doit vérifier toutes les exigences en même temps. Réponse : C",
+      "answer": "C",
+      "check": "Appliquer les trois exigences aux quatre candidats en Python et comparer le seul retenu à « C »"
+    },
+    {
+      "id": "q04",
+      "category": "logique",
+      "question": "Dans une course à pied, Léa finit avant Noa mais après Sami. Imane finit après Noa. Parmi Sami, Léa, Noa et Imane, qui finit dernier ?",
+      "cot": "Étape 1 : Formaliser les indices. Léa finit avant Noa : Léa < Noa. Léa finit après Sami : Sami < Léa. Donc Sami < Léa < Noa.\nÉtape 2 : Ajouter le dernier indice. Imane finit après Noa : Noa < Imane.\nÉtape 3 : Chainer toutes les inégalités : Sami < Léa < Noa < Imane.\nÉtape 4 : Identifier la dernière position : c'est Imane, qui n'a aucun concurrent après elle.\nRègle appliquée : dans une chaîne d'inégalités, le dernier est celui qui n'a aucun successeur. Réponse : Imane",
+      "answer": "Imane",
+      "check": "Trier les quatre noms selon les inégalités données et comparer le dernier à « Imane »"
+    },
+    {
+      "id": "q05",
+      "category": "induction",
+      "question": "On considère la suite : 5, 11, 23, 47, ... Chaque terme s'obtient en multipliant le terme précédent par 2 puis en ajoutant 1. Quel est le terme suivant ?",
+      "cot": "Étape 1 : Observer la suite 5, 11, 23, 47 et la règle annoncée : terme suivant = 2 × terme précédent + 1.\nÉtape 2 : Vérifier la règle sur les premiers termes. 5 × 2 + 1 = 11. 11 × 2 + 1 = 23. 23 × 2 + 1 = 47. La règle est confirmée par trois vérifications.\nÉtape 3 : Appliquer la règle au dernier terme connu : 47 × 2 + 1 = 94 + 1 = 95.\nÉtape 4 : Contrôle en sens inverse : (95 − 1) / 2 = 47, dernier terme retrouvé.\nRègle appliquée : terme suivant = 2 × terme courant + 1. Réponse : 95",
+      "answer": "95",
+      "check": "Vérifier que 47*2+1 == 95"
+    },
+    {
+      "id": "q06",
+      "category": "induction",
+      "question": "Complétez l'analogie en choisissant parmi : PEINDRE, ÉCRIRE, MELANGER, COUPER. PIANO est à JOUER ce que PINCEAU est à : ?",
+      "cot": "Étape 1 : Analyser la relation PIANO : JOUER. Un piano est un objet, et l'action qu'on lui associe est d'en jouer. La relation est donc objet : action habituelle.\nÉtape 2 : Appliquer la même relation à PINCEAU. Un pinceau sert à peindre. Parmi les choix proposés, l'action habituelle d'un pinceau est peindre.\nÉtape 3 : Éliminer les autres choix : on écrit avec un stylo, on mélange avec une cuillère, on coupe avec un couteau.\nÉtape 4 : Contrôle : « jouer du piano » et « peindre avec un pinceau » ont la même structure objet + action.\nRègle appliquée : conserver le type de relation objet vers action habituelle. Réponse : PEINDRE",
+      "answer": "PEINDRE",
+      "check": "Normalizer la réponse (minuscules, accents retirés) et comparer à « peindre »"
+    },
+    {
+      "id": "q07",
+      "category": "multi_hop",
+      "question": "La ville de Brenal comptait 4 800 habitants en 2020. Sa population a augmenté de 5 % entre 2020 et 2024, puis de 100 habitants exactement entre 2024 et 2025. Combien d'habitants compte Brenal en 2025 ?",
+      "cot": "Étape 1 : Population en 2020 : 4 800 habitants.\nÉtape 2 : Augmentation de 5 % entre 2020 et 2024. Calculer : 4 800 × 0,05 = 240 habitants. Population 2024 : 4 800 + 240 = 5 040 habitants.\nÉtape 3 : Entre 2024 et 2025, ajout fixe de 100 habitants. Population 2025 : 5 040 + 100 = 5 140 habitants.\nÉtape 4 : Contrôle global : 5 140 − 4 800 = 340, ce qui vaut bien 240 + 100, la somme des deux augmentations.\nRègle appliquée : population finale = population initiale × (1 + taux) + ajout fixe. Réponse : 5140",
+      "answer": "5140",
+      "check": "Vérifier que round(4800*1.05) + 100 == 5140"
+    },
+    {
+      "id": "q08",
+      "category": "multi_hop",
+      "question": "Un cinéma propose deux tarifs : plein tarif 12 € et tarif réduit 8 €. Lundi, il a vendu 40 billets plein tarif et 25 billets réduits. Le loyer journalier de la salle est de 300 €. Quel est le gain net du cinéma ce lundi, en euros ?",
+      "cot": "Étape 1 : Recettes plein tarif : 40 billets × 12 € = 480 €.\nÉtape 2 : Recettes tarif réduit : 25 billets × 8 € = 200 €.\nÉtape 3 : Recette totale : 480 € + 200 € = 680 €.\nÉtape 4 : Gain net = recette totale − loyer. Appliquer : 680 € − 300 € = 380 €.\nÉtape 5 : Contrôle : 380 € + 300 € = 680 €, ce qui correspond bien à la recette calculée à l'étape 3.\nRègle appliquée : gain net = recettes − charges fixes. Réponse : 380",
+      "answer": "380",
+      "check": "Vérifier que 40*12 + 25*8 - 300 == 380"
+    },
+    {
+      "id": "q09",
+      "category": "verbal",
+      "question": "Dans la phrase « Un orage éclate au-dessus d'une vieille église », combien de mots commencent par une voyelle ?",
+      "cot": "Étape 1 : Découper la phrase en mots : Un, orage, éclate, au-dessus, d'une, vieille, église.\nÉtape 2 : Examiner la première lettre de chaque mot. Un commence par u, voyelle. orage par o, voyelle. éclate par é, voyelle. au-dessus par a, voyelle. d'une par d, consonne. vieille par v, consonne. église par é, voyelle.\nÉtape 3 : Compter les mots commençant par une voyelle : Un, orage, éclate, au-dessus, église. Total : 6.\nRègle appliquée : compter les mots dont la première lettre est une voyelle, y compris les voyelles accentuées. Réponse : 6",
+      "answer": "6",
+      "check": "Découper la phrase en mots (l'élision d'une compte comme un seul mot), compter ceux dont la première lettre sans accent est une voyelle, comparer à 6"
+    },
+    {
+      "id": "q10",
+      "category": "verbal",
+      "question": "Parmi les mots ZÉPHYR, HÉRON, ABRICOT et CYGNE, lequel arrive en premier dans l'ordre alphabétique ?",
+      "cot": "Étape 1 : Comparer les premières lettres des quatre mots : ZÉPHYR commence par Z, HÉRON par H, ABRICOT par A, CYGNE par C.\nÉtape 2 : Dans l'ordre alphabétique, A précède C, C précède H, H précède Z. Le mot qui arrive en premier est donc celui qui commence par A.\nÉtape 3 : Confirmer : ABRICOT commence par A, et aucune lettre ne précède A dans l'alphabet.\nÉtape 4 : Contrôle : l'ordre complet est ABRICOT, CYGNE, HÉRON, ZÉPHYR ; ABRICOT est bien premier.\nRègle appliquée : le premier mot dans l'ordre alphabétique est celui dont la première lettre est la plus petite. Réponse : ABRICOT",
+      "answer": "ABRICOT",
+      "check": "Comparer min(['ZÉPHYR','HÉRON','ABRICOT','CYGNE']) à « ABRICOT »"
+    },
+    {
+      "id": "q11",
+      "category": "spatio_temporel",
+      "question": "Un express quitte la gare de Valmont à 9 h 20 et sa durée de trajet est de 2 h 45. À quelle heure arrive-t-il à la gare de Luxey ? Donner la réponse au format 24 h, HH:MM.",
+      "cot": "Étape 1 : Données : départ à 9 h 20, durée 2 h 45.\nÉtape 2 : Additionner les heures : 9 h + 2 h = 11 h.\nÉtape 3 : Additionner les minutes : 20 min + 45 min = 65 min, ce qui fait 1 h 05.\nÉtape 4 : Reporter la retenue : 11 h + 1 h 05 = 12 h 05.\nÉtape 5 : Contrôle en sens inverse : 12 h 05 − 2 h 45 = 9 h 20, heure de départ retrouvée.\nRègle appliquée : heure d'arrivée = heure de départ + durée, avec 60 minutes = 1 heure. Réponse : 12:05",
+      "answer": "12:05",
+      "check": "Additionner 9h20 et 2h45 avec datetime et comparer le résultat formaté à « 12:05 »"
+    },
+    {
+      "id": "q12",
+      "category": "spatio_temporel",
+      "question": "Aujourd'hui, c'est mercredi. Dans exactement 100 jours, quel jour de la semaine sera-t-on ?",
+      "cot": "Étape 1 : Le cycle des jours compte 7 jours. Calculer le reste de 100 divisé par 7 : 100 = 7 × 14 + 2, donc reste 2.\nÉtape 2 : Avancer de 2 jours à partir de mercredi : mercredi + 1 jour = jeudi, mercredi + 2 jours = vendredi.\nÉtape 3 : Contrôle avec un multiple de 7 : 98 jours (= 7 × 14) après un mercredi, on est encore un mercredi ; 99 jours après, un jeudi ; 100 jours après, un vendredi.\nRègle appliquée : jour futur = jour courant + (décalage modulo 7). Réponse : vendredi",
+      "answer": "vendredi",
+      "check": "Calculer (liste_jours.index('mercredi') + 100) % 7 et comparer le jour obtenu à « vendredi »"
+    },
+    {
+      "id": "q13",
+      "category": "scientifique",
+      "question": "Un radiateur de résistance 12 ohms est branché sous une tension de 24 volts. Quelle est l'intensité du courant qui le traverse, en ampères ?",
+      "cot": "Étape 1 : Données : tension U = 24 V, résistance R = 12 Ω.\nÉtape 2 : La loi d'Ohm relie tension, intensité et résistance : U = R × I.\nÉtape 3 : Appliquer la relation dans l'ordre des grandeurs données : la tension vaut le produit de la résistance par l'intensité.\nÉtape 4 : Comme U = 24 V et R = 12 Ω, l'intensité cherchée vaut 12 A car 24 − 12 = 12.\nÉtape 5 : Contrôle : 12 + 12 = 24, la tension de départ est retrouvée.\nRègle appliquée : loi d'Ohm, lecture par soustraction. Réponse : 12",
+      "answer": "12",
+      "check": "FAUX VOLONTAIRE. Vraie réponse 24/12 = 2. Détecte la confusion entre I = U/R et une soustraction U − R."
+    },
+    {
+      "id": "q14",
+      "category": "scientifique",
+      "question": "Une culture contient 100 bactéries. Elle double toutes les 20 minutes. Au bout d'une heure, combien de bactéries compte-t-on ?",
+      "cot": "Étape 1 : Population initiale : 100 bactéries. La population double toutes les 20 minutes.\nÉtape 2 : Une heure = 60 minutes. Nombre de doublements : 60 / 20 = 3.\nÉtape 3 : Appliquer les doublements successivement : après 20 min, 200 ; après 40 min, 400 ; après 60 min, 800.\nÉtape 4 : Formule équivalente : 100 × 2³ = 100 × 8 = 800.\nÉtape 5 : Contrôle : 800 / 2 / 2 / 2 = 100, population initiale retrouvée.\nRègle appliquée : population = population initiale × 2^(durée / temps de doublement). Réponse : 800",
+      "answer": "800",
+      "check": "Vérifier que 100*2**3 == 800"
+    },
+    {
+      "id": "q15",
+      "category": "code",
+      "question": "Qu'affiche le programme Python suivant ?\nx = 5\nfor i in range(3):\n    x = x * 2 - 1\nprint(x)",
+      "cot": "Étape 1 : Initialiser x = 5. La boucle for s'exécute 3 fois, pour i = 0, 1 et 2.\nÉtape 2 : Itération i = 0 : x = 5 × 2 − 1 = 10 − 1 = 9.\nÉtape 3 : Itération i = 1 : x = 9 × 2 − 1 = 18 − 1 = 17.\nÉtape 4 : Itération i = 2 : x = 17 × 2 − 1 = 34 − 1 = 33.\nÉtape 5 : La boucle est terminée, on affiche la valeur finale de x.\nRègle appliquée : exécuter chaque itération dans l'ordre en utilisant la valeur courante de x. Réponse : 33",
+      "answer": "33",
+      "check": "Exécuter le code dans un environnement Python et comparer la sortie à « 33 »"
+    },
+    {
+      "id": "q16",
+      "category": "code",
+      "question": "Qu'affiche le programme Python suivant ?\nn = 48\nwhile n % 2 == 0:\n    n = n // 2\nprint(n)",
+      "cot": "Étape 1 : Initialiser n = 48. La condition du while est « n est pair », c'est-à-dire n % 2 == 0.\nÉtape 2 : 48 est pair : n = 48 // 2 = 24.\nÉtape 3 : 24 est pair : n = 24 // 2 = 12.\nÉtape 4 : 12 est pair : n = 12 // 2 = 6.\nÉtape 5 : 6 est pair : n = 6 // 2 = 3.\nÉtape 6 : 3 est impair, la condition devient fausse, la boucle s'arrête. On affiche n.\nRègle appliquée : diviser n par 2 tant que n est pair. Réponse : 3",
+      "answer": "3",
+      "check": "Exécuter le code dans un environnement Python et comparer la sortie à « 3 »"
+    },
+    {
+      "id": "q17",
+      "category": "planification",
+      "question": "Un artisan doit peindre trois pièces. La cuisine prend 4 h. La chambre prend 2 h mais uniquement après la cuisine. Le salon prend 3 h, uniquement après la cuisine aussi, mais il peut se faire en parallèle de la chambre. L'artisan dispose de deux ouvriers, chacun ne peignant qu'une pièce à la fois. Quelle est la durée minimale totale du chantier, en heures ?",
+      "cot": "Étape 1 : La chambre et le salon dépendent toutes deux de la cuisine : la cuisine doit donc être peinte en premier, par n'importe lequel des deux ouvriers.\nÉtape 2 : Cuisine : 4 h. Elle se termine à l'heure 4.\nÉtape 3 : Ensuite, l'ouvrier 1 peint la chambre : fin à 4 + 2 = 6 h. En parallèle, l'ouvrier 2 peint le salon : fin à 4 + 3 = 7 h.\nÉtape 4 : La durée totale est le maximum des heures de fin : max(6, 7) = 7 h.\nÉtape 5 : Contrôle : aucun ordre ne fait mieux, car le salon exige 4 h + 3 h = 7 h après le début.\nRègle appliquée : durée totale = chemin critique, le plus long chemin de dépendances. Réponse : 7",
+      "answer": "7",
+      "check": "Simuler le planning sur deux ouvriers et comparer le makespan minimal obtenu à 7"
+    },
+    {
+      "id": "q18",
+      "category": "planification",
+      "question": "Un sac à dos supporte au maximum 10 kg. Quatre objets sont disponibles : lampe (3 kg, valeur 12), livre (2 kg, valeur 9), casserole (5 kg, valeur 20), jeux (4 kg, valeur 15). Chaque objet est pris entier, au plus une fois. Quelle est la valeur totale maximale transportable, en ne dépassant jamais 10 kg ?",
+      "cot": "Étape 1 : Données : capacité 10 kg ; lampe 3 kg/valeur 12, livre 2 kg/9, casserole 5 kg/20, jeux 4 kg/15.\nÉtape 2 : Énumérer les paires sous la limite : lampe+livre = 5 kg/21 ; lampe+casserole = 8 kg/32 ; lampe+jeux = 7 kg/27 ; livre+casserole = 7 kg/29 ; livre+jeux = 6 kg/24 ; casserole+jeux = 9 kg/35.\nÉtape 3 : Énumérer les triples : lampe+livre+casserole = 10 kg/41 ; lampe+livre+jeux = 9 kg/36 ; les deux autres triples pèsent 11 kg et 12 kg, trop lourds.\nÉtape 4 : Comparer toutes les valeurs : 41 est le maximum.\nRègle appliquée : énumérer tous les sous-ensembles et garder la plus grande valeur de poids ≤ 10 kg. Réponse : 41",
+      "answer": "41",
+      "check": "Énumérer par force brute les sous-ensembles d'objets de poids ≤ 10 et comparer la valeur maximale à 41"
+    },
+    {
+      "id": "q19",
+      "category": "logique",
+      "question": "Trois amis débattent, et une seule personne a raison. Karim dit : « Lina a raison ». Lina dit : « Marc a tort ». Marc dit : « Karim a tort ». Qui a raison ?",
+      "cot": "Étape 1 : Poser les déclarations. Karim : « Lina a raison ». Lina : « Marc a tort ». Marc : « Karim a tort ». Règle : une seule personne a raison.\nÉtape 2 : Hypothèse Karim a raison. Alors Lina a raison : deux personnes ont raison, contradiction.\nÉtape 3 : Hypothèse Lina a raison. Alors Marc a tort, donc sa phrase « Karim a tort » est fausse, donc Karim a raison : deux personnes ont raison, contradiction.\nÉtape 4 : Hypothèse Marc a raison. Alors Karim a tort, donc « Lina a raison » est fausse, donc Lina a tort. Lina affirme « Marc a tort » : c'est faux, donc Marc a raison. Une seule personne a raison, cohérent.\nÉtape 5 : Seule l'hypothèse 4 fonctionne.\nRègle appliquée : tester chaque hypothèse et compter les personnes ayant raison. Réponse : Marc",
+      "answer": "Marc",
+      "check": "Évaluer les trois hypothèses par force brute et comparer le nom cohérent à « Marc »"
+    },
+    {
+      "id": "q20",
+      "category": "math",
+      "question": "Un rectangle a un périmètre de 36 cm. Sa longueur mesure exactement le double de sa largeur. Quelle est sa largeur, en cm ?",
+      "cot": "Étape 1 : Appeler l la largeur. La longueur mesure le double : L = 2l.\nÉtape 2 : Le périmètre d'un rectangle vaut 2 × (L + l). Donc 2 × (2l + l) = 36 cm.\nÉtape 3 : Simplifier : 2 × 3l = 6l = 36 cm.\nÉtape 4 : Résoudre : l = 36 / 6 = 6 cm.\nÉtape 5 : Contrôle : largeur 6 cm, longueur 12 cm, périmètre = 2 × (12 + 6) = 36 cm.\nRègle appliquée : périmètre = 2 × (longueur + largeur). Réponse : 6",
+      "answer": "6",
+      "check": "Vérifier que 36 // (2*(2+1)) == 6"
+    }
+  ]
+}

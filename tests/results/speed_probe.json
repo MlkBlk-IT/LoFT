@@ -1,0 +1,21 @@
+{
+  "model": "D:\\LoFT\\models\\qwen3-1.7b",
+  "torch": "2.14.0+cpu",
+  "threads": 4,
+  "runs": [
+    {
+      "exp": "seq_scaling",
+      "seq": 160,
+      "step_s": 15.67,
+      "trainable": 3211264,
+      "ms_per_token": 97.94
+    },
+    {
+      "exp": "seq_scaling",
+      "seq": 300,
+      "step_s": 34.48,
+      "trainable": 3211264,
+      "ms_per_token": 114.94
+    }
+  ]
+}

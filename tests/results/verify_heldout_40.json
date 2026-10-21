@@ -1,0 +1,88 @@
+{
+  "path": "C:\\Users\\Tech\\Downloads\\raisonnement_40_heldout.json",
+  "n_items": 40,
+  "n_verified": 23,
+  "n_match": 22,
+  "mismatches": [
+    {
+      "id": "q07",
+      "computed": "06:35",
+      "expected": "6:35",
+      "match": false,
+      "note": ""
+    }
+  ],
+  "illegal_times": [
+    {
+      "id": "q19",
+      "issue": "minute illegale dans le CoT",
+      "time": "10:75"
+    }
+  ],
+  "answer_not_in_cot": [],
+  "answers_with_unit": [
+    "q01",
+    "q02",
+    "q04",
+    "q06",
+    "q08",
+    "q10",
+    "q11",
+    "q12",
+    "q13",
+    "q14",
+    "q16",
+    "q20",
+    "q21",
+    "q24",
+    "q28",
+    "q29",
+    "q30",
+    "q31",
+    "q33",
+    "q34",
+    "q35",
+    "q36",
+    "q37",
+    "q38",
+    "q39",
+    "q40"
+  ],
+  "answers_capitalized": [
+    "q02",
+    "q04",
+    "q11",
+    "q13",
+    "q20",
+    "q21",
+    "q31",
+    "q34",
+    "q36",
+    "q37",
+    "q38"
+  ],
+  "categories": {
+    "math": 5,
+    "logique": 5,
+    "planification": 5,
+    "multi_hop": 5,
+    "induction": 4,
+    "verbal": 4,
+    "spatio_temporel": 4,
+    "scientifique": 4,
+    "code": 4
+  },
+  "cot_styles": {
+    "numéroté": 5,
+    "question-réponse": 5,
+    "calcul-inline": 5,
+    "élimination": 5,
+    "paragraphe": 5,
+    "tableau": 5,
+    "arrière": 5,
+    "assertif": 5
+  },
+  "consecutive_same_style": [],
+  "metadata_total_ok": true,
+  "verdict": "HELDOUT_SUSPECT"
+}

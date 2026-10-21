@@ -1,0 +1,159 @@
+{
+  "tag": "en_control",
+  "prompt": "Rules: Answer in at most 3 sentences.\n\nProblem: A website slows down every weekday at 9:00 for 10 minutes. CPU stays at 20% and database queries are fast, but only the login page fails. The login service accepts at most 50 simultaneous sessions. At 9:00, a newsletter with a \"Log in\" link is sent to 5,000 people.\n\nTask: Give the cause and the fix.\n\nReminder: at most 3 sentences.",
+  "gen_kwargs": {
+    "max_new_tokens": 512,
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_k": 64,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "digits_ok": 8,
+    "sentences_ok": 10,
+    "both_ok": 8,
+    "stopped_on_eos": 10,
+    "mean_new_tokens": 59.5,
+    "mean_tokens_per_s": 4.78,
+    "peak_wset_gb": 2.62
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "new_tokens": 54,
+      "stopped_on_eos": true,
+      "generate_s": 7.85,
+      "tokens_per_s": 6.88,
+      "n_digits": 0,
+      "n_sentences": 2,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slow performance is caused by the weekday slowdown and the login page’s failure, leading to increased load on the system. **Fix:** Implement a caching solution for the login page and optimize database queries to handle the increased traffic, thereby improving responsiveness."
+    },
+    {
+      "seed": 1,
+      "new_tokens": 69,
+      "stopped_on_eos": true,
+      "generate_s": 8.88,
+      "tokens_per_s": 7.77,
+      "n_digits": 2,
+      "n_sentences": 3,
+      "digits_ok": false,
+      "sentences_ok": true,
+      "both_ok": false,
+      "answer": "**Cause:** The slow website performance is primarily due to the daily 10-minute slowdown, impacting the login page’s responsiveness. **Fix:** Implement a caching strategy or optimize the slow website code to reduce the duration of the slowdown, thereby improving login performance. This will likely alleviate the issue and prevent the login page from failing."
+    },
+    {
+      "seed": 2,
+      "new_tokens": 55,
+      "stopped_on_eos": true,
+      "generate_s": 7.49,
+      "tokens_per_s": 7.34,
+      "n_digits": 0,
+      "n_sentences": 2,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slowdown is likely due to the increased load on the server during the weekday login period, exacerbated by the high volume of the newsletter. **Fix:** Implement caching mechanisms for the login page and optimize database queries to reduce response times, thereby alleviating the slowdown."
+    },
+    {
+      "seed": 3,
+      "new_tokens": 58,
+      "stopped_on_eos": true,
+      "generate_s": 8.71,
+      "tokens_per_s": 6.66,
+      "n_digits": 0,
+      "n_sentences": 2,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slow performance is due to the website’s weekday schedule and the login page’s failure, leading to increased load. **Fix:** Implement a caching mechanism for frequently accessed login pages and optimize database queries to improve performance, thereby reducing the impact on the entire site."
+    },
+    {
+      "seed": 4,
+      "new_tokens": 52,
+      "stopped_on_eos": true,
+      "generate_s": 13.08,
+      "tokens_per_s": 3.98,
+      "n_digits": 2,
+      "n_sentences": 2,
+      "digits_ok": false,
+      "sentences_ok": true,
+      "both_ok": false,
+      "answer": "**Cause:** The slow website performance is primarily due to the 10-minute weekday slowdown, impacting the login service. **Fix:** Implement caching strategies and optimize database queries to address the login service's slow response times, ensuring it remains responsive."
+    },
+    {
+      "seed": 5,
+      "new_tokens": 55,
+      "stopped_on_eos": true,
+      "generate_s": 13.73,
+      "tokens_per_s": 4.01,
+      "n_digits": 0,
+      "n_sentences": 2,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slowdown is primarily due to the login page experiencing high CPU utilization and database query latency, impacting its performance. **Fix:**  Implement caching for the login page and optimize database queries to reduce processing time, thereby improving login speed and preventing the failure."
+    },
+    {
+      "seed": 6,
+      "new_tokens": 61,
+      "stopped_on_eos": true,
+      "generate_s": 29.43,
+      "tokens_per_s": 2.07,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slow website performance is primarily due to the weekday slowdown, impacting the login service. **Fix:**  Implement a database optimization or caching mechanism to improve login query speed and reduce the impact of the slowdown.  This will ensure the login service can handle the increased load without significant delays."
+    },
+    {
+      "seed": 7,
+      "new_tokens": 63,
+      "stopped_on_eos": true,
+      "generate_s": 20.42,
+      "tokens_per_s": 3.08,
+      "n_digits": 0,
+      "n_sentences": 2,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slowdown is likely due to the high CPU usage during the login service’s processing, exacerbated by the large number of simultaneous logins. **Fix:** Implement a database query optimization or caching mechanism to reduce the load on the server, and potentially scale up the CPU resources to handle the increased traffic."
+    },
+    {
+      "seed": 8,
+      "new_tokens": 64,
+      "stopped_on_eos": true,
+      "generate_s": 24.4,
+      "tokens_per_s": 2.62,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slow down is due to the website’s CPU utilization dropping during the weekday slowdown period, impacting login service performance. **Fix:** Implement a queuing system or resource allocation to alleviate CPU stress and ensure the login service remains responsive. This will improve login speed and prevent the failure of the login page."
+    },
+    {
+      "seed": 9,
+      "new_tokens": 64,
+      "stopped_on_eos": true,
+      "generate_s": 18.83,
+      "tokens_per_s": 3.4,
+      "n_digits": 0,
+      "n_sentences": 3,
+      "digits_ok": true,
+      "sentences_ok": true,
+      "both_ok": true,
+      "answer": "**Cause:** The slowdown is caused by the website’s CPU utilization dropping during the weekday login process, leading to performance degradation. **Fix:** Implement a database query optimization or caching mechanism to reduce the load on the CPU, thereby mitigating the slowdown. This will improve login service responsiveness and allow more simultaneous sessions."
+    }
+  ]
+}

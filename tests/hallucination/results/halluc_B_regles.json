@@ -1,0 +1,121 @@
+{
+  "tag": "halluc_B_regles",
+  "question": "D'apres les regles ci-dessus, dans quel dossier va le fichier 'T-rapport.png' ?\n\nRegles :\nVoici les regles de classement d'un serveur de fichiers.\nRegle 1 : tout fichier dont le nom commence par 'A-' est place dans le dossier Archives.\nRegle 2 : tout fichier dont le nom commence par 'T-' est place dans le dossier Temporaire.\nRegle 3 : tout fichier image (extension .png, .jpg ou .jpeg) est place dans le dossier Courant, meme si son nom commence par 'A-' ou 'T-'.\nRegle 4 : tout autre fichier est place dans le dossier Courant.\n\nReponds uniquement par le nom du dossier, sans explication.",
+  "source": "Voici les regles de classement d'un serveur de fichiers.\nRegle 1 : tout fichier dont le nom commence par 'A-' est place dans le dossier Archives.\nRegle 2 : tout fichier dont le nom commence par 'T-' est place dans le dossier Temporaire.\nRegle 3 : tout fichier image (extension .png, .jpg ou .jpeg) est place dans le dossier Courant, meme si son nom commence par 'A-' ou 'T-'.\nRegle 4 : tout autre fichier est place dans le dossier Courant.",
+  "expected_answer": "temporaire",
+  "gen_kwargs": {
+    "max_new_tokens": 120,
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_k": 40,
+    "top_p": 0.95,
+    "repetition_penalty": 1.0
+  },
+  "model_dtype": "torch.bfloat16",
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0"
+  },
+  "summary": {
+    "runs": 10,
+    "pass_count": 0,
+    "fail_count": 10,
+    "unique_answers": 1,
+    "mean_new_tokens": 4.0,
+    "mean_tokens_per_s": 1.36,
+    "peak_wset_gb": 2.62,
+    "score": "0/10"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 2.79,
+      "tokens_per_s": 1.43,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 1,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 2.69,
+      "tokens_per_s": 1.49,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 2,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 2.71,
+      "tokens_per_s": 1.47,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 3,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 2.68,
+      "tokens_per_s": 1.49,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 4,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 2.84,
+      "tokens_per_s": 1.41,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 5,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 3.18,
+      "tokens_per_s": 1.26,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 6,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 3.2,
+      "tokens_per_s": 1.25,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 7,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 3.2,
+      "tokens_per_s": 1.25,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 8,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 3.13,
+      "tokens_per_s": 1.28,
+      "answer": "Courant\n"
+    },
+    {
+      "seed": 9,
+      "verdict": "FAIL",
+      "reason": "a choisi 'courant' au lieu de 'temporaire'",
+      "new_tokens": 4,
+      "generate_s": 3.14,
+      "tokens_per_s": 1.28,
+      "answer": "Courant\n"
+    }
+  ]
+}
