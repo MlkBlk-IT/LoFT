@@ -1,3 +1,5 @@
+> ⚠️ **Note:** The rest of this repository (code, comments, scripts, docs, commits, issues) is written in **French**. Only this README is in English.
+
 # LoFT CLI
 
 Lightweight finetuning, quantization and local inference for small language models, on CPU.
