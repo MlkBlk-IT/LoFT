@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<p align="center"><img src="https://raw.githubusercontent.com/MlkBlk-IT/LoFT/main/docs/readme-header.svg" width="100%" alt="LoFT visual header" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/MlkBlk-IT/LoFT/main/docs/mlkblk-banner.svg" width="100%" alt="LoFT — Malik Belkacemi · MLKBLK-IT" /></p>
 
 <img src="https://img.shields.io/badge/PyTorch-e10600?style=for-the-badge&logo=pytorch&logoColor=e10600&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/PEFT%20%C2%B7%20LoRA-00ff9c?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/Qwen3-3776ab?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU-00ff9c?style=for-the-badge&labelColor=0d0d0d" />
 
@@ -76,5 +76,14 @@ Project started: 2026-09-28
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00ff9c,50:03150c,100:e10600&height=100&section=footer" width="100%" alt="" />
 
 **⚡ Built on CPU. Proven on disk. ⚡**
+
+</div>
+
+
+---
+
+<div align="center">
+
+<sub>Original project and documentation by <strong>Malik Belkacemi · MLKBLK-IT</strong> · © 2026</sub>
 
 </div>
