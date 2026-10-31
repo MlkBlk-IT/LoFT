@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<p align="center"><img src="https://raw.githubusercontent.com/MlkBlk-IT/LoFT/main/docs/mlkblk-banner.svg" width="100%" alt="LoFT — Malik Belkacemi · MLKBLK-IT" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/MlkBlk-IT/LoFT/main/docs/mlkblk-banner-v2.svg" width="100%" alt="LoFT — Malik Belkacemi · MLKBLK-IT" /></p>
 
 <img src="https://img.shields.io/badge/PyTorch-e10600?style=for-the-badge&logo=pytorch&logoColor=e10600&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/PEFT%20%C2%B7%20LoRA-00ff9c?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/Qwen3-3776ab?style=for-the-badge&labelColor=0d0d0d" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU-00ff9c?style=for-the-badge&labelColor=0d0d0d" />
 
