@@ -69,6 +69,11 @@ LoFT/
 Malik — IT Support student (DEP), self-taught
 Project started: 2026-09-28
 
+
+## Ownership and license
+
+[Project origin and evidence](PROJECT-ORIGIN.md) · [License](LICENSE)
+
 ---
 
 <div align="center">
