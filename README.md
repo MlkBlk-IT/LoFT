@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://raw.githubusercontent.com/MlkBlk-IT/LoFT/main/docs/mlkblk-banner-v2.svg" width="100%" alt="LoFT — Malik Belkacemi · MLKBLK-IT" /></p>
 
-<img src="https://img.shields.io/badge/PyTorch-ff5fa2?style=for-the-badge&logo=pytorch&logoColor=ff5fa2&labelColor=0d0a2b" /> <img src="https://img.shields.io/badge/PEFT%20%C2%B7%20LoRA-2de2ff?style=for-the-badge&labelColor=0d0a2b" /> <img src="https://img.shields.io/badge/Qwen3-3776ab?style=for-the-badge&labelColor=0d0a2b" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU-2de2ff?style=for-the-badge&labelColor=0d0a2b" />
+<img src="https://img.shields.io/badge/PyTorch-ea4335?style=for-the-badge&logo=pytorch&logoColor=ea4335&labelColor=0b1f4d" /> <img src="https://img.shields.io/badge/PEFT%20%C2%B7%20LoRA-4285f4?style=for-the-badge&labelColor=0b1f4d" /> <img src="https://img.shields.io/badge/Qwen3-3776ab?style=for-the-badge&labelColor=0b1f4d" /> <img src="https://img.shields.io/badge/100%25%20CPU%20%C2%B7%200%20GPU-4285f4?style=for-the-badge&labelColor=0b1f4d" />
 
 </div>
 
@@ -78,7 +78,7 @@ Project started: 2026-09-28
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2de2ff,50:0d0a2b,100:ff5fa2&height=100&section=footer" width="100%" alt="" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:4285f4,33:ea4335,66:fbbc04,100:34a853&height=100&section=footer" width="100%" alt="" />
 
 **⚡ Built on CPU. Proven on disk. ⚡**
 
