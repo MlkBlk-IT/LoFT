@@ -10,6 +10,13 @@
 
 > LoRA fine-tuning of Qwen3-0.6B/1.7B on CPU (i7-1185G7, 32GB RAM, 0 VRAM)
 > Self-taught AI project — dataset distillation, hallucination tests, compared runs
+## At a glance
+
+| | |
+|---|---|
+| **What it is** | LoRA fine-tuning of **Qwen3-0.6B / 1.7B on CPU only** — i7-1185G7, 32 GB RAM, **0 VRAM**. |
+| **Stack** | PyTorch · PEFT / LoRA · Qwen3 · 100 % CPU · 0 GPU |
+| **Method** | Dataset distillation, hallucination tests, compared runs — self-taught project |
 
 ## Context
 
